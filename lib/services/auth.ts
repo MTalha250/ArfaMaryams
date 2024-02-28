@@ -15,6 +15,9 @@ export async function login(credentials: any) {
     if (!isMatch) {
       throw new Error("Invalid password");
     }
+    if (!user.isVerified) {
+      throw new Error("Email not verified");
+    }
     return user;
   } catch (error: any) {
     throw new Error(error.message);

@@ -3,9 +3,28 @@ import { Hero } from "@/components/home/hero";
 import Content from "@/components/home/hero/content";
 import Link from "next/link";
 import React from "react";
-import useAuthStore from "@/store/authStore";
+import { TypeAnimation } from "react-type-animation";
+
+const words = [
+  {
+    text: "Welcome",
+    className: "text-white text-6xl",
+  },
+  {
+    text: "to",
+    className: "text-white text-6xl",
+  },
+  {
+    text: "Coderush",
+    className: "text-primary text-6xl",
+  },
+  {
+    text: "Website",
+    className: "text-white text-6xl",
+  },
+];
+
 const page = () => {
-  const { user } = useAuthStore();
   return (
     <div className="min-h-[200vh]">
       <Hero
@@ -16,27 +35,14 @@ const page = () => {
         ]}
         children={
           <div className="text-white z-20 flex flex-col items-center">
-            <Content
-              cursorClassName="bg-yellow-500 "
-              words={[
-                {
-                  text: "Welcome",
-                  className: "text-white text-6xl",
-                },
-                {
-                  text: "to",
-                  className: "text-white text-6xl",
-                },
-                {
-                  text: "Coderush",
-                  className: "text-primary text-6xl",
-                },
-                {
-                  text: "Website",
-                  className: "text-white text-6xl",
-                },
-              ]}
-            />
+            {/* <TypeAnimation
+              sequence={["Welcome to Coderush Website", 1000]}
+              wrapper="span"
+              speed={20}
+              className="text-6xl font-bold"
+              repeat={Infinity}
+            /> */}
+            <Content words={words} cursorClassName="bg-yellow-500" />
             <p className="text-center font-semibold text-2xl w-2/3">
               Empowering Your Shopping Experience: Where Convenience Meets
               Quality. Explore Limitless Possibilities at [Ecommerce Store Name]

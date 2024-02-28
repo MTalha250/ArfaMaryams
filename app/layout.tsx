@@ -25,7 +25,6 @@ export default function RootLayout({
       setStatus("error");
     }
   }, []);
-
   return (
     <html lang="en">
       <head>

@@ -1,9 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { motion, stagger, useAnimate, useInView } from "framer-motion";
-import { useEffect } from "react";
-
+import { motion } from "framer-motion";
 const Content = ({
   words,
   className,
@@ -52,7 +50,7 @@ const Content = ({
         initial={{
           width: "0%",
         }}
-        whileInView={{
+        animate={{
           width: "fit-content",
         }}
         transition={{

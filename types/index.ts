@@ -3,6 +3,7 @@ type User = {
   name: string;
   email: string;
   role: string;
+  isVerified: boolean;
 };
 
 export type { User };

@@ -7,7 +7,7 @@ export const storeInitializer = async () => {
       status: "loading",
     });
     const { data } = await axios.get(`/api/users`);
-    const { name, email, id, role } = data.result;
+    const { name, email, id, role, isVerified } = data.result;
     useAuthStore.setState({
       status: "success",
       user: {
@@ -15,6 +15,7 @@ export const storeInitializer = async () => {
         name,
         email,
         role,
+        isVerified,
       },
     });
   } catch (error: any) {

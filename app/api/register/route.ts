@@ -2,9 +2,10 @@ import dbConnect from "@/lib/database/mongodb";
 import { NextRequest, NextResponse } from "next/server";
 import User from "@/models/user";
 import bcrypt from "bcrypt";
+import nodemailer from "nodemailer";
 
 export async function POST(request: NextRequest) {
-  const { name, email, password, role } = await request.json();
+  const { name, email, password } = await request.json();
   await dbConnect();
   try {
     // checkling if user already exists
@@ -25,12 +26,27 @@ export async function POST(request: NextRequest) {
       name,
       email,
       password: await bcrypt.hash(password, 10),
-      role,
     });
+    // sending verification email
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "tbcgulfmarketing@gmail.com",
+        pass: "gyqj dwxp nrmo qobv",
+      },
+    });
+    const mailOptions = {
+      from: "tbcgulfmarketing@gmail.com",
+      to: email,
+      subject: "Account Verification",
+      text: `Hello ${name}, click on the link to verify your account: ${process.env.NEXTAUTH_URL}/api/verify/${user._id}`,
+    };
+    await transporter.sendMail(mailOptions);
     return NextResponse.json(
       {
         success: true,
-        message: "Account created successfully",
+        message:
+          "Account created successfully. \nPlease verify your email to login",
         user,
       },
       {

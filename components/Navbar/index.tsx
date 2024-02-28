@@ -8,7 +8,7 @@ import Sidebar from "./Sidebar";
 import useAuthStore from "@/store/authStore";
 const Navbar = () => {
   const pathname = usePathname();
-  const { user } = useAuthStore();
+  const { user, clearUser } = useAuthStore();
   const [scroll, setScroll] = useState(false);
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -48,7 +48,7 @@ const Navbar = () => {
           <MdOutlineShoppingBag className="inline-block text-2xl" />
         </Link>
         {user?.name ? (
-          <span>{user.name}</span>
+          <span onClick={() => clearUser()}>{user.name}</span>
         ) : (
           <Link
             href="/login"
