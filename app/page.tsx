@@ -1,9 +1,11 @@
+"use client";
 import { Hero } from "@/components/home/hero";
 import Content from "@/components/home/hero/content";
 import Link from "next/link";
 import React from "react";
-
+import useAuthStore from "@/store/authStore";
 const page = () => {
+  const { user } = useAuthStore();
   return (
     <div className="min-h-[200vh]">
       <Hero
