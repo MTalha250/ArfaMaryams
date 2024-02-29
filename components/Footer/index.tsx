@@ -108,7 +108,7 @@ const Footer = () => {
       </div>
       <div>
         <div className="border-y-2 bg-primary text-black text-center py-2">
-          <p>© 2024 Coderush. All rights reserved.</p>
+          <p className="text-sm">© 2024 Coderush. All rights reserved.</p>
         </div>
       </div>
     </footer>
