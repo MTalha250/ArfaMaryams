@@ -64,7 +64,7 @@ const Register = () => {
         Create your{" "}
         <span className="text-white bg-primary pr-2 pl-1 italic">Account!</span>{" "}
       </h1>
-      <div className=" min-w-[300px]">
+      <div className=" min-w-[500px]">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
             <FormField
@@ -128,8 +128,14 @@ const Register = () => {
                 Already have an account? Sign in
               </Link>
             </div>
-            <Button type="submit">
-              {isSubmitting ? "Submitting..." : "Submit"}
+            <Button
+              type="submit"
+              className="rounded-full font-bold text-xl w-full bg-transparent hover:bg-transparent py-3 border border-black text-white  dark:border-white relative group transition duration-200"
+            >
+              <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:-bottom-1 group-hover:-right-1 transition-all duration-200" />
+              <span className="relative">
+                {isSubmitting ? "Submitting..." : "Login"}
+              </span>
             </Button>
           </form>
         </Form>
