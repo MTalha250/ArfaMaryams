@@ -6,8 +6,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Sidebar from "./Sidebar";
 import useAuthStore from "@/store/authStore";
-
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,10 +13,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Profile from "../profile";
+
 const Navbar = () => {
   const pathname = usePathname();
   const { user, clearUser } = useAuthStore();
   const [scroll, setScroll] = useState(false);
+
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 100) {
@@ -28,7 +29,6 @@ const Navbar = () => {
       }
     });
   });
-
   return (
     <div
       className={
@@ -71,14 +71,9 @@ const Navbar = () => {
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <Dialog>
-                <DialogTrigger className="rounded-sm px-2 py-1.5 text-sm transition duration-200 hover:bg-neutral-100 w-full">
-                  Edit Profile
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-[425px]">abc</DialogContent>
-              </Dialog>
+              <Profile />
               <DropdownMenuItem
-                className="hover:bg-red-100 cursor-pointer text-center block"
+                className="cursor-pointer text-center block"
                 onClick={() => clearUser()}
               >
                 Logout

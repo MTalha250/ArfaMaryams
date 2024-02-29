@@ -33,16 +33,11 @@ export async function GET(req: NextRequest, params: any) {
         }
       );
     }
-    const { name, email, role } = userData;
+
     return NextResponse.json(
       {
         status: "success",
-        result: {
-          id,
-          name,
-          email,
-          role,
-        },
+        result: userData,
       },
       {
         status: 200,

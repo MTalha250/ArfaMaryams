@@ -2,7 +2,15 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { navLinks } from "@/constants";
 import Link from "next/link";
-
+import useAuthStore from "@/store/authStore";
+import Profile from "../profile";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 const variants = {
   initial: {
     scaleX: 0,
@@ -26,6 +34,7 @@ const variants = {
 };
 const Sidebar = () => {
   const [open, setOpen] = useState(false);
+  const { user, clearUser } = useAuthStore();
 
   return (
     <motion.div className="md:hidden" animate={open ? "open" : "closed"}>
@@ -42,9 +51,51 @@ const Sidebar = () => {
             </li>
           ))}
         </ul>
-        <Link href="/login" className="fixed bottom-5 right-5 z-50">
-          Login
-        </Link>
+        {user?.name ? (
+          <DropdownMenu>
+            <DropdownMenuTrigger className="outline-none ring-0 fixed bottom-5 right-5 pb-2 px-5">
+              <div className="rounded-full pb-2 px-5 border border-black bg-transparent text-black  dark:border-white relative group transition duration-200">
+                <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:-bottom-1 group-hover:-right-1 transition-all duration-200" />
+                <span className="relative text-sm">Hi, {user?.name}</span>
+              </div>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <div onClick={() => setOpen(false)}>
+                <Profile />
+              </div>
+              <DropdownMenuItem
+                className="cursor-pointer text-center block"
+                onClick={() => {
+                  clearUser();
+                  setOpen(false);
+                }}
+              >
+                Logout
+              </DropdownMenuItem>
+              {user?.role == "admin" && (
+                <DropdownMenuSeparator className="bg-neutral-200" />
+              )}
+              {user?.role == "admin" && (
+                <DropdownMenuItem className="mt-1 cursor-pointer text-center block bg-primary">
+                  <Link href="/admin">Admin</Link>
+                </DropdownMenuItem>
+              )}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        ) : (
+          <div
+            className="fixed bottom-5 right-5"
+            onClick={() => setOpen(false)}
+          >
+            <Link
+              href="/login"
+              className="rounded-full pb-2 px-5 border border-black bg-transparent text-black  dark:border-white relative group transition duration-200"
+            >
+              <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:-bottom-1 group-hover:-right-1 transition-all duration-200" />
+              <span className="relative text-sm">Login/Signup</span>
+            </Link>
+          </div>
+        )}
       </motion.div>
       <button
         className="fixed z-50 top-7 right-10"

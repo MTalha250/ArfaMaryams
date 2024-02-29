@@ -23,6 +23,8 @@ const formSchema = z
   .object({
     name: z.string().min(3),
     email: z.string().email(),
+    phone: z.string().min(10),
+    address: z.string().min(10),
     password: z.string().min(8),
     confirmPassword: z.string().min(8),
   })
@@ -38,6 +40,8 @@ const Register = () => {
     defaultValues: {
       name: "",
       email: "",
+      phone: "",
+      address: "",
       password: "",
       confirmPassword: "",
     },
@@ -59,12 +63,12 @@ const Register = () => {
   }
 
   return (
-    <div className="flex items-center justify-center flex-col min-h-screen">
+    <div className="flex items-center justify-center flex-col py-20 min-h-screen px-8 md:px-16">
       <h1 className="text-3xl font-semibold mt-20 mb-2">
         Create your{" "}
         <span className="text-white bg-primary pr-2 pl-1 italic">Account!</span>{" "}
       </h1>
-      <div className=" min-w-[500px]">
+      <div className="w-full max-w-[500px]">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
             <FormField
@@ -86,6 +90,32 @@ const Register = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input placeholder="" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Phone</FormLabel>
+                  <FormControl>
+                    <Input placeholder="" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="address"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Address</FormLabel>
                   <FormControl>
                     <Input placeholder="" {...field} />
                   </FormControl>

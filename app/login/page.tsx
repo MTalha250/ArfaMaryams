@@ -56,12 +56,12 @@ const Login = () => {
   }
 
   return (
-    <div className="flex items-center justify-center flex-col min-h-screen">
+    <div className="flex items-center justify-center flex-col min-h-screen px-8 md:px-16">
       <h1 className="text-3xl font-semibold mb-8">
         Login to your{" "}
         <span className="text-white bg-primary px-2 italic">Account!</span>{" "}
       </h1>
-      <div className="min-w-[500px]">
+      <div className="w-full max-w-[500px]">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
             <FormField

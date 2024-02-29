@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 import nodemailer from "nodemailer";
 
 export async function POST(request: NextRequest) {
-  const { name, email, password } = await request.json();
+  const { name, email, password, phone, address } = await request.json();
   await dbConnect();
   try {
     // checkling if user already exists
@@ -25,6 +25,8 @@ export async function POST(request: NextRequest) {
     const user = await User.create({
       name,
       email,
+      phone,
+      address,
       password: await bcrypt.hash(password, 10),
     });
     // sending verification email
