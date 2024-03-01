@@ -68,3 +68,30 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
+export async function GET(request: NextRequest) {
+  await dbConnect();
+  try {
+    const users = await User.find().sort({ createdAt: -1 });
+    return NextResponse.json(
+      {
+        success: true,
+        result: users,
+      },
+      {
+        status: 200,
+      }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Something went wrong",
+        error: error,
+      },
+      {
+        status: 500,
+      }
+    );
+  }
+}

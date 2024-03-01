@@ -9,7 +9,7 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 import Link from "next/link";
-
+import { navLinks } from "@/constants";
 const Footer = () => {
   return (
     <footer className="bg-black text-white">
@@ -20,9 +20,8 @@ const Footer = () => {
               <span className="bg-primary px-2"> Sign Up!</span>
             </h3>
             <p className="font-light md:block hidden text-xs mt-2">
-              Get regular updates on the latest Forex news, trading tips, and
-              strategies. We also offer a free Forex trading course to help you
-              get started.
+              Sign up to our newsletter and be the first to know about the
+              latest news, special offers, events, and discounts.
             </p>
             <form className="flex mt-4 flex-col sm:flex-row sm:items-end">
               <button
@@ -33,19 +32,13 @@ const Footer = () => {
               </button>
             </form>
             <div className="flex justify-center space-x-3 mt-6 w-1/2">
-              <a
-                href="https://www.facebook.com/profile.php?id=61555189419994"
-                target="_blank"
-              >
+              <a href="">
                 <FaFacebookF className="text-black bg-white rounded-full p-2 text-4xl cursor-pointer" />
               </a>
-              <a
-                href="https://www.instagram.com/ezifx_official?igsh=MTc4bjd2OWluZGZoOQ=="
-                target="_blank"
-              >
+              <a href="">
                 <FaInstagram className="text-black bg-white rounded-full p-2 text-4xl cursor-pointer" />
               </a>
-              <a href="https://www.linkedin.com/company/ezifx/" target="_blank">
+              <a href="">
                 <FaLinkedin className="text-black bg-white rounded-full p-2 text-4xl cursor-pointer" />
               </a>
             </div>
@@ -57,40 +50,33 @@ const Footer = () => {
             </h3>
             <ul className="mt-4 text-sm space-y-2">
               <li>
-                <FaPhone className="rotate-90  inline mr-2" /> +1 800-555-5555
+                <FaPhone className="rotate-90  inline mr-2" /> +92 324 4264800
               </li>
               <li>
                 <FaEnvelope className="inline   mr-2" />
-                <a href="mailto:info@ezifx.com"> info@ezifx.com</a>
+                <a href="mailto:info@ezifx.com"> info@coderush.com</a>
               </li>
               <li>
                 <FaWhatsapp className="inline text-lg mr-2 " />
-                <a href="https://wa.me/1234s567890"> +1 800-555-5555</a>
+                <a href="https://wa.me/1234s567890"> +92 324 4264800</a>
               </li>
-              <li>
+              <li className="flex mt-2">
                 <FaMapMarkerAlt className="inline mr-2  text-lg" />
-                <a href="">
-                  Registered Address: Ground Floor, The Sotheby Building,
-                  Rodney, Grosistet, St. Lucia
-                </a>
-              </li>
-              <li>
-                <FaMapMarkerAlt className="inline mr-2  text-lg" />
-                <a href="">
-                  Physical Address: Sabha Build, Jabel Ali Industrial 1st., P,O
-                  Box: 838, Dubai, United Arab Emirates.
-                </a>
+                <a href="">Address: Model Town, Lahore, Pakistan</a>
               </li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-xl font-bold tracking-wider uppercase">
-              <span className=" bg-primary px-2">Account</span> Types
+              <span className=" bg-primary px-2">Quick</span> Links
             </h3>
             <ul className="mt-4 text-sm space-y-2 flex flex-col">
-              <Link href={"/login"}>Live Trading Account</Link>
-              <Link href={"/login"}>Classic Account</Link>
+              {navLinks.map((link) => (
+                <Link key={link.href} href={link.href}>
+                  {link.label}
+                </Link>
+              ))}
             </ul>
           </div>
 
@@ -99,9 +85,9 @@ const Footer = () => {
               <span className="bg-primary px-2">Company</span>
             </h3>
             <ul className="mt-4 space-y-2 text-sm flex flex-col">
-              <Link href={"/about-us"}>About Us</Link>
-              <Link href={"/company"}>Our Company</Link>
-              <Link href={"/contact"}>Contact Us</Link>
+              <Link href="/">About Us</Link>
+              <Link href="/">Our Company</Link>
+              <Link href="/">Contact Us</Link>
             </ul>
           </div>
         </div>

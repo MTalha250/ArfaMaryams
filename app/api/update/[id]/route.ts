@@ -6,7 +6,8 @@ export const PUT = async (
   { params }: { params: { id: string } }
 ): Promise<NextResponse> => {
   const { id } = params;
-  const { name, email, phone, address } = await req.json();
+  const { name, email, phone, address, role } = await req.json();
+  console.log("first");
   await dbConnect();
   try {
     const user = await User.findByIdAndUpdate(id, {
@@ -14,6 +15,7 @@ export const PUT = async (
       email,
       phone,
       address,
+      role,
     });
     if (!user) {
       return NextResponse.json(
