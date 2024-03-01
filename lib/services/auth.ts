@@ -2,7 +2,6 @@ import dbConnect from "../database/mongodb";
 import User from "@/models/user";
 import bcrypt from "bcrypt";
 import CredentialsProvider from "next-auth/providers/credentials";
-
 export async function login(credentials: any) {
   try {
     const { email, password } = credentials;
@@ -81,5 +80,8 @@ export const authOptions = {
       return session;
     },
   },
-  secret: "mein_ni_bataon_ga",
+  secret: process.env.NEXT_AUTH_SECRET,
+  session: {
+    maxAge: 10 * 60,
+  },
 };
