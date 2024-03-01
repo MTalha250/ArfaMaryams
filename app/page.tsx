@@ -4,6 +4,7 @@ import Content from "@/components/home/hero/content";
 import Link from "next/link";
 import React from "react";
 import Marquee from "react-fast-marquee";
+
 const words = [
   {
     text: "Welcome",
@@ -35,9 +36,13 @@ const page = () => {
           ]}
           children={
             <div className="text-white z-20 flex flex-col items-center px-8">
+              <h1 className="font-bold text-4xl sm:text-5xl text-center md:hidden">
+                Welcome to <span className="text-primary">CodeRush</span>{" "}
+                Website
+              </h1>
               <Content
                 words={words}
-                cursorClassName="bg-yellow-500 invisible md:visible"
+                cursorClassName="bg-yellow-500 hidden md:block"
               />
               <p className="text-center font-semibold sm:text-lg md:text-2xl xl:w-2/3">
                 Empowering Your Shopping Experience: Where Convenience Meets
