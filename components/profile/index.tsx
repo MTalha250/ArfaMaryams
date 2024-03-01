@@ -1,7 +1,6 @@
-"use client";
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import useAuthStore from "@/store/authStore";
+import { useSession } from "next-auth/react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import * as z from "zod";
@@ -26,7 +25,8 @@ const formSchema = z.object({
 });
 
 const Profile = () => {
-  const { user, setUser } = useAuthStore();
+  const { data, update } = useSession();
+  const user = data?.user;
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -51,9 +51,15 @@ const Profile = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     try {
-      const response = await axios.put(`/api/update/${user?._id}`, values);
+      const response = await axios.put(`/api/update/${user?.id}`, values);
+      await update({
+        ...data,
+        user: {
+          ...data?.user,
+          ...values,
+        },
+      });
       toast.success(response.data.message);
-      setUser(response.data.user);
     } catch (error: any) {
       toast.error(error.response.data.message);
     } finally {

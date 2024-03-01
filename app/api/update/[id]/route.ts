@@ -7,7 +7,6 @@ export const PUT = async (
 ): Promise<NextResponse> => {
   const { id } = params;
   const { name, email, phone, address, role } = await req.json();
-  console.log("first");
   await dbConnect();
   try {
     const user = await User.findByIdAndUpdate(id, {

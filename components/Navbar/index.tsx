@@ -1,11 +1,10 @@
-"use client";
 import React, { useEffect, useState } from "react";
 import { navLinks } from "@/constants";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Sidebar from "./Sidebar";
-import useAuthStore from "@/store/authStore";
+import { signOut, useSession } from "next-auth/react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,8 +15,9 @@ import {
 import Profile from "../profile";
 
 const Navbar = () => {
+  const { data } = useSession();
+  const user = data?.user;
   const pathname = usePathname();
-  const { user, clearUser } = useAuthStore();
   const [scroll, setScroll] = useState(false);
 
   useEffect(() => {
@@ -74,7 +74,7 @@ const Navbar = () => {
               <Profile />
               <DropdownMenuItem
                 className="cursor-pointer text-center block"
-                onClick={() => clearUser()}
+                onClick={() => signOut()}
               >
                 Logout
               </DropdownMenuItem>
@@ -82,9 +82,12 @@ const Navbar = () => {
                 <DropdownMenuSeparator className="bg-neutral-200" />
               )}
               {user?.role == "admin" && (
-                <DropdownMenuItem className="mt-1 cursor-pointer text-center block bg-primary">
-                  <Link href="/admin">Admin</Link>
-                </DropdownMenuItem>
+                <Link
+                  href="/admin"
+                  className="py-1 text-center block bg-primary"
+                >
+                  Admin
+                </Link>
               )}
             </DropdownMenuContent>
           </DropdownMenu>

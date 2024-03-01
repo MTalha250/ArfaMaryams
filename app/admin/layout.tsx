@@ -1,16 +1,16 @@
 "use client";
 import Sidebar from "@/components/admin/sidebar";
-import useAuthStore from "@/store/authStore";
 import Link from "next/link";
 import img from "@/assets/notauth.png";
+import { useSession } from "next-auth/react";
 
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { user } = useAuthStore();
-
+  const { data } = useSession();
+  const user = data?.user;
   if (user?.role != "admin") {
     return (
       <div className="w-full h-screen flex items-center justify-center px-8">

@@ -45,16 +45,39 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    async jwt({ token, user }: { token: any; user: any }) {
+    async jwt({
+      token,
+      user,
+      trigger,
+      session,
+    }: {
+      token: any;
+      user: any;
+      trigger: any;
+      session: any;
+    }) {
+      if (trigger == "update") {
+        return { ...token, ...session.user };
+      }
       if (user) {
+        token.name = user.name;
         token.email = user.email;
         token.id = user.id;
+        token.address = user.address;
+        token.phone = user.phone;
+        token.isVerified = user.isVerified;
+        token.role = user.role;
       }
       return token;
     },
     async session({ session, token }: { session: any; token: any }) {
       session.user.email = token.email;
       session.user.id = token.id;
+      session.user.name = token.name;
+      session.user.address = token.address;
+      session.user.phone = token.phone;
+      session.user.isVerified = token.isVerified;
+      session.user.role = token.role;
       return session;
     },
   },

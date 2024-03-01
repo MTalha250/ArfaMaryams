@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { navLinks } from "@/constants";
 import Link from "next/link";
-import useAuthStore from "@/store/authStore";
+import { useSession, signOut } from "next-auth/react";
 import Profile from "../profile";
 import {
   DropdownMenu,
@@ -33,8 +33,9 @@ const variants = {
   },
 };
 const Sidebar = () => {
+  const { data } = useSession();
+  const user = data?.user;
   const [open, setOpen] = useState(false);
-  const { user, clearUser } = useAuthStore();
 
   return (
     <motion.div className="md:hidden" animate={open ? "open" : "closed"}>
@@ -66,7 +67,7 @@ const Sidebar = () => {
               <DropdownMenuItem
                 className="cursor-pointer text-center block"
                 onClick={() => {
-                  clearUser();
+                  signOut();
                   setOpen(false);
                 }}
               >
