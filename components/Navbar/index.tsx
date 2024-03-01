@@ -13,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Profile from "../profile";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const { data } = useSession();
@@ -74,7 +75,12 @@ const Navbar = () => {
               <Profile />
               <DropdownMenuItem
                 className="cursor-pointer text-center block"
-                onClick={() => signOut()}
+                onClick={() => {
+                  signOut({
+                    redirect: false,
+                  });
+                  toast.success("Logged out successfully");
+                }}
               >
                 Logout
               </DropdownMenuItem>

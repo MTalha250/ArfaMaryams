@@ -16,12 +16,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useRouter } from "next/navigation";
 const formSchema = z.object({
   email: z.string().email(),
   password: z.string().min(8),
 });
 
 const Login = () => {
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -37,12 +39,13 @@ const Login = () => {
     const result = await signIn("credentials", {
       email,
       password,
-      callbackUrl: `${window.location.origin}/`,
+      redirect: false,
     });
     if (result?.error) {
       toast.error(result.error);
     } else {
       toast.success("Logged in successfully!");
+      router.push("/");
     }
     setIsSubmitting(false);
   }

@@ -11,6 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import toast from "react-hot-toast";
 const variants = {
   initial: {
     scaleX: 0,
@@ -67,7 +68,10 @@ const Sidebar = () => {
               <DropdownMenuItem
                 className="cursor-pointer text-center block"
                 onClick={() => {
-                  signOut();
+                  signOut({
+                    redirect: false,
+                  });
+                  toast.success("Logged out successfully");
                   setOpen(false);
                 }}
               >
