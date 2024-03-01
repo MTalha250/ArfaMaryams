@@ -74,7 +74,11 @@ const page = () => {
                   }}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder={user.role} />
+                    <SelectValue
+                      placeholder={
+                        user.role[0].toUpperCase() + user.role.slice(1)
+                      }
+                    />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="user">User</SelectItem>
