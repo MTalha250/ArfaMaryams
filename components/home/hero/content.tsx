@@ -23,7 +23,7 @@ const Content = ({
   });
   const renderWords = () => {
     return (
-      <div>
+      <div className="hidden md:block">
         {wordsArray.map((word, idx) => {
           return (
             <div key={`word-${idx}`} className="inline-block">
@@ -82,7 +82,7 @@ const Content = ({
           repeatType: "reverse",
         }}
         className={cn(
-          "block rounded-sm w-[4px]  h-4 sm:h-6 xl:h-12 bg-blue-500",
+          "block rounded-sm w-[4px]  h-10 bg-blue-500",
           cursorClassName
         )}
       ></motion.span>

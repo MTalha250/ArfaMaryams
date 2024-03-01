@@ -7,19 +7,19 @@ import Marquee from "react-fast-marquee";
 const words = [
   {
     text: "Welcome",
-    className: "text-white text-6xl",
+    className: "text-white text-5xl lg:text-6xl",
   },
   {
     text: "to",
-    className: "text-white text-6xl",
+    className: "text-white text-5xl lg:text-6xl",
   },
   {
     text: "Coderush",
-    className: "text-primary text-6xl",
+    className: "text-primary text-5xl lg:text-6xl",
   },
   {
     text: "Website",
-    className: "text-white text-6xl",
+    className: "text-white text-5xl lg:text-6xl",
   },
 ];
 
@@ -34,16 +34,19 @@ const page = () => {
             "https://img.freepik.com/free-photo/printing-press-machine-mass-production-action_91128-4369.jpg?t=st=1708985595~exp=1708989195~hmac=36a02d010abc28909127128c369c1f4d20c82eba8f7cb64267b3eb21817ae150&w=1800",
           ]}
           children={
-            <div className="text-white z-20 flex flex-col items-center">
-              <Content words={words} cursorClassName="bg-yellow-500" />
-              <p className="text-center font-semibold text-2xl w-2/3">
+            <div className="text-white z-20 flex flex-col items-center px-8">
+              <Content
+                words={words}
+                cursorClassName="bg-yellow-500 invisible md:visible"
+              />
+              <p className="text-center font-semibold sm:text-lg md:text-2xl xl:w-2/3">
                 Empowering Your Shopping Experience: Where Convenience Meets
                 Quality. Explore Limitless Possibilities at [Ecommerce Store
                 Name] - Your Gateway to Seamless Shopping Satisfaction.
               </p>
               <Link
                 href="/products"
-                className="rounded-full mt-10 font-bold text-xl px-8 py-3 border border-white bg-transparent text-black  dark:border-white relative group transition duration-200"
+                className="rounded-full mt-10 font-bold sm:text-lg md:text-xl px-8 py-3 border border-white bg-transparent text-black  dark:border-white relative group transition duration-200"
               >
                 <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:-bottom-2 group-hover:-right-2 transition-all duration-200" />
                 <span className="relative">Explore Our Products</span>
