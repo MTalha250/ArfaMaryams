@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { navLinks } from "@/constants";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import Link from "next/link";
@@ -20,11 +20,16 @@ import Profile from "../profile";
 import toast from "react-hot-toast";
 
 const Navbar = () => {
-  const { items } = useCartStore();
+  const { items, initCart } = useCartStore();
   const { data } = useSession();
   const user = data?.user;
   const pathname = usePathname();
   const [scroll, setScroll] = useState(false);
+  useEffect(() => {
+    if (user) {
+      initCart(user.cart);
+    }
+  }, [user]);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {

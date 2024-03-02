@@ -66,6 +66,8 @@ export const authOptions = {
         token.phone = user.phone;
         token.isVerified = user.isVerified;
         token.role = user.role;
+        token.cart = user.cart;
+        token.wishlist = user.wishlist;
       }
       return token;
     },
@@ -77,6 +79,8 @@ export const authOptions = {
       session.user.phone = token.phone;
       session.user.isVerified = token.isVerified;
       session.user.role = token.role;
+      session.user.cart = token.cart;
+      session.user.wishlist = token.wishlist;
       return session;
     },
   },

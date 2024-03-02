@@ -10,6 +10,8 @@ declare module "next-auth" {
       isVerified: boolean;
       address: string;
       phone: string;
+      cart: any[];
+      wishlist: any[];
     };
   }
 }

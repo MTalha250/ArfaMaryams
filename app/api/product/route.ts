@@ -32,7 +32,16 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   await dbConnect();
   try {
-    const product = await Product.create(request.body);
+    const { name, price, images, category, stock, description } =
+      await request.json();
+    const product = await Product.create({
+      name,
+      price,
+      images,
+      category,
+      stock,
+      description,
+    });
     return NextResponse.json(
       {
         success: true,

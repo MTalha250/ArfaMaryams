@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { toast } from "react-hot-toast";
 import {
   Form,
@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
+import { useCartStore } from "@/store/cartStore";
 const formSchema = z.object({
   email: z.string().email(),
   password: z.string().min(8),
@@ -24,6 +25,9 @@ const formSchema = z.object({
 
 const Login = () => {
   const router = useRouter();
+  const { data } = useSession();
+  const user = data?.user;
+  const { initCart } = useCartStore();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -46,6 +50,9 @@ const Login = () => {
     } else {
       toast.success("Logged in successfully!");
       router.push("/");
+      if (user) {
+        initCart(user.cart);
+      }
     }
     setIsSubmitting(false);
   }

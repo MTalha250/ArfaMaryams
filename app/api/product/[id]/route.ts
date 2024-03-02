@@ -9,7 +9,16 @@ export async function PUT(
   await dbConnect();
   try {
     const { id } = params;
-    const product = await Product.findByIdAndUpdate(id, { ...request.body });
+    const { name, price, images, category, stock, description } =
+      await request.json();
+    const product = await Product.findByIdAndUpdate(id, {
+      name,
+      price,
+      images,
+      category,
+      stock,
+      description,
+    });
     return NextResponse.json(
       {
         success: true,

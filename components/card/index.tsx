@@ -1,21 +1,28 @@
 import Link from "next/link";
 import React from "react";
-
+import { useCartStore } from "@/store/cartStore";
+import { useSession } from "next-auth/react";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 interface Props {
   id: string;
-  img: string | null;
-  img2: string | null;
-  img3: string | null;
-  img4: string | null;
+  img: string | undefined;
+  img2: string | undefined;
+  img3: string | undefined;
+  img4: string | undefined;
   name: string;
   price: number;
 }
 
 function Card({ id, img, img2, img3, img4, name, price }: Props) {
+  const { data } = useSession();
+  const user = data?.user;
+  const { addItem } = useCartStore();
+  const router = useRouter();
   return (
     <div className="relative">
       <Link
-        href={`/product/${id}`}
+        href={`/products/${id}`}
         className="block text-black border p-3 rounded-lg shadow-md"
       >
         <div className="relative">
@@ -57,9 +64,28 @@ function Card({ id, img, img2, img3, img4, name, price }: Props) {
         <p className="my-1 font-bold truncate">{name}</p>
         <p className="my-1 font-light">{price} PKR</p>
       </Link>
-      <div className="z-10 absolute bg-primary/50 w-10 h-10 rounded-full bottom-4 left-1/2 transform -translate-x-1/2 flex justify-center items-center shadow-md">
+      <button
+        onClick={() => {
+          if (user) {
+            addItem(
+              {
+                id,
+                images: [img, img2, img3, img4],
+                name,
+                price,
+              },
+              user.id
+            );
+            toast.success("Added to cart");
+          } else {
+            toast.error("Please login to add to cart");
+            router.push("/login");
+          }
+        }}
+        className="z-10 absolute bg-primary/50 w-10 h-10 rounded-full bottom-4 left-1/2 transform -translate-x-1/2 flex justify-center items-center shadow-md"
+      >
         <span className="text-white text-xl">+</span>
-      </div>
+      </button>
     </div>
   );
 }

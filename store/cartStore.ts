@@ -1,20 +1,24 @@
 import { create } from "zustand";
-
+import axios from "axios";
 type CartStore = {
   items: any[];
-  addItem: (item: any) => void;
-  removeItem: (id: any) => void;
-  deleteItem: (id: any) => void;
-  addQuantity: (id: any) => void;
+  initCart: (items: any) => void;
+  addItem: (item: any, userId: any) => void;
+  removeItem: (id: any, userId: any) => void;
+  deleteItem: (id: any, userId: any) => void;
+  addQuantity: (id: any, userId: any) => void;
   getItemQuantity: (id: any) => number;
   getTotalPrice: () => number;
   getTotalItems: () => number;
-  clearCart: () => void;
+  clearCart: (userId: any) => void;
 };
 
 export const useCartStore = create<CartStore>((set, get) => ({
   items: [],
-  addItem: (item) => {
+  initCart: (items) => {
+    set({ items: items });
+  },
+  addItem: async (item, userId) => {
     let new_items = get().items;
     let found = false;
     new_items.forEach((cart_item) => {
@@ -27,10 +31,10 @@ export const useCartStore = create<CartStore>((set, get) => ({
     if (!found) {
       new_items.push({ ...item, quantity: 1 });
     }
-
+    await axios.put(`/api/update/${userId}`, { cart: new_items });
     set({ items: new_items });
   },
-  removeItem: (id) => {
+  removeItem: async (id, userId) => {
     let new_items = get().items;
     let found = false;
     new_items.forEach((cart_item) => {
@@ -46,19 +50,23 @@ export const useCartStore = create<CartStore>((set, get) => ({
     if (!found) {
       new_items = new_items.filter((item) => item.id !== id);
     }
+    await axios.put(`/api/update/${userId}`, { cart: new_items });
     set({ items: new_items });
   },
-  deleteItem: (id) => {
+  deleteItem: async (id, userId) => {
     let new_items = get().items;
     new_items = new_items.filter((item) => item.id !== id);
     set({ items: new_items });
+    await axios.put(`/api/update/${userId}`, { cart: new_items });
   },
-  addQuantity: (id) =>
+  addQuantity: async (id, userId) => {
     set((state) => ({
       items: state.items.map((i) =>
         i.id === id ? { ...i, quantity: i.quantity + 1 } : i
       ),
-    })),
+    }));
+    await axios.put(`/api/update/${userId}`, { cart: get().items });
+  },
   getItemQuantity: (id) => {
     let quantity = 0;
     get().items.forEach((item) => {
@@ -82,5 +90,8 @@ export const useCartStore = create<CartStore>((set, get) => ({
     });
     return total_items;
   },
-  clearCart: () => set({ items: [] }),
+  clearCart: async (userId) => {
+    set({ items: [] });
+    await axios.put(`/api/update/${userId}`, { cart: [] });
+  },
 }));

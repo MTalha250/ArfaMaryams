@@ -23,6 +23,14 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    cart: {
+      type: Array,
+      default: [],
+    },
+    wishlist: {
+      type: Array,
+      default: [],
+    },
     role: {
       type: String,
       default: "user",
