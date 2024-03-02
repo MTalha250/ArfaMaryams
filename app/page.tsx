@@ -4,7 +4,7 @@ import Content from "@/components/home/hero/content";
 import Link from "next/link";
 import React from "react";
 import Marquee from "react-fast-marquee";
-
+import { useCartStore } from "@/store/cartStore";
 const words = [
   {
     text: "Welcome",

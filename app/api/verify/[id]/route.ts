@@ -71,7 +71,7 @@ export const GET = async (
         <div class="container">
           <h1>Your email has been verified</h1>
           <p>You can now login.</p>
-          <a href="${process.env.NEXTAUTH_URL}/login">Go to Login Page</a>
+          <a href="/login">Go to Login Page</a>
         </div>
       </body>
       </html>
