@@ -8,6 +8,7 @@ import { signOut, useSession } from "next-auth/react";
 import { MdFavoriteBorder } from "react-icons/md";
 import logo from "@/assets/logo.png";
 import { useCartStore } from "@/store/cartStore";
+import { useWishlistStore } from "@/store/wishlistStore";
 
 import {
   DropdownMenu,
@@ -21,6 +22,7 @@ import toast from "react-hot-toast";
 
 const Navbar = () => {
   const { items, initCart } = useCartStore();
+  const { initWishlist } = useWishlistStore();
   const { data } = useSession();
   const user = data?.user;
   const pathname = usePathname();
@@ -28,6 +30,7 @@ const Navbar = () => {
   useEffect(() => {
     if (user) {
       initCart(user.cart);
+      initWishlist(user.wishlist);
     }
   }, [user]);
 

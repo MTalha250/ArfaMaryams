@@ -18,6 +18,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { useCartStore } from "@/store/cartStore";
+import { useWishlistStore } from "@/store/wishlistStore";
 const formSchema = z.object({
   email: z.string().email(),
   password: z.string().min(8),
@@ -28,6 +29,7 @@ const Login = () => {
   const { data } = useSession();
   const user = data?.user;
   const { initCart } = useCartStore();
+  const { initWishlist } = useWishlistStore();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -52,6 +54,7 @@ const Login = () => {
       router.push("/");
       if (user) {
         initCart(user.cart);
+        initWishlist(user.wishlist);
       }
     }
     setIsSubmitting(false);
