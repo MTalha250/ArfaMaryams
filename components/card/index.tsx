@@ -14,11 +14,14 @@ interface Props {
 function Card({ id, img, img2, img3, img4, name, price }: Props) {
   return (
     <div className="relative">
-      <Link href={`/product/${id}`} className="block text-black border p-3">
+      <Link
+        href={`/product/${id}`}
+        className="block text-black border p-3 rounded-lg shadow-md"
+      >
         <div className="relative">
           <div
             id="imgs"
-            className="w-full flex overflow-scroll snap-x snap-mandatory scrollbar-none"
+            className="w-full flex overflow-x-auto snap-x snap-mandatory scrollbar-none"
           >
             {img && (
               <img
@@ -54,8 +57,8 @@ function Card({ id, img, img2, img3, img4, name, price }: Props) {
         <p className="my-1 font-bold truncate">{name}</p>
         <p className="my-1 font-light">{price} PKR</p>
       </Link>
-      <div className="z-10 absolute bg-primary/50 w-10 h-10 rounded-full bottom-24 left-1/2 -translate-x-1/2 flex justify-center items-center">
-        +
+      <div className="z-10 absolute bg-primary/50 w-10 h-10 rounded-full bottom-4 left-1/2 transform -translate-x-1/2 flex justify-center items-center shadow-md">
+        <span className="text-white text-xl">+</span>
       </div>
     </div>
   );

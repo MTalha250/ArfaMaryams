@@ -15,7 +15,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>Coderush</title>
+        <title>StyleSync</title>
+        <link rel="icon" href="/logo.png" />
       </head>
       <body className={inter.className}>
         <SessionProvider>

@@ -10,11 +10,13 @@ import {
 } from "react-icons/fa";
 import Link from "next/link";
 import { navLinks } from "@/constants";
+import logo from "@/assets/logo.png";
 const Footer = () => {
   return (
     <footer className="bg-black text-white">
-      <div className="py-10 px-8 md:px-32">
-        <div className="flex flex-wrap justify-between gap-8">
+      <div className="py-10 px-8 md:px-16">
+        <div className="flex flex-wrap justify-between gap-10">
+          <img src={logo.src} alt="" className="w-[200px] h-fit self-center" />
           <div className="max-w-[450px]">
             <h3 className="text-xl font-bold mb-2 tracking-wider uppercase">
               <span className="bg-primary px-2"> Sign Up!</span>
@@ -54,7 +56,7 @@ const Footer = () => {
               </li>
               <li>
                 <FaEnvelope className="inline   mr-2" />
-                <a href="mailto:info@ezifx.com"> info@coderush.com</a>
+                <a href="mailto:info@ezifx.com"> info@StyleSync.com</a>
               </li>
               <li>
                 <FaWhatsapp className="inline text-lg mr-2 " />
@@ -79,22 +81,11 @@ const Footer = () => {
               ))}
             </ul>
           </div>
-
-          <div>
-            <h3 className="text-xl font-bold tracking-wider uppercase">
-              <span className="bg-primary px-2">Company</span>
-            </h3>
-            <ul className="mt-4 space-y-2 text-sm flex flex-col">
-              <Link href="/">About Us</Link>
-              <Link href="/">Our Company</Link>
-              <Link href="/">Contact Us</Link>
-            </ul>
-          </div>
         </div>
       </div>
       <div>
         <div className="border-y-2 bg-primary text-black text-center py-2">
-          <p className="text-sm">© 2024 Coderush. All rights reserved.</p>
+          <p className="text-sm">© 2024 StyleSync. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -1,6 +1,21 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Card from "@/components/card";
+import axios from "axios";
 const page = () => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    getProducts();
+  }, []);
+  const getProducts = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/api/product");
+      setProducts(response.data.products);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="pt-32 px-8 md:px-16">
       <h1 className="font-bold text-3xl">Products</h1>
