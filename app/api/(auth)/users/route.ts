@@ -19,7 +19,8 @@ export async function GET(req: NextRequest, params: any) {
     );
   }
 
-  const { id } = session.user;
+  const { id } = (session as any).user;
+  console.log(id);
   try {
     const userData = await User.findById(id);
     if (!userData) {

@@ -64,9 +64,9 @@ const page = () => {
   // }
 
   return (
-    <div className="px-8 md:px-16 pt-32 min-h-screen">
+    <div className="px-8 md:px-16 pt-32 pb-10 min-h-screen">
       <h1 className="text-4xl font-bold mb-5">Checkout</h1>
-      <div className="flex gap-10">
+      <div className="flex flex-col md:flex-row gap-10">
         <div className="w-full">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
@@ -150,7 +150,7 @@ const page = () => {
             </form>
           </Form>
         </div>
-        <div className="pl-10 w-full border-l border-neutral-600">
+        <div className="md:pl-10 w-full md:border-l border-neutral-600">
           <h2 className="text-2xl font-bold mb-5">Your Cart</h2>
           {items.map((item) => (
             <div

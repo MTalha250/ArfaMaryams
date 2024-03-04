@@ -23,7 +23,7 @@ export async function login(credentials: any) {
   }
 }
 
-export const authOptions = {
+export const authOptions: any = {
   pages: {
     signIn: "/login",
     error: "/login",
