@@ -9,7 +9,15 @@ export async function GET(
   const { id } = params;
   await dbConnect();
   try {
-    const order = await Order.findById(id);
+    const order = await Order.find({ user: id })
+      .populate("user", "name email phone")
+      .populate({
+        path: "orderItems",
+        populate: {
+          path: "product",
+          model: "Product",
+        },
+      });
     if (!order) {
       return NextResponse.json(
         {

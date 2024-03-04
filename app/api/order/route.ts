@@ -5,7 +5,15 @@ import Order from "@/models/order";
 export async function GET(request: NextRequest) {
   await dbConnect();
   try {
-    const orders = await Order.find().sort({ createdAt: -1 });
+    const orders = await Order.find()
+      .populate("user", "name email phone")
+      .populate({
+        path: "orderItems",
+        populate: {
+          path: "product",
+          model: "Product",
+        },
+      });
     return NextResponse.json(
       {
         success: true,
@@ -55,6 +63,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         success: true,
+        message: "Order placed successfully",
         order,
       },
       {

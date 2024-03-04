@@ -18,6 +18,8 @@ import { useForm } from "react-hook-form";
 import { useSession } from "next-auth/react";
 import { useCartStore } from "@/store/cartStore";
 import { useRouter } from "next/navigation";
+import axios from "axios";
+import toast from "react-hot-toast";
 const formSchema = z.object({
   name: z
     .string()
@@ -29,10 +31,20 @@ const formSchema = z.object({
   address: z
     .string()
     .min(10, { message: "Address must be at least 10 characters long" }),
+  city: z
+    .string()
+    .min(3, { message: "City must be at least 3 characters long" }),
+  country: z
+    .string()
+    .min(3, { message: "Country must be at least 3 characters long" }),
+  postalCode: z
+    .string()
+    .min(3, { message: "Postal code must be at least 3 characters long" }),
 });
 const page = () => {
   const { data } = useSession();
   const { items, getTotalPrice } = useCartStore();
+  const [paymentMethod, setPaymentMethod] = useState("card");
   const router = useRouter();
   const user = data?.user;
   const form = useForm<z.infer<typeof formSchema>>({
@@ -42,6 +54,9 @@ const page = () => {
       email: user?.email,
       phone: user?.phone,
       address: user?.address,
+      city: "",
+      country: "",
+      postalCode: "",
     },
   });
 
@@ -49,13 +64,28 @@ const page = () => {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    // try {
-    //   const response = await axios.post("/api/register", values);
-    //   toast.success(response.data.message);
-    //   router.push("/login");
-    // } catch (error: any) {
-    //   toast.error(error.response.data.message);
-    // }
+    try {
+      const response = await axios.post("/api/order", {
+        user: user?.id,
+        orderItems: items.map((item) => ({
+          quantity: item.quantity,
+          product: item.id,
+        })),
+        shippingAddress: {
+          address: values.address,
+          city: values.city,
+          postalCode: values.postalCode,
+          country: values.country,
+        },
+        paymentMethod,
+        itemsPrice: getTotalPrice(),
+        delivery: getTotalPrice() > 5000 ? 0 : 250,
+        totalPrice: getTotalPrice() + (getTotalPrice() > 5000 ? 0 : 250),
+      });
+      toast.success(response.data.message);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
+    }
     setIsSubmitting(false);
     form.reset();
   }
@@ -79,7 +109,7 @@ const page = () => {
                     <FormItem>
                       <FormLabel>Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="" {...field} />
+                        <Input placeholder="" {...field} disabled />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -105,7 +135,7 @@ const page = () => {
                     <FormItem>
                       <FormLabel>Phone</FormLabel>
                       <FormControl>
-                        <Input placeholder="" {...field} />
+                        <Input placeholder="" {...field} disabled />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -124,10 +154,54 @@ const page = () => {
                     </FormItem>
                   )}
                 />
+                <div className="flex gap-3">
+                  <FormField
+                    control={form.control}
+                    name="city"
+                    render={({ field }) => (
+                      <FormItem className="w-1/3">
+                        <FormLabel>City</FormLabel>
+                        <FormControl>
+                          <Input placeholder="" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="postalCode"
+                    render={({ field }) => (
+                      <FormItem className="w-1/3">
+                        <FormLabel>Postal Code</FormLabel>
+                        <FormControl>
+                          <Input placeholder="" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="country"
+                    render={({ field }) => (
+                      <FormItem className="w-1/3">
+                        <FormLabel>Country</FormLabel>
+                        <FormControl>
+                          <Input placeholder="" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
               </div>
               <h2 className="text-xs font-bold">Payment Info:</h2>
               <div className="border-y py-5">
-                <RadioGroup defaultValue="card">
+                <RadioGroup
+                  defaultValue={paymentMethod}
+                  onValueChange={(e) => setPaymentMethod(e)}
+                >
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="card" id="card" />
                     <Label htmlFor="card">Credit Card</Label>
