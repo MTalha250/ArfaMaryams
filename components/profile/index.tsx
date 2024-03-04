@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { useSession } from "next-auth/react";
 import { Input } from "../ui/input";
-import { Button } from "../ui/button";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -129,21 +128,21 @@ const Profile = () => {
               )}
             />
             {edit ? (
-              <Button
+              <button
                 type="submit"
-                className="rounded-full font-bold text-xl w-full bg-transparent hover:bg-transparent py-3 border border-black text-white  dark:border-white relative group transition duration-200"
+                className="rounded-lg text-base font-bold w-full bg-transparent hover:bg-transparent py-2 border border-black text-black dark:border-white relative group transition duration-200"
               >
-                <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:-bottom-1 group-hover:-right-1 transition-all duration-200" />
+                <div className="rounded-lg absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />
                 <span className="relative">
                   {isSubmitting ? "Saving..." : "Save Changes"}
                 </span>
-              </Button>
+              </button>
             ) : (
               <div
                 onClick={() => setEdit(true)}
-                className="rounded-full font-bold text-xl w-full bg-transparent hover:bg-transparent py-1 text-center border border-black text-white  dark:border-white relative group transition duration-200"
+                className="rounded-lg font-bold w-full bg-transparent hover:bg-transparent py-2 text-center border border-black  dark:border-white relative group transition duration-200"
               >
-                <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:-bottom-1 group-hover:-right-1 transition-all duration-200" />
+                <div className="rounded-lg absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />
                 <span className="relative">Edit</span>
               </div>
             )}

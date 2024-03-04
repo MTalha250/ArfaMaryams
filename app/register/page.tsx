@@ -20,12 +20,22 @@ import { useRouter } from "next/navigation";
 
 const formSchema = z
   .object({
-    name: z.string().min(3),
+    name: z
+      .string()
+      .min(3, { message: "Name must be at least 3 characters long" }),
     email: z.string().email(),
-    phone: z.string().min(10),
-    address: z.string().min(10),
-    password: z.string().min(8),
-    confirmPassword: z.string().min(8),
+    phone: z
+      .string()
+      .min(10, { message: "Phone number must be at least 10 characters long" }),
+    address: z
+      .string()
+      .min(10, { message: "Address must be at least 10 characters long" }),
+    password: z
+      .string()
+      .min(8, { message: "Password must be at least 8 characters long" }),
+    confirmPassword: z
+      .string()
+      .min(8, { message: "Password must be at least 8 characters long" }),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords do not match",
@@ -65,7 +75,7 @@ const Register = () => {
     <div className="flex items-center justify-center flex-col py-20 min-h-screen px-8 md:px-16">
       <h1 className="text-3xl font-semibold mt-20 mb-2">
         Create your{" "}
-        <span className="text-white bg-primary pr-2 pl-1 italic">Account!</span>{" "}
+        <span className="text-black bg-primary pr-2 pl-1 italic">Account!</span>{" "}
       </h1>
       <div className="w-full max-w-[500px]">
         <Form {...form}>
@@ -159,11 +169,11 @@ const Register = () => {
             </div>
             <Button
               type="submit"
-              className="rounded-full font-bold text-xl w-full bg-transparent hover:bg-transparent py-3 border border-black text-white  dark:border-white relative group transition duration-200"
+              className="rounded-full font-bold w-full bg-transparent hover:bg-transparent py-3 border border-black text-black dark:border-white relative group transition duration-200"
             >
-              <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:-bottom-1 group-hover:-right-1 transition-all duration-200" />
+              <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />
               <span className="relative">
-                {isSubmitting ? "Submitting..." : "Login"}
+                {isSubmitting ? "Submitting..." : "Register"}
               </span>
             </Button>
           </form>

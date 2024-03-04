@@ -3,9 +3,10 @@ import axios from "axios";
 type WishlistStore = {
   wishlist: any[];
   initWishlist: (items: any) => void;
-  addToWishlist: (item: any, userId: any) => void;
-  removeFromWishlist: (id: any, userId: any) => void;
+  addToWishlist: (item: any, userId: any, update: any) => void;
+  removeFromWishlist: (id: any, userId: any, update: any) => void;
   inWishlist: (id: any) => boolean;
+  clearWishlist: (userId: any, update: any) => void;
 };
 
 export const useWishlistStore = create<WishlistStore>((set, get) => ({
@@ -13,7 +14,7 @@ export const useWishlistStore = create<WishlistStore>((set, get) => ({
   initWishlist: (items) => {
     set({ wishlist: items });
   },
-  addToWishlist: async (item, userId) => {
+  addToWishlist: async (item, userId, update) => {
     let new_wishlist = get().wishlist;
     let found = false;
     new_wishlist.forEach((wishlist_item) => {
@@ -26,12 +27,14 @@ export const useWishlistStore = create<WishlistStore>((set, get) => ({
     }
     await axios.put(`/api/update/${userId}`, { wishlist: new_wishlist });
     set({ wishlist: new_wishlist });
+    update(new_wishlist);
   },
-  removeFromWishlist: async (id, userId) => {
+  removeFromWishlist: async (id, userId, update) => {
     let new_wishlist = get().wishlist;
     new_wishlist = new_wishlist.filter((item) => item.id !== id);
     await axios.put(`/api/update/${userId}`, { wishlist: new_wishlist });
     set({ wishlist: new_wishlist });
+    update(new_wishlist);
   },
   inWishlist: (id) => {
     let found = false;
@@ -41,5 +44,10 @@ export const useWishlistStore = create<WishlistStore>((set, get) => ({
       }
     });
     return found;
+  },
+  clearWishlist: async (userId, update) => {
+    await axios.put(`/api/update/${userId}`, { wishlist: [] });
+    set({ wishlist: [] });
+    update([]);
   },
 }));

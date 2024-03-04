@@ -16,10 +16,14 @@ const Footer = () => {
     <footer className="bg-black text-white">
       <div className="py-10 px-8 md:px-16">
         <div className="flex flex-wrap justify-between gap-10">
-          <img src={logo.src} alt="" className="w-[200px] h-fit self-center" />
+          <img
+            src={logo.src}
+            alt=""
+            className="w-[200px] h-auto  self-center"
+          />
           <div className="max-w-[450px]">
             <h3 className="text-xl font-bold mb-2 tracking-wider uppercase">
-              <span className="bg-primary px-2"> Sign Up!</span>
+              <span className="bg-primary px-2 text-black"> Sign Up!</span>
             </h3>
             <p className="font-light md:block hidden text-xs mt-2">
               Sign up to our newsletter and be the first to know about the
@@ -48,7 +52,7 @@ const Footer = () => {
 
           <div className="max-w-[280px]">
             <h3 className="text-xl font-bold tracking-wider uppercase">
-              <span className="bg-primary px-2 ">Contact</span> Us
+              <span className="bg-primary px-2 text-black">Contact</span> Us
             </h3>
             <ul className="mt-4 text-sm space-y-2">
               <li>
@@ -71,7 +75,7 @@ const Footer = () => {
 
           <div>
             <h3 className="text-xl font-bold tracking-wider uppercase">
-              <span className=" bg-primary px-2">Quick</span> Links
+              <span className=" bg-primary px-2 text-black">Quick</span> Links
             </h3>
             <ul className="mt-4 text-sm space-y-2 flex flex-col">
               {navLinks.map((link) => (

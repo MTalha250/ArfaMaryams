@@ -29,6 +29,7 @@ const page = () => {
             img3={product.images[2]}
             img4={product.images[3]}
             name={product.name}
+            description={product.description}
             price={product.price}
           />
         ))}

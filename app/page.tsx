@@ -44,7 +44,7 @@ const page = () => {
                 href="/products"
                 className="rounded-full mt-10 font-bold sm:text-lg md:text-xl px-8 py-3 border border-white bg-transparent text-black  dark:border-white relative group transition duration-200"
               >
-                <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:-bottom-2 group-hover:-right-2 transition-all duration-200" />
+                <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
                 <span className="relative">Explore Our Products</span>
               </Link>
             </div>
@@ -59,9 +59,9 @@ const page = () => {
             className="w-full"
           >
             <p className="tracking-wider text-sm sm:text-base">
-              <span className="text-primary">Free Shipping</span> on Orders Over
-              $100. Price Match Guarantee. Safe & Secure Shopping. 100% Safe
-              Payment.
+              <span className="text-primary">Free Shipping</span> on Orders Over{" "}
+              <span className="text-primary">5000 PKR</span>. Price Match
+              Guarantee. Safe & Secure Shopping. 100% Safe Payment.
               <span className="text-primary"> Free Returns</span>.
             </p>
           </Marquee>

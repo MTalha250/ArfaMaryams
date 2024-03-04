@@ -14,15 +14,34 @@ interface Props {
   img3: string | undefined;
   img4: string | undefined;
   name: string;
+  description: string;
   price: number;
 }
 
-function Card({ id, img, img2, img3, img4, name, price }: Props) {
+function Card({ id, img, img2, img3, img4, name, description, price }: Props) {
   const { inWishlist, addToWishlist, removeFromWishlist } = useWishlistStore();
-  const { data } = useSession();
+  const { data, update } = useSession();
   const user = data?.user;
   const { addItem } = useCartStore();
   const router = useRouter();
+  const handleUpdate = async (items: any) => {
+    await update({
+      ...data,
+      user: {
+        ...data?.user,
+        cart: items,
+      },
+    });
+  };
+  const handleWishlistUpdate = async (wishlist: any) => {
+    await update({
+      ...data,
+      user: {
+        ...data?.user,
+        wishlist: wishlist,
+      },
+    });
+  };
   return (
     <div className="relative group">
       <Link
@@ -65,7 +84,12 @@ function Card({ id, img, img2, img3, img4, name, price }: Props) {
           </div>
         </div>
 
-        <p className="my-1 font-bold truncate">{name}</p>
+        <p className="my-1 font-semibold truncate">{name}</p>
+        <p className="text-neutral-500 text-sm">
+          {description.length > 50
+            ? description.slice(0, 50) + "..."
+            : description}
+        </p>
         <p className="my-1 font-light">{price} PKR</p>
       </Link>
       <button
@@ -78,7 +102,8 @@ function Card({ id, img, img2, img3, img4, name, price }: Props) {
                 name,
                 price,
               },
-              user.id
+              user.id,
+              handleUpdate
             );
             toast.success("Added to cart");
           } else {
@@ -86,7 +111,7 @@ function Card({ id, img, img2, img3, img4, name, price }: Props) {
             router.push("/login");
           }
         }}
-        className="opacity-0 group-hover:opacity-100 z-10 absolute bg-primary/80 w-10 h-10 rounded-full bottom-20 left-[40%] transform -translate-x-1/2 flex justify-center items-center shadow-md transitioon duration-300"
+        className="hover:bg-primary opacity-0 group-hover:opacity-100 z-10 absolute bg-primary/80 w-10 h-10 rounded-full bottom-28 left-[40%] transform -translate-x-1/2 flex justify-center items-center shadow-md transitioon duration-300"
       >
         <span className="text-white text-xl">+</span>
       </button>
@@ -94,7 +119,7 @@ function Card({ id, img, img2, img3, img4, name, price }: Props) {
         onClick={() => {
           if (user) {
             if (inWishlist(id)) {
-              removeFromWishlist(id, user.id);
+              removeFromWishlist(id, user.id, handleWishlistUpdate);
               toast.success("Removed from wishlist");
             } else {
               addToWishlist(
@@ -104,7 +129,8 @@ function Card({ id, img, img2, img3, img4, name, price }: Props) {
                   name,
                   price,
                 },
-                user.id
+                user.id,
+                handleWishlistUpdate
               );
               toast.success("Added to wishlist");
             }
@@ -113,7 +139,7 @@ function Card({ id, img, img2, img3, img4, name, price }: Props) {
             router.push("/login");
           }
         }}
-        className="opacity-0 group-hover:opacity-100 z-10 absolute bg-primary/80 w-10 h-10 rounded-full bottom-20 left-[60%] transform -translate-x-1/2 flex justify-center items-center shadow-md transitioon duration-300"
+        className="hover:bg-primary opacity-0 group-hover:opacity-100 z-10 absolute bg-primary/80 w-10 h-10 rounded-full bottom-28 left-[60%] transform -translate-x-1/2 flex justify-center items-center shadow-md transitioon duration-300"
       >
         {inWishlist(id) ? (
           <MdFavorite className="text-white text-xl" />
