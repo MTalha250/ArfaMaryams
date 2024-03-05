@@ -120,7 +120,7 @@ const Profile = () => {
       const response = await axios.get(`/api/order/${user?.id}`);
       setOrders(response.data.order);
     } catch (error: any) {
-      toast.error(error.response.data.message);
+      console.log(error);
     }
   };
   return (
@@ -128,8 +128,8 @@ const Profile = () => {
       <DialogTrigger className="rounded-sm px-2 py-1.5 text-sm transition duration-200 hover:bg-neutral-100 w-full">
         Profile
       </DialogTrigger>
-      <DialogContent className="w-full max-w-[1000px] h-full max-h-[520px] flex gap-10">
-        <div className="w-1/2 h-full">
+      <DialogContent className="w-full max-w-[1000px] h-full md:max-h-[520px] flex-col md:flex-row flex gap-10">
+        <div className="md:w-1/2 h-full md:overflow-scroll scrollbar-none">
           <h1 className="text-2xl font-bold mb-3">Your Profile</h1>
           <Tabs defaultValue="account">
             <TabsList className="grid w-full grid-cols-2">
@@ -275,9 +275,9 @@ const Profile = () => {
             </TabsContent>
           </Tabs>
         </div>
-        <div className="w-1/2 h-full">
+        <div className="md:w-1/2 h-full">
           <h1 className="text-2xl font-bold mb-3">Previous Orders</h1>
-          <div className="space-y-3 text-xs overflow-scroll h-[90%] scrollbar-none">
+          <div className="space-y-3 text-xs md:overflow-scroll md:h-[90%] scrollbar-none">
             {orders.map((order: any) => (
               <div key={order._id} className="border p-3 rounded-md">
                 <div className="flex justify-between">

@@ -44,8 +44,10 @@ const page = () => {
                 href="/products"
                 className="rounded-full mt-10 font-bold sm:text-lg md:text-xl px-8 py-3 border border-white bg-transparent text-black  dark:border-white relative group transition duration-200"
               >
-                <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
-                <span className="relative">Explore Our Products</span>
+                <div className="flex rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
+                <button className="relative w-full">
+                  Explore Our Products
+                </button>
               </Link>
             </div>
           }
