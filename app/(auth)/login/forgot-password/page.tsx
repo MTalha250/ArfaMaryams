@@ -1,11 +1,13 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { toast } from "react-hot-toast";
+import randomstring from "randomstring";
+
 import {
   Form,
   FormControl,
@@ -16,9 +18,11 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const formSchema = z
   .object({
+    email: z.string(),
     code: z
       .string()
       .min(6, { message: "Code must be 6 characters long" })
@@ -35,35 +39,73 @@ const formSchema = z
     path: ["confirmPassword"],
   });
 
-const Login = () => {
+const page = () => {
   const router = useRouter();
+  const [code, setCode] = useState("");
+  const [timer, setTimer] = useState(0);
+  const [isExpired, setIsExpired] = useState(true);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimer((prevSeconds) => prevSeconds - 1);
+    }, 1000);
+
+    if (timer === 0) {
+      setIsExpired(true);
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [timer]);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      email: "",
       code: "",
       password: "",
       confirmPassword: "",
     },
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
+  const sendEmail = async () => {
+    setIsSending(true);
+    let new_code = randomstring.generate(6);
+    setCode(new_code);
+    try {
+      const response = await axios.post("/api/reset", {
+        email: form.getValues("email"),
+        code: new_code,
+      });
+      toast.success(response.data.message);
+      setTimer(30);
+      setIsExpired(false);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
+    }
+    setIsSending(false);
+  };
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    const { code, password } = values;
-    // const result = await signIn("credentials", {
-    //   password,
-    //   redirect: false,
-    // });
-    // if (result?.error) {
-    //   toast.error(result.error);
-    // } else {
-    //   toast.success("Logged in successfully!");
-    //   router.push("/");
-    //   if (user) {
-    //     initCart(user.cart);
-    //     initWishlist(user.wishlist);
-    //   }
-    // }
+    if (isExpired) {
+      toast.error("Invalid code");
+      setIsSubmitting(false);
+      return;
+    }
+    if (values.code !== code) {
+      toast.error("Invalid code");
+      setIsSubmitting(false);
+      return;
+    }
+    try {
+      const response = await axios.put("/api/reset", {
+        email: values.email,
+        password: values.password,
+      });
+      toast.success(response.data.message);
+      router.push("/login");
+    } catch (error: any) {
+      toast.error(error.response.data.message);
+    }
     setIsSubmitting(false);
   }
 
@@ -73,7 +115,8 @@ const Login = () => {
         Reset your <span className="bg-primary px-2 italic">Password!</span>{" "}
       </h1>{" "}
       <p className="text-center text-sm text-gray-400 mb-5">
-        Please enter the code sent to your email and your new password.
+        Please enter the code that will be sent to your email and your new
+        password.
       </p>
       <div className="w-full max-w-[500px]">
         <Form {...form}>
@@ -81,24 +124,48 @@ const Login = () => {
             <div className="flex items-end w-full gap-3">
               <FormField
                 control={form.control}
-                name="code"
+                name="email"
                 render={({ field }) => (
                   <FormItem className="w-full">
-                    <FormLabel>Code</FormLabel>
+                    <FormLabel>Email</FormLabel>
                     <FormControl>
-                      <Input type="text" {...field} />
+                      <Input type="email" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <button className="flex justify-center rounded border p-2 border-black bg-transparent text-black  dark:border-white relative group transition duration-200">
+              <button
+                type="button"
+                onClick={sendEmail}
+                disabled={
+                  timer !== 0 || form.getValues("email") === "" || isSending
+                }
+                className="flex justify-center rounded border p-2 border-black bg-transparent text-black  dark:border-white relative group transition duration-200"
+              >
                 <div className="rounded absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
                 <span className="relative text-sm font-semibold whitespace-nowrap">
-                  Send Code
+                  {isSending
+                    ? "Sending..."
+                    : isExpired
+                    ? "Send Code"
+                    : "00:" + (timer > 9 ? timer : "0" + timer)}
                 </span>
               </button>
             </div>
+            <FormField
+              control={form.control}
+              name="code"
+              render={({ field }) => (
+                <FormItem className="w-1/2 flex items-center gap-3">
+                  <FormLabel>Code: </FormLabel>
+                  <FormControl>
+                    <Input type="text" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="password"
@@ -147,4 +214,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default page;

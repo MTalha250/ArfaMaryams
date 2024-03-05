@@ -42,8 +42,8 @@ const formSchema = z.object({
     .min(3, { message: "Postal code must be at least 3 characters long" }),
 });
 const page = () => {
-  const { data } = useSession();
-  const { items, getTotalPrice } = useCartStore();
+  const { data, update } = useSession();
+  const { items, getTotalPrice, clearCart } = useCartStore();
   const [paymentMethod, setPaymentMethod] = useState("card");
   const router = useRouter();
   const user = data?.user;
@@ -59,9 +59,16 @@ const page = () => {
       postalCode: "",
     },
   });
-
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const handleUpdate = async (items: any) => {
+    await update({
+      ...data,
+      user: {
+        ...user,
+        cart: items,
+      },
+    });
+  };
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     try {
@@ -83,6 +90,8 @@ const page = () => {
         totalPrice: getTotalPrice() + (getTotalPrice() > 5000 ? 0 : 250),
       });
       toast.success(response.data.message);
+      clearCart(user?.id, handleUpdate);
+      router.push("/");
     } catch (error: any) {
       toast.error(error.response.data.message);
     }

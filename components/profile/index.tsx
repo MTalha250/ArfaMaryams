@@ -45,7 +45,7 @@ const formSchemaPassword = z
   });
 
 const Profile = () => {
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState<any>([]);
   const { data, update } = useSession();
   const user = data?.user;
   const form = useForm<z.infer<typeof formSchema>>({
@@ -118,7 +118,7 @@ const Profile = () => {
   const fetchOrders = async () => {
     try {
       const response = await axios.get(`/api/order/${user?.id}`);
-      setOrders(response.data.order);
+      setOrders(response.data.orders);
     } catch (error: any) {
       console.log(error);
     }
@@ -278,44 +278,91 @@ const Profile = () => {
         <div className="md:w-1/2 h-full">
           <h1 className="text-2xl font-bold mb-3">Previous Orders</h1>
           <div className="space-y-3 text-xs md:overflow-scroll md:h-[90%] scrollbar-none">
-            {orders.map((order: any) => (
-              <div key={order._id} className="border p-3 rounded-md">
-                <div className="flex justify-between">
-                  <h2 className="font-bold">Order Date</h2>
-                  <h2 className="font-bold">
-                    {new Date(order.createdAt).toLocaleDateString()}
-                  </h2>
+            {orders.filter((order: any) => order.status == "pending").length >
+              0 && <h3 className="font-bold">Ongoing:</h3>}
+            {orders
+              .filter((order: any) => order.status == "pending")
+              .map((order: any) => (
+                <div key={order._id} className="border p-3 rounded-md">
+                  <div className="flex justify-between">
+                    <h2 className="font-bold">Order Date</h2>
+                    <h2 className="font-bold">
+                      {new Date(order.createdAt).toLocaleDateString()}
+                    </h2>
+                  </div>
+                  <div>
+                    <h2 className="font-bold">Items:</h2>
+                    {order.orderItems.map((item: any) => (
+                      <div key={item._id} className="flex justify-between">
+                        <p>{item.product.name}</p>
+                        <p>
+                          {item.quantity} x {item.product.price} ={" "}
+                          {item.quantity * item.product.price} PKR
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex justify-between">
+                    <h2 className="font-bold">Total</h2>
+                    <h2 className="font-bold">{order.totalPrice} PKR</h2>
+                  </div>
+                  <div className="flex justify-between">
+                    <h2 className="font-bold">Status</h2>
+                    <h2 className="font-bold">
+                      {order.status === "pending" ? (
+                        <span className="text-yellow-600">Pending</span>
+                      ) : order.status === "completed" ? (
+                        <span className="text-green-600">Completed</span>
+                      ) : (
+                        <span className="text-red-600">Cancelled</span>
+                      )}
+                    </h2>
+                  </div>
                 </div>
-                <div>
-                  <h2 className="font-bold">Items:</h2>
-                  {order.orderItems.map((item: any) => (
-                    <div key={item._id} className="flex justify-between">
-                      <p>{item.product.name}</p>
-                      <p>
-                        {item.quantity} x {item.product.price} ={" "}
-                        {item.quantity * item.product.price} PKR
-                      </p>
-                    </div>
-                  ))}
+              ))}
+            <hr />
+            {orders.filter((order: any) => order.status != "pending").length >
+              0 && <h3 className="font-bold">Completed:</h3>}
+            {orders
+              .filter((order: any) => order.status != "pending")
+              .map((order: any) => (
+                <div key={order._id} className="border p-3 rounded-md">
+                  <div className="flex justify-between">
+                    <h2 className="font-bold">Order Date</h2>
+                    <h2 className="font-bold">
+                      {new Date(order.createdAt).toLocaleDateString()}
+                    </h2>
+                  </div>
+                  <div>
+                    <h2 className="font-bold">Items:</h2>
+                    {order.orderItems.map((item: any) => (
+                      <div key={item._id} className="flex justify-between">
+                        <p>{item.product.name}</p>
+                        <p>
+                          {item.quantity} x {item.product.price} ={" "}
+                          {item.quantity * item.product.price} PKR
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex justify-between">
+                    <h2 className="font-bold">Total</h2>
+                    <h2 className="font-bold">{order.totalPrice} PKR</h2>
+                  </div>
+                  <div className="flex justify-between">
+                    <h2 className="font-bold">Status</h2>
+                    <h2 className="font-bold">
+                      {order.status === "pending" ? (
+                        <span className="text-yellow-600">Pending</span>
+                      ) : order.status === "completed" ? (
+                        <span className="text-green-600">Completed</span>
+                      ) : (
+                        <span className="text-red-600">Cancelled</span>
+                      )}
+                    </h2>
+                  </div>
                 </div>
-                <div className="flex justify-between">
-                  <h2 className="font-bold">Total</h2>
-                  <h2 className="font-bold">{order.totalPrice} PKR</h2>
-                </div>
-                <div className="flex justify-between">
-                  <h2 className="font-bold">Status</h2>
-                  <h2 className="font-bold">
-                    {order.status === "pending" ? (
-                      <span className="text-yellow-600">Pending</span>
-                    ) : order.status === "completed" ? (
-                      <span className="text-green-600">Completed</span>
-                    ) : (
-                      <span className="text-red-600">Cancelled</span>
-                    )}
-                  </h2>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </DialogContent>

@@ -1,6 +1,7 @@
 import dbConnect from "@/lib/database/mongodb";
 import { NextRequest, NextResponse } from "next/server";
 import Order from "@/models/order";
+import Product from "@/models/product";
 
 export async function GET(
   request: NextRequest,
@@ -9,36 +10,27 @@ export async function GET(
   const { id } = params;
   await dbConnect();
   try {
-    const order = await Order.find({ user: id })
+    const orders = await Order.find({ user: id })
       .populate("user", "name email phone")
       .populate({
         path: "orderItems",
         populate: {
           path: "product",
-          model: "Product",
+          model: Product,
         },
-      });
-    if (!order) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Order not found",
-        },
-        {
-          status: 400,
-        }
-      );
-    }
+      })
+      .sort({ createdAt: -1 });
     return NextResponse.json(
       {
         success: true,
-        order,
+        orders,
       },
       {
         status: 200,
       }
     );
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       {
         success: false,

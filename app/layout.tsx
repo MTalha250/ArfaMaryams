@@ -14,19 +14,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [seconds, setSeconds] = useState(5
-    );
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSeconds((prevSeconds) => prevSeconds - 1);
-    }, 1000);
+  const [seconds, setSeconds] = useState(0);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setSeconds((prevSeconds) => prevSeconds - 1);
+  //   }, 1000);
 
-    if (seconds === 0) {
-      clearInterval(interval);
-    }
+  //   if (seconds === 0) {
+  //     clearInterval(interval);
+  //   }
 
-    return () => clearInterval(interval);
-  }, [seconds]);
+  //   return () => clearInterval(interval);
+  // }, [seconds]);
 
   return (
     <html lang="en">
