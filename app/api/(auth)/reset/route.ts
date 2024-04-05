@@ -33,7 +33,7 @@ export const POST = async (request: NextRequest) => {
       from: "tbcgulfmarketing@gmail.com",
       to: email,
       subject: "Password Reset Code",
-      html: `<h2>Your password reset code is: <span style="display:block; font-weight: bold; font-size: 40px;">${code}</span></h2>`,
+      html: `<h3>Your password reset code is: <span style="display:block; font-weight: bold; font-size: 30px;">${code}</span></h3>`,
     };
     await transporter.sendMail(mailOptions);
     return NextResponse.json(

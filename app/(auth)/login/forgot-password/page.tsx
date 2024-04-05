@@ -153,19 +153,27 @@ const page = () => {
                 </span>
               </button>
             </div>
-            <FormField
-              control={form.control}
-              name="code"
-              render={({ field }) => (
-                <FormItem className="w-1/2 flex items-center gap-3">
-                  <FormLabel>Code: </FormLabel>
-                  <FormControl>
-                    <Input type="text" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <div className="flex justify-center">
+              <FormField
+                control={form.control}
+                name="code"
+                render={({ field }) => (
+                  <FormItem className="w-1/3">
+                    <FormLabel className="text-center block">Code </FormLabel>
+                    <FormControl>
+                      <Input
+                        type="text"
+                        {...field}
+                        className="font-bold text-xl tracking-[9px] text-center"
+                        maxLength={6}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
+
             <FormField
               control={form.control}
               name="password"
