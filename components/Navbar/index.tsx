@@ -75,12 +75,12 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
-      <div className="hidden md:block font-semibold text-sm items-center space-x-5">
+      <div className="font-semibold text-sm items-center space-x-2 md:space-x-5">
         <Wishlist />
         <Cart />
         {user?.name ? (
           <DropdownMenu>
-            <DropdownMenuTrigger className="outline-none ring-0">
+            <DropdownMenuTrigger className="outline-none ring-0 hidden md:inline">
               <div
                 className={
                   scroll || pathname !== "/"
@@ -124,16 +124,17 @@ const Navbar = () => {
             href="/login"
             className={
               scroll || pathname !== "/"
-                ? "rounded-full mt-10 p-3 border border-black bg-transparent text-black  dark:border-white relative group transition duration-200"
-                : "rounded-full mt-10 p-3 border border-white bg-transparent text-black  dark:border-white relative group transition duration-200"
+                ? "rounded-full mt-10 p-3 border border-black bg-transparent text-black  dark:border-white relative group transition duration-200 hidden md:inline"
+                : "rounded-full mt-10 p-3 border border-white bg-transparent text-black  dark:border-white relative group transition duration-200 hidden md:inline"
             }
           >
             <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
             <span className="relative">Login/Signup</span>
           </Link>
         )}
+        <div className="w-24" />
+        <Sidebar />
       </div>
-      <Sidebar />
     </div>
   );
 };

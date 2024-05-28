@@ -32,7 +32,7 @@ const Cart = () => {
           </span>
         )}
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="rounded-xl w-[450px] h-[70vh] p-5">
+      <DropdownMenuContent className="rounded-xl w-screen max-w-[450px] h-[70vh] p-5">
         {user ? (
           <div className="w-full h-full">
             {items.length ? (

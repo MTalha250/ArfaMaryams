@@ -32,7 +32,7 @@ const page = () => {
               <Content
                 words={words}
                 className="hidden md:flex"
-                cursorClassName="bg-yellow-500 hidden md:block"
+                cursorClassName="bg-primary hidden md:block"
               />
               <p className="md:text-center font-semibold sm:text-lg md:text-2xl xl:w-2/3">
                 Explore carefully curated collections and receive personalized
@@ -53,7 +53,7 @@ const page = () => {
           }
           className="h-screen w-full"
         />
-        <div className="w-full z-20 absolute bottom-0 bg-black border-y-2 border-primary h-14 flex items-center text-white">
+        <div className="w-full z-20 absolute bottom-0 bg-secondary border-y-2 border-primary h-14 flex items-center text-white">
           <Marquee
             gradient={false}
             speed={50}

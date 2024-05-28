@@ -4,6 +4,8 @@ import { navLinks } from "@/constants";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import Profile from "../profile";
+import Wishlist from "../wishlist";
+import Cart from "../cart";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -41,13 +43,17 @@ const Sidebar = () => {
   return (
     <motion.div className="md:hidden" animate={open ? "open" : "closed"}>
       <motion.div
-        className="text-2xl font-bold z-50 fixed top-0 flex items-center p-10 right-0 bottom-0 bg-white w-[300px] text-secondary origin-right h-screen"
+        className="text-3xl font-bold z-50 fixed top-0 flex items-center p-10 right-0 bottom-0 bg-white w-full text-secondary origin-right h-screen"
         variants={variants}
       >
         <ul className="space-y-5">
           {navLinks.map((link, index) => (
             <li key={index}>
-              <Link onClick={() => setOpen(false)} href={link.href}>
+              <Link
+                onClick={() => setOpen(false)}
+                href={link.href}
+                className="border-b-4 border-transparent hover:text-primary hover:border-primary transition duration-300"
+              >
                 {link.label}
               </Link>
             </li>
@@ -57,7 +63,7 @@ const Sidebar = () => {
           <DropdownMenu>
             <DropdownMenuTrigger className="outline-none ring-0 fixed bottom-5 right-5 pb-2 px-5">
               <div className="rounded-full pb-2 px-5 border border-black bg-transparent text-black  dark:border-white relative group transition duration-200">
-                <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:-bottom-1 group-hover:-right-1 transition-all duration-200" />
+                <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
                 <span className="relative text-sm">Hi, {user?.name}</span>
               </div>
             </DropdownMenuTrigger>
@@ -81,7 +87,7 @@ const Sidebar = () => {
                 <DropdownMenuSeparator className="bg-neutral-200" />
               )}
               {user?.role == "admin" && (
-                <DropdownMenuItem className="mt-1 cursor-pointer text-center block bg-primary">
+                <DropdownMenuItem className="mt-1 cursor-pointer text-center block bg-primary focus:bg-primary/90">
                   <Link href="/admin">Admin</Link>
                 </DropdownMenuItem>
               )}
@@ -96,20 +102,24 @@ const Sidebar = () => {
               href="/login"
               className="rounded-full pb-2 px-5 border border-black bg-transparent text-black  dark:border-white relative group transition duration-200"
             >
-              <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:-bottom-1 group-hover:-right-1 transition-all duration-200" />
+              <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
               <span className="relative text-sm">Login/Signup</span>
             </Link>
           </div>
         )}
+        <div className="fixed top-[18px] right-20 space-x-3">
+          <Wishlist />
+          <Cart />
+        </div>
       </motion.div>
       <button
-        className="fixed z-50 top-7 right-10"
+        className="fixed z-50 top-[30px] right-8"
         onClick={() => setOpen((prev: any) => !prev)}
       >
         <svg width="25" height="25" viewBox="0 0 23 23">
           <motion.path
             strokeWidth="3"
-            stroke="#F5AE3A"
+            stroke="#E17489"
             strokeLinecap="round"
             variants={{
               closed: { d: "M 2 2.5 L 20 2.5" },
@@ -118,7 +128,7 @@ const Sidebar = () => {
           />
           <motion.path
             strokeWidth="3"
-            stroke="#F5AE3A"
+            stroke="#E17489"
             strokeLinecap="round"
             d="M 2 9.423 L 20 9.423"
             variants={{
@@ -128,7 +138,7 @@ const Sidebar = () => {
           />
           <motion.path
             strokeWidth="3"
-            stroke="#F5AE3A"
+            stroke="#E17489"
             strokeLinecap="round"
             variants={{
               closed: { d: "M 2 16.346 L 20 16.346" },
