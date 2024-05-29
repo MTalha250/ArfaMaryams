@@ -50,11 +50,11 @@ const Slider = ({ photos }: { photos: string[] }) => {
     <div className="w-full md:w-1/2">
       <section className="relative flex justify-center items-center w-full h-[65vh] md:h-[75vh] overflow-hidden cursor-zoom-in bg-secondary rounded-md">
         <AiOutlineLeft
-          className="absolute top-1/2 left-4 text-3xl text-white z-10 bg-black p-2 rounded-full cursor-pointer -translate-y-1/2"
+          className="absolute top-1/2 left-4 text-3xl text-white z-10 bg-primary p-2 rounded-full cursor-pointer -translate-y-1/2"
           onClick={prevSlide}
         />
         <AiOutlineRight
-          className="absolute top-1/2 right-4 text-3xl text-white z-10 bg-black p-2 rounded-full cursor-pointer -translate-y-1/2"
+          className="absolute top-1/2 right-4 text-3xl text-white z-10 bg-primary p-2 rounded-full cursor-pointer -translate-y-1/2"
           onClick={nextSlide}
         />
         {photos.map((photo, index) => {
