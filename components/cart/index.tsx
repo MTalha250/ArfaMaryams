@@ -86,7 +86,9 @@ const Cart = () => {
                     <div className="flex justify-between">
                       <p>Total</p>
                       <p>
-                        PKR {getTotalPrice() + (getTotalPrice() > 5000 ? 0 : 250)}{" "}.00
+                        PKR{" "}
+                        {getTotalPrice() + (getTotalPrice() > 5000 ? 0 : 250)}{" "}
+                        .00
                       </p>
                     </div>
                     <Link

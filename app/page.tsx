@@ -26,7 +26,7 @@ const page = () => {
             <div className="text-white z-20 flex flex-col md:items-center px-8">
               <h1 className="mb-5 font-bold text-4xl sm:text-5xl md:text-center md:hidden">
                 Sync Your
-                <span className="text-primary"> Fashion,</span>, Define Your
+                <span className="text-primary"> Fashion</span>, Define Your
                 <span className="text-primary">Style.</span>
               </h1>
               <Content

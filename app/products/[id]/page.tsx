@@ -116,7 +116,7 @@ const page = () => {
                   router.push("/login");
                 }
               }}
-              className="group px-8 py-2 bg-white text-black font-bold transition duration-200 hover:bg-primary  border-2 border-black hover:border-primary w-fit"
+              className="group px-6 py-2 bg-white text-black font-bold transition duration-200 hover:bg-primary  border-2 border-black hover:border-primary w-fit"
             >
               {inWishlist(id) ? (
                 <MdFavorite className="text-2xl group-hover:scale-125 transition duration-200" />
@@ -168,7 +168,7 @@ const page = () => {
                   router.push("/login");
                 }
               }}
-              className="group animate-shimmer items-center justify-center border border-primary bg-[linear-gradient(110deg,#E17489,40%,#E1E1E1,60%,#E17489)] bg-[length:200%_100%] px-8 py-2 font-medium text-black transition-colors"
+              className="group animate-shimmer items-center justify-center border border-primary bg-[linear-gradient(110deg,#E17489,40%,#E1E1E1,60%,#E17489)] bg-[length:200%_100%] px-6 py-2 font-medium text-black transition-colors"
             >
               <MdOutlineShoppingBag className="text-2xl group-hover:scale-125 transition duration-200" />
             </button>
