@@ -160,8 +160,12 @@ const Reviews: React.FC<ReviewsProps> = ({
                 value={review.review || ""}
                 onChange={(e) => handleChange(e)}
               />
-              <button className="px-5 text-white ml-auto mb-3 py-2 bg-primary">
-                Post
+
+              <button className="mb-5 ml-auto flex justify-center border py-1 border-black bg-transparent text-black  dark:border-white relative group transition duration-200">
+                <div className="absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
+                <span className="relative text-sm font-semibold py-1 px-2 tracking-wider">
+                  Post
+                </span>
               </button>
             </form>
           </AccordionContent>

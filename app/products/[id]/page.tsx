@@ -74,7 +74,7 @@ const page = () => {
             Price: PKR {product?.price}.00
           </p>
           <div className="mb-5">
-            <p className="text-lg mb-2 text-gray-600">Size:</p>
+            <p className="mb-2 text-gray-600">Size:</p>
             <div className="flex gap-2">
               <button className="px-4 py-2 text-sm rounded-md border border-gray-300">
                 S
@@ -87,6 +87,23 @@ const page = () => {
               </button>
               <button className="px-4 py-2 text-sm rounded-md border border-gray-300">
                 XL
+              </button>
+            </div>
+          </div>
+          <div className="mb-5">
+            <p className="mb-2 text-gray-600">Color:</p>
+            <div className="flex gap-2">
+              <button className="px-4 py-2 text-sm rounded-md border border-gray-300">
+                Red
+              </button>
+              <button className="px-4 py-2 text-sm rounded-md border border-gray-300">
+                Blue
+              </button>
+              <button className="px-4 py-2 text-sm rounded-md border border-gray-300">
+                Green
+              </button>
+              <button className="px-4 py-2 text-sm rounded-md border border-gray-300">
+                Yellow
               </button>
             </div>
           </div>
@@ -184,6 +201,24 @@ const page = () => {
             name: "John Doe",
             email: "johndoe@gmail.com",
             rating: 3,
+            title: "Great Product",
+            review:
+              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio voluptates dolorum repudiandae reiciendis. Cumque illo quo blanditiis fugiat, earum culpa, nemo delectus error maiores repudiandae molestiae enim suscipit? Repellat, aperiam!",
+            created_at: new Date(),
+          },
+          {
+            name: "John Doe",
+            email: "johndoe@gmail.com",
+            rating: 1,
+            title: "Great Product",
+            review:
+              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio voluptates dolorum repudiandae reiciendis. Cumque illo quo blanditiis fugiat, earum culpa, nemo delectus error maiores repudiandae molestiae enim suscipit? Repellat, aperiam!",
+            created_at: new Date(),
+          },
+          {
+            name: "John Doe",
+            email: "johndoe@gmail.com",
+            rating: 2,
             title: "Great Product",
             review:
               "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio voluptates dolorum repudiandae reiciendis. Cumque illo quo blanditiis fugiat, earum culpa, nemo delectus error maiores repudiandae molestiae enim suscipit? Repellat, aperiam!",

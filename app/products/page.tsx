@@ -67,8 +67,8 @@ const page = () => {
             thumbLeftColor="white"
             thumbRightColor="white"
           />
-          <button className="mt-5 ml-auto flex justify-center rounded border py-1 border-black bg-transparent text-black  dark:border-white relative group transition duration-200">
-            <div className="rounded absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
+          <button className="mt-5 ml-auto flex justify-center border py-1 border-black bg-transparent text-black  dark:border-white relative group transition duration-200">
+            <div className="absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
             <span className="relative text-sm font-semibold py-1 px-2">
               Apply
             </span>
@@ -134,8 +134,8 @@ const page = () => {
                 thumbLeftColor="white"
                 thumbRightColor="white"
               />
-              <button className="mt-5 ml-auto flex justify-center rounded border py-1 border-black bg-transparent text-black  dark:border-white relative group transition duration-200">
-                <div className="rounded absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
+              <button className="mt-5 ml-auto flex justify-center border py-1 border-black bg-transparent text-black  dark:border-white relative group transition duration-200">
+                <div className="absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
                 <span className="relative text-sm font-semibold py-1 px-2">
                   Apply
                 </span>

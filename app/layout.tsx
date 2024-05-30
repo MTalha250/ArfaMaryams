@@ -28,7 +28,7 @@ export default function RootLayout({
   // }, [seconds]);
 
   return (
-    <html lang="en">
+    <html lang="en" className="scrollbar scrollbar-none sm:scrollbar-thin">
       <head>
         <title>StyleSync</title>
         <link rel="icon" href="/logo.png" />

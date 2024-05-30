@@ -32,7 +32,7 @@ const Cart = () => {
           </span>
         )}
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="rounded-xl w-screen max-w-[450px] h-[70vh] p-5">
+      <DropdownMenuContent className="rounded-none w-screen max-w-[450px] h-[70vh] p-5">
         {user ? (
           <div className="w-full h-full">
             {items.length ? (
@@ -41,9 +41,9 @@ const Cart = () => {
                   <h2 className="text-xl font-semibold">Cart</h2>
                   <button
                     onClick={() => clearCart(user?.id, handleUpdate)}
-                    className="rounded-lg py-1 px-3 border border-black bg-transparent text-black dark:border-white relative group transition duration-200"
+                    className="py-1 px-3 border border-black bg-transparent text-black dark:border-white relative group transition duration-200"
                   >
-                    <div className="rounded-lg absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
+                    <div className="absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
                     <span className="relative text-sm font-semibold">
                       Clear
                     </span>
@@ -93,9 +93,9 @@ const Cart = () => {
                     </div>
                     <Link
                       href="/checkout"
-                      className="flex justify-center items-center mt-5 w-full rounded-lg py-2 px-3 border border-black bg-transparent text-black dark:border-white relative group transition duration-200"
+                      className="flex justify-center items-center mt-5 w-full rounded-full py-2 px-3 border border-black bg-transparent text-black dark:border-white relative group transition duration-200"
                     >
-                      <div className="rounded-lg absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />
+                      <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />
                       <span className="relative font-semibold">Checkout</span>
                     </Link>
                   </div>
