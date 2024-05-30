@@ -264,7 +264,7 @@ const page = () => {
                 {getTotalPrice() > 5000 ? (
                   <span className="font-semibold text-green-600">Free</span>
                 ) : (
-                  "250 PKR"
+                  "PKR 250.00"
                 )}
               </p>
             </div>

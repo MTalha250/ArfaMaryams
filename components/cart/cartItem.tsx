@@ -32,7 +32,7 @@ const CartItem = ({ id, name, price, image, quantity }: Props) => {
       />
       <div className="flex-1">
         <h3 className="font-semibold mb-1">{name}</h3>
-        <p className="text-gray-600 text-sm">{price} PKR</p>
+        <p className="text-gray-600 text-sm">PKR {price}.00</p>
         <div className="flex items-center mt-2">
           <button
             onClick={() => removeItem(id, user?.id, handleUpdate)}

@@ -5,8 +5,10 @@ import MultiRangeSlider from "multi-range-slider-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import axios from "axios";
 import { BiSearchAlt } from "react-icons/bi";
+import ReactLoading from "react-loading";
 const page = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     getProducts();
   }, []);
@@ -14,6 +16,7 @@ const page = () => {
     try {
       const response = await axios.get("http://localhost:3000/api/product");
       setProducts(response.data.products);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -61,8 +64,8 @@ const page = () => {
             </span>
           </button>
         </div>
-        <div className="md:border-l md:pl-5">
-          <div className="flex gap-10">
+        <div className="md:border-l md:pl-5 w-full">
+          <div className="flex gap-10 w-full">
             <h2 className="font-semibold shrink-0 border p-2 tex-sm">
               {products.length} Products
             </h2>
@@ -81,34 +84,27 @@ const page = () => {
               </button>
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 my-10">
-            {products.map((product: any) => (
-              <Card
-                key={product._id}
-                id={product._id}
-                img={product.images[0]}
-                img2={product.images[1]}
-                img3={product.images[2]}
-                img4={product.images[3]}
-                name={product.name}
-                description={product.description}
-                price={product.price}
-              />
-            ))}
-            {products.map((product: any) => (
-              <Card
-                key={product._id}
-                id={product._id}
-                img={product.images[0]}
-                img2={product.images[1]}
-                img3={product.images[2]}
-                img4={product.images[3]}
-                name={product.name}
-                description={product.description}
-                price={product.price}
-              />
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex justify-center items-center h-[70vh]">
+              <ReactLoading type="bars" color="#E17489" />
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 my-10">
+              {products.map((product: any) => (
+                <Card
+                  key={product._id}
+                  id={product._id}
+                  img={product.images[0]}
+                  img2={product.images[1]}
+                  img3={product.images[2]}
+                  img4={product.images[3]}
+                  name={product.name}
+                  description={product.description}
+                  price={product.price}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -62,7 +62,7 @@ const page = () => {
           >
             <p className="tracking-wider text-sm sm:text-base">
               <span className="text-primary">Free Shipping</span> on Orders Over{" "}
-              <span className="text-primary">5000 PKR</span>. Price Match
+              <span className="text-primary">PKR 5000.00</span>. Price Match
               Guarantee. Safe & Secure Shopping. 100% Safe Payment.
               <span className="text-primary"> Free Returns</span>.
             </p>

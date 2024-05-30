@@ -90,7 +90,7 @@ function Card({ id, img, img2, img3, img4, name, description, price }: Props) {
             ? description.slice(0, 50) + "..."
             : description}
         </p>
-        <p className="my-1 font-light">{price} PKR</p>
+        <p className="my-1 font-light">PKR {price}.00</p>
       </Link>
       <button
         onClick={() => {

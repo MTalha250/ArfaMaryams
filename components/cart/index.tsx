@@ -69,7 +69,7 @@ const Cart = () => {
                   <div className="text-sm">
                     <div className="flex justify-between">
                       <p>Subtotal</p>
-                      <p>{getTotalPrice()} PKR</p>
+                      <p>PKR {getTotalPrice()}.00</p>
                     </div>
                     <div className="flex justify-between">
                       <p>Delivery</p>
@@ -79,15 +79,14 @@ const Cart = () => {
                             Free
                           </span>
                         ) : (
-                          "250 PKR"
+                          "PKR 250.00"
                         )}
                       </p>
                     </div>
                     <div className="flex justify-between">
                       <p>Total</p>
                       <p>
-                        {getTotalPrice() + (getTotalPrice() > 5000 ? 0 : 250)}{" "}
-                        PKR
+                        PKR {getTotalPrice() + (getTotalPrice() > 5000 ? 0 : 250)}{" "}.00
                       </p>
                     </div>
                     <Link

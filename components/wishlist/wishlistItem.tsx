@@ -31,7 +31,7 @@ const WishlistItem = ({ id, name, price, image }: Props) => {
       />
       <div className="flex-1">
         <h3 className="font-semibold mb-1">{name}</h3>
-        <p className="text-gray-600 text-sm">{price} PKR</p>
+        <p className="text-gray-600 text-sm">PKR {price}.00</p>
       </div>
       <button
         onClick={() => removeFromWishlist(id, user?.id, handleUpdate)}

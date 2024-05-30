@@ -89,6 +89,9 @@ dependencies:
   react-icons:
     specifier: ^5.0.1
     version: 5.0.1(react@18.2.0)
+  react-loading:
+    specifier: ^2.0.3
+    version: 2.0.3(prop-types@15.8.1)(react@18.2.0)
   tailwind-merge:
     specifier: ^2.2.1
     version: 2.2.1
@@ -107,6 +110,9 @@ dependencies:
 
 devDependencies:
   '@types/bcrypt':
+    specifier: ^5.0.2
+    version: 5.0.2
+  '@types/dateformat':
     specifier: ^5.0.2
     version: 5.0.2
   '@types/node':
@@ -1130,6 +1136,10 @@ packages:
     resolution: {integrity: sha512-6atioO8Y75fNcbmj0G7UjI9lXN2pQ/IGJ2FWT4a/btd0Lk9lQalHLKhkgKVZ3r+spnmWUKfbMi1GEe9wyHQfNQ==}
     dependencies:
       '@types/node': 20.11.24
+    dev: true
+
+  /@types/dateformat@5.0.2:
+    resolution: {integrity: sha512-M95hNBMa/hnwErH+a+VOD/sYgTmo15OTYTM2Hr52/e0OdOuY+Crag+kd3/ioZrhg0WGbl9Sm3hR7UU+MH6rfOw==}
     dev: true
 
   /@types/node@20.11.24:
@@ -2221,6 +2231,14 @@ packages:
     resolution: {integrity: sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew==}
     dev: false
 
+  /prop-types@15.8.1:
+    resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==}
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      react-is: 16.13.1
+    dev: false
+
   /proxy-from-env@1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
     dev: false
@@ -2292,6 +2310,20 @@ packages:
     peerDependencies:
       react: '*'
     dependencies:
+      react: 18.2.0
+    dev: false
+
+  /react-is@16.13.1:
+    resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+    dev: false
+
+  /react-loading@2.0.3(prop-types@15.8.1)(react@18.2.0):
+    resolution: {integrity: sha512-Vdqy79zq+bpeWJqC+xjltUjuGApyoItPgL0vgVfcJHhqwU7bAMKzysfGW/ADu6i0z0JiOCRJjo+IkFNkRNbA3A==}
+    peerDependencies:
+      prop-types: ^15.6.0
+      react: '>=0.14.0'
+    dependencies:
+      prop-types: 15.8.1
       react: 18.2.0
     dev: false
 

@@ -296,15 +296,15 @@ const Profile = () => {
                       <div key={item._id} className="flex justify-between">
                         <p>{item.product.name}</p>
                         <p>
-                          {item.quantity} x {item.product.price} ={" "}
-                          {item.quantity * item.product.price} PKR
+                          {item.quantity} x {item.product.price} = PKR{" "}
+                          {item.quantity * item.product.price}.00
                         </p>
                       </div>
                     ))}
                   </div>
                   <div className="flex justify-between">
                     <h2 className="font-bold">Total</h2>
-                    <h2 className="font-bold">{order.totalPrice} PKR</h2>
+                    <h2 className="font-bold">PKR {order.totalPrice}.00</h2>
                   </div>
                   <div className="flex justify-between">
                     <h2 className="font-bold">Status</h2>
@@ -339,15 +339,15 @@ const Profile = () => {
                       <div key={item._id} className="flex justify-between">
                         <p>{item.product.name}</p>
                         <p>
-                          {item.quantity} x {item.product.price} ={" "}
-                          {item.quantity * item.product.price} PKR
+                          {item.quantity} x {item.product.price} = PKR{" "}
+                          {item.quantity * item.product.price}.00
                         </p>
                       </div>
                     ))}
                   </div>
                   <div className="flex justify-between">
                     <h2 className="font-bold">Total</h2>
-                    <h2 className="font-bold">{order.totalPrice} PKR</h2>
+                    <h2 className="font-bold">PKR {order.totalPrice}.00</h2>
                   </div>
                   <div className="flex justify-between">
                     <h2 className="font-bold">Status</h2>
