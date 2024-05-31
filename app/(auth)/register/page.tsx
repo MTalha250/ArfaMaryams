@@ -72,7 +72,7 @@ const Register = () => {
   }
 
   return (
-    <div className="flex items-center justify-center flex-col py-20 min-h-screen px-8 md:px-16">
+    <div className="flex items-center justify-center flex-col min-h-screen px-8 md:px-16">
       <h1 className="text-3xl font-semibold mt-20 mb-2">
         Create your{" "}
         <span className="text-black bg-primary pr-2 pl-1 italic">Account!</span>{" "}

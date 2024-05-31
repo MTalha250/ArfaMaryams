@@ -128,7 +128,7 @@ const Profile = () => {
       <DialogTrigger className="rounded-sm px-2 py-1.5 text-sm transition duration-200 hover:bg-neutral-100 w-full">
         Profile
       </DialogTrigger>
-      <DialogContent className="w-full max-w-[1000px] h-full md:max-h-[520px] flex-col md:flex-row flex gap-10">
+      <DialogContent className="scrollbar scrollbar-none overflow-scroll w-full max-w-[1000px] h-full md:max-h-[520px] flex-col md:flex-row flex gap-10">
         <div className="md:w-1/2 h-full md:overflow-scroll scrollbar-none">
           <h1 className="text-2xl font-bold mb-3">Your Profile</h1>
           <Tabs defaultValue="account">
