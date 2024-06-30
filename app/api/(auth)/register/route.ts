@@ -33,12 +33,12 @@ export async function POST(request: NextRequest) {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "tbcgulfmarketing@gmail.com",
-        pass: "gyqj dwxp nrmo qobv",
+        user: "talhabinay@gmail.com",
+        pass: "ogik jpre uyde kmdo",
       },
     });
     const mailOptions = {
-      from: "tbcgulfmarketing@gmail.com",
+      from: "talhabinay@gmail.com",
       to: email,
       subject: "Account Verification",
       text: `Hello ${name}, click on the link to verify your account: ${process.env.NEXTAUTH_URL}/api/verify/${user._id}`,

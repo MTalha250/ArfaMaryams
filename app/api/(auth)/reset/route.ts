@@ -25,12 +25,12 @@ export const POST = async (request: NextRequest) => {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "tbcgulfmarketing@gmail.com",
-        pass: "gyqj dwxp nrmo qobv",
+        user: "talhabinay@gmail.com",
+        pass: "ogik jpre uyde kmdo",
       },
     });
     const mailOptions = {
-      from: "tbcgulfmarketing@gmail.com",
+      from: "talhabinay@gmail.com",
       to: email,
       subject: "Password Reset Code",
       html: `<h3>Your password reset code is: <span style="display:block; font-weight: bold; font-size: 30px;">${code}</span></h3>`,
