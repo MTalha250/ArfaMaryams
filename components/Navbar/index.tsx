@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { navLinks } from "@/constants";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
