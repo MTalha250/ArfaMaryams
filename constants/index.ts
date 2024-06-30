@@ -8,11 +8,11 @@ export const navLinks = [
     href: "/products",
   },
   {
-    label: "Search",
-    href: "/search",
-  },
-  {
     label: "Contact",
     href: "/contact",
+  },
+  {
+    label: "About",
+    href: "/about",
   },
 ];

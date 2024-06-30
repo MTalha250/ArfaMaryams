@@ -83,6 +83,8 @@ const Footer = () => {
                   {link.label}
                 </Link>
               ))}
+              <Link href="/shipping-policy">Shipping Policy</Link>
+              <Link href="/return-policy">Return & Exchange Policy</Link>
             </ul>
           </div>
         </div>

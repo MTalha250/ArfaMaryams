@@ -10,6 +10,8 @@ const orderSchema = new mongoose.Schema(
     orderItems: [
       {
         quantity: { type: Number, required: true },
+        size: { type: String, required: true },
+        color: { type: String, required: true },
         product: {
           type: mongoose.Schema.Types.ObjectId,
           ref: "Product",
@@ -31,6 +33,11 @@ const orderSchema = new mongoose.Schema(
     paymentMethod: {
       type: String,
       required: true,
+    },
+    paymentStatus: {
+      type: String,
+      enum: ["pending", "completed", "cancelled"],
+      default: "pending",
     },
     itemsPrice: {
       type: Number,

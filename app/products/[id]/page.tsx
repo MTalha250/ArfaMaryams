@@ -13,6 +13,17 @@ import { useRouter } from "next/navigation";
 import { MdFavoriteBorder } from "react-icons/md";
 import { MdFavorite } from "react-icons/md";
 import { MdOutlineShoppingBag } from "react-icons/md";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+
 const page = () => {
   const { id } = useParams();
   const [product, setProduct] = useState<any>(null);
@@ -23,7 +34,91 @@ const page = () => {
   const user = data?.user;
   const { addItem } = useCartStore();
   const router = useRouter();
+  const [size, setSize] = useState("");
+  const [color, setColor] = useState("");
 
+  const trouserLength = [
+    {
+      type: "Trouser Length",
+      small: 36,
+      medium: 37,
+      large: 38,
+    },
+    {
+      type: "Complete waist in round",
+      small: 25,
+      medium: 27,
+      large: 30,
+    },
+    {
+      type: "Hip",
+      small: 19,
+      medium: 24,
+      large: 30,
+    },
+    {
+      type: "Thigh Round",
+      small: 26,
+      medium: 30,
+      large: 32,
+    },
+    {
+      type: "Ankle",
+      small: 7,
+      medium: 7.5,
+      large: 8,
+    },
+    {
+      type: "Front Rise",
+      small: 12.5,
+      medium: 13,
+      large: 13.5,
+    },
+    {
+      type: "Back Rise",
+      small: 15,
+      medium: 15.5,
+      large: 16.5,
+    },
+  ];
+  const shirtLength = [
+    {
+      type: "Chest",
+      small: 20,
+      medium: 21.5,
+      large: 23,
+    },
+    {
+      type: "Shoulder",
+      small: 14,
+      medium: 14.5,
+      large: 15.5,
+    },
+    {
+      type: "Arm Hole",
+      small: 8.5,
+      medium: 9.5,
+      large: 10.5,
+    },
+    {
+      type: "Waist",
+      small: 18,
+      medium: 19,
+      large: 20,
+    },
+    {
+      type: "Sleeve Length",
+      small: 21,
+      medium: 21.5,
+      large: 22,
+    },
+    {
+      type: "Wrist",
+      small: 5,
+      medium: 5.5,
+      large: 6,
+    },
+  ];
   useEffect(() => {
     getProduct();
   }, []);
@@ -70,41 +165,97 @@ const page = () => {
           <h1 className="text-4xl font-bold mb-2 text-gray-800">
             {product?.name}
           </h1>
-          <p className="text-lg mb-4 text-gray-600">
+          <p className="text-lg mb-2 text-gray-600">
             Price: PKR {product?.price}.00
           </p>
-          <div className="mb-5">
-            <p className="mb-2 text-gray-600">Size:</p>
+          <div className="flex gap-3 items-center">
+            <p className="text-gray-600">Size:</p>
             <div className="flex gap-2">
-              <button className="px-4 py-2 text-sm rounded-md border border-gray-300">
-                S
-              </button>
-              <button className="px-4 py-2 text-sm rounded-md border border-gray-300">
-                M
-              </button>
-              <button className="px-4 py-2 text-sm rounded-md border border-gray-300">
-                L
-              </button>
-              <button className="px-4 py-2 text-sm rounded-md border border-gray-300">
-                XL
-              </button>
+              {product?.sizes.map((s: string) => (
+                <button
+                  key={s}
+                  className={`px-3 py-1 text-sm rounded-md border border-gray-300 ${
+                    s == size ? "bg-primary text-white" : ""
+                  }`}
+                  onClick={() => setSize(s)}
+                >
+                  {s.toUpperCase()}
+                </button>
+              ))}
             </div>
           </div>
-          <div className="mb-5">
-            <p className="mb-2 text-gray-600">Color:</p>
+          <Drawer>
+            <DrawerTrigger className="text-primary text-sm font-semibold mb-3 mt-1 underline">
+              Size Chart
+            </DrawerTrigger>
+            <DrawerContent className="py-10 px-8 md:px-16">
+              <div className="h-[60vh] overflow-scroll">
+                <div className="flex flex-col md:flex-row gap-20 text-sm">
+                  <Table>
+                    <TableCaption>Shirt Size Chart</TableCaption>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead></TableHead>
+                        <TableHead>Small</TableHead>
+                        <TableHead>Medium</TableHead>
+                        <TableHead>Large</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {shirtLength.map((item) => (
+                        <TableRow key={item.type}>
+                          <TableCell>{item.type}</TableCell>
+                          <TableCell>{item.small}</TableCell>
+                          <TableCell>{item.medium}</TableCell>
+                          <TableCell>{item.large}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                  <Table>
+                    <TableCaption>Trouser Size Chart</TableCaption>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead></TableHead>
+                        <TableHead>Small</TableHead>
+                        <TableHead>Medium</TableHead>
+                        <TableHead>Large</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {trouserLength.map((item) => (
+                        <TableRow key={item.type}>
+                          <TableCell>{item.type}</TableCell>
+                          <TableCell>{item.small}</TableCell>
+                          <TableCell>{item.medium}</TableCell>
+                          <TableCell>{item.large}</TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+              </div>
+              <p className="text-gray-500 font-semibold mt-10 text-center">
+                These size charts are for reference only, actual measurements
+                may vary from person to person, fabric to fabric, and fit wise.
+              </p>
+            </DrawerContent>
+          </Drawer>
+
+          <div className="mb-5 flex gap-3 items-center">
+            <p className="text-gray-600">Color:</p>
             <div className="flex gap-2">
-              <button className="px-4 py-2 text-sm rounded-md border border-gray-300">
-                Red
-              </button>
-              <button className="px-4 py-2 text-sm rounded-md border border-gray-300">
-                Blue
-              </button>
-              <button className="px-4 py-2 text-sm rounded-md border border-gray-300">
-                Green
-              </button>
-              <button className="px-4 py-2 text-sm rounded-md border border-gray-300">
-                Yellow
-              </button>
+              {product?.colors.map((c: string) => (
+                <button
+                  key={c}
+                  className={`px-3 py-1 text-sm rounded-md border border-gray-300 ${
+                    c == color ? "bg-primary text-white" : ""
+                  }`}
+                  onClick={() => setColor(c)}
+                >
+                  {c[0].toUpperCase() + c.slice(1)}
+                </button>
+              ))}
             </div>
           </div>
           <hr className="mb-4 border-gray-200" />
@@ -167,6 +318,18 @@ const page = () => {
             <button
               onClick={() => {
                 if (user) {
+                  if (!size || !color) {
+                    toast.error("Please select size and color");
+                    return;
+                  }
+                  if (!size) {
+                    toast.error("Please select size");
+                    return;
+                  }
+                  if (!color) {
+                    toast.error("Please select color");
+                    return;
+                  }
                   for (let i = 0; i < count; i++) {
                     addItem(
                       {
@@ -174,12 +337,16 @@ const page = () => {
                         images: product?.images,
                         name: product?.name,
                         price: product?.price,
+                        size,
+                        color,
                       },
                       user.id,
                       handleUpdate
                     );
                   }
                   toast.success("Added to cart");
+                  setSize("");
+                  setColor("");
                 } else {
                   toast.error("Please login to add to cart");
                   router.push("/login");
@@ -190,44 +357,78 @@ const page = () => {
               <MdOutlineShoppingBag className="text-2xl group-hover:scale-125 transition duration-200" />
             </button>
           </div>
-          <p className="text-base text-gray-700 leading-relaxed text-justify">
+          <p className="text-sm text-gray-700 leading-relaxed text-justify">
             {product?.description}
+          </p>
+          <hr className="my-4 border-gray-200" />
+          <p className="text-gray-700 leading-relaxed my-0.5">
+            <span className="font-bold">Fabric: </span>
+            {product?.fabric[0].toUpperCase() + product?.fabric.slice(1)}
+          </p>
+          <p className="text-gray-700 leading-relaxed my-0.5">
+            <span className="font-bold">Trouser: </span>
+            {product?.trouser[0].toUpperCase() + product?.trouser.slice(1)}
+          </p>
+          <p className="text-gray-700 leading-relaxed my-0.5">
+            <span className="font-bold">Inner: </span>
+            {product?.inner[0].toUpperCase() + product?.inner.slice(1)}
+          </p>
+          <p className="text-gray-700 leading-relaxed my-0.5">
+            <span className="font-bold">Dopatta: </span>
+            {product?.dopatta[0].toUpperCase() + product?.dopatta.slice(1)}
+          </p>
+          <p className="text-gray-700 leading-relaxed my-0.5">
+            <span className="font-bold">Embroidery: </span>
+            {product?.embroidery[0].toUpperCase() +
+              product?.embroidery.slice(1)}
+          </p>
+          <p className="text-gray-700 leading-relaxed my-0.5">
+            <span className="font-bold">Weight: </span>
+            {product?.weight}
+          </p>
+
+          <hr className="my-4 border-gray-200" />
+          <p>
+            <span className="font-bold">Category: </span>
+            {product?.category[0].toUpperCase() + product?.category.slice(1)}
           </p>
         </div>
       </div>
       <Reviews
-        reviews={[
-          {
-            name: "John Doe",
-            email: "johndoe@gmail.com",
-            rating: 3,
-            title: "Great Product",
-            review:
-              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio voluptates dolorum repudiandae reiciendis. Cumque illo quo blanditiis fugiat, earum culpa, nemo delectus error maiores repudiandae molestiae enim suscipit? Repellat, aperiam!",
-            created_at: new Date(),
-          },
-          {
-            name: "John Doe",
-            email: "johndoe@gmail.com",
-            rating: 1,
-            title: "Great Product",
-            review:
-              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio voluptates dolorum repudiandae reiciendis. Cumque illo quo blanditiis fugiat, earum culpa, nemo delectus error maiores repudiandae molestiae enim suscipit? Repellat, aperiam!",
-            created_at: new Date(),
-          },
-          {
-            name: "John Doe",
-            email: "johndoe@gmail.com",
-            rating: 2,
-            title: "Great Product",
-            review:
-              "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio voluptates dolorum repudiandae reiciendis. Cumque illo quo blanditiis fugiat, earum culpa, nemo delectus error maiores repudiandae molestiae enim suscipit? Repellat, aperiam!",
-            created_at: new Date(),
-          },
-        ]}
-        userEmail="johndoe@gmail.com"
-        onSubmitReview={() => {}}
-        onDeleteReview={() => {}}
+        reviews={product?.reviews}
+        userEmail={user?.email || ""}
+        onSubmitReview={async (review) => {
+          try {
+            await axios.put(`http://localhost:3000/api/product/${id}`, {
+              reviews: [
+                ...product.reviews,
+                {
+                  name: user?.name,
+                  email: user?.email,
+                  ...review,
+                  created_at: new Date(),
+                },
+              ],
+            });
+            getProduct();
+            toast.success("Review posted");
+          } catch (error) {
+            console.log(error);
+          }
+        }}
+        onDeleteReview={async (index) => {
+          try {
+            const reviews = product.reviews;
+            reviews.splice(index, 1);
+            await axios.put(`http://localhost:3000/api/product/${id}`, {
+              reviews,
+            });
+            getProduct();
+            toast.success("Review deleted");
+          } catch (error) {
+            console.log(error);
+          }
+        }}
         className="mt-10"
       />
     </div>

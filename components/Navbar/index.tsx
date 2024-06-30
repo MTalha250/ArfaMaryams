@@ -48,7 +48,7 @@ const Navbar = () => {
       className={
         scroll || pathname !== "/"
           ? "z-50 fixed bg-white text-black shadow-lg px-8 py-5 w-full flex items-center justify-between"
-          : "z-50 fixed bg-transparent text-white px-8 py-5 w-full flex items-center justify-between"
+          : "z-50 fixed bg-transparent text-[#FDF8ED] px-8 py-5 w-full flex items-center justify-between"
       }
     >
       <Link
@@ -56,12 +56,13 @@ const Navbar = () => {
         className="flex items-center justify-center  d transition-colors duration-300"
       >
         <img src={logo.src} alt="logo" className="w-10" />
-        <span className="ml-2 font-semibold text-xl">
-          Style
-          <span className="text-2xl text-primary font-bask italic font-bold">
-            Sync
+        <h1 className="ml-2 font-semibold sm:text-xl">
+          Arfa
+          <span className="text-gray-400 font-bask italic font-bold">&</span>
+          <span className="text-lg sm:text-2xl text-primary font-bask italic font-bold">
+            Maryam's
           </span>
-        </span>
+        </h1>
       </Link>
       <ul className="font-bold items-center justify-center space-x-5 lg:space-x-10 md:flex hidden">
         {navLinks.map((link, index) => (

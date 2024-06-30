@@ -15,6 +15,16 @@ const productSchema = new mongoose.Schema(
       required: true,
       default: [],
     },
+    sizes: {
+      type: Array,
+      required: true,
+      default: [],
+    },
+    colors: {
+      type: Array,
+      required: true,
+      default: [],
+    },
     category: {
       type: String,
       required: true,
@@ -26,7 +36,28 @@ const productSchema = new mongoose.Schema(
     },
     description: {
       type: String,
-      required: true,
+    },
+    fabric: {
+      type: String,
+    },
+    trouser: {
+      type: String,
+    },
+    inner: {
+      type: String,
+    },
+    dopatta: {
+      type: String,
+    },
+    embroidery: {
+      type: String,
+    },
+    weight: {
+      type: Number,
+    },
+    reviews: {
+      type: Array,
+      default: [],
     },
   },
   {

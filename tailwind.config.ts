@@ -22,8 +22,8 @@ const config = {
         bask: ["Libre Baskerville", "serif"],
       },
       colors: {
-        primary: "#E17489",
-        secondary: "#1A1A1A",
+        primary: "#FA89A9",
+        secondary: "#202E38",
       },
       keyframes: {
         "accordion-down": {

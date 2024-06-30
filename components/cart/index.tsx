@@ -3,6 +3,7 @@ import { MdOutlineShoppingBag } from "react-icons/md";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useCartStore } from "@/store/cartStore";
@@ -61,6 +62,8 @@ const Cart = () => {
                           item.images[0] ||
                           "https://via.placeholder.com/150?text=No+Image"
                         }
+                        size={item.size}
+                        color={item.color}
                         quantity={item.quantity}
                       />
                     ))}
@@ -91,12 +94,11 @@ const Cart = () => {
                         .00
                       </p>
                     </div>
-                    <Link
-                      href="/checkout"
-                      className="flex justify-center items-center mt-5 w-full rounded-full py-2 px-3 border border-black bg-transparent text-black dark:border-white relative group transition duration-200"
-                    >
-                      <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />
-                      <span className="relative font-semibold">Checkout</span>
+                    <Link href="/checkout" className="rounded-full block mt-5">
+                      <DropdownMenuItem className="cursor-pointer flex justify-center items-center w-full rounded-full py-2 px-3 border border-black bg-transparent text-black dark:border-white relative group transition duration-200">
+                        <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />
+                        <span className="relative font-semibold">Checkout</span>
+                      </DropdownMenuItem>
                     </Link>
                   </div>
                 </div>

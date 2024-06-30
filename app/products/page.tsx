@@ -40,15 +40,15 @@ const page = () => {
           <h1 className="font-bold text-2xl text-center mb-5">Filters</h1>
           <label className="flex items-center gap-2">
             <Checkbox />
-            <h2 className="font-semibold">Shirts</h2>
+            <h2 className="font-semibold">Formals</h2>
           </label>
           <label className="flex items-center gap-2 my-2">
             <Checkbox />
-            <h2 className="font-semibold">Trousers</h2>
+            <h2 className="font-semibold">Semi-Formals</h2>
           </label>
           <label className="flex items-center gap-2">
             <Checkbox />
-            <h2 className="font-semibold">Suits</h2>
+            <h2 className="font-semibold">Casuals</h2>
           </label>
 
           <p className="mt-5 font-semibold text-sm">Price Range (PKR):</p>
@@ -62,7 +62,7 @@ const page = () => {
             ruler={false}
             style={{ border: "none", boxShadow: "none", padding: "15px 10px" }}
             barLeftColor="#E1E1E1"
-            barInnerColor="#E17489"
+            barInnerColor="#fcb6c4"
             barRightColor="#E1E1E1"
             thumbLeftColor="white"
             thumbRightColor="white"
@@ -103,15 +103,15 @@ const page = () => {
               <h1 className="font-bold text-2xl text-center mb-5">Filters</h1>
               <label className="flex items-center gap-2">
                 <Checkbox />
-                <h2 className="font-semibold">Shirts</h2>
+                <h2 className="font-semibold">Formals</h2>
               </label>
               <label className="flex items-center gap-2 my-2">
                 <Checkbox />
-                <h2 className="font-semibold">Trousers</h2>
+                <h2 className="font-semibold">Semi-Formals</h2>
               </label>
               <label className="flex items-center gap-2">
                 <Checkbox />
-                <h2 className="font-semibold">Suits</h2>
+                <h2 className="font-semibold">Casuals</h2>
               </label>
 
               <p className="mt-5 font-semibold text-sm">Price Range (PKR):</p>
@@ -129,7 +129,7 @@ const page = () => {
                   padding: "15px 10px",
                 }}
                 barLeftColor="#E1E1E1"
-                barInnerColor="#E17489"
+                barInnerColor="#fcb6c4"
                 barRightColor="#E1E1E1"
                 thumbLeftColor="white"
                 thumbRightColor="white"
@@ -159,6 +159,8 @@ const page = () => {
                   name={product.name}
                   description={product.description}
                   price={product.price}
+                  sizes={product.sizes}
+                  colors={product.colors}
                 />
               ))}
             </div>

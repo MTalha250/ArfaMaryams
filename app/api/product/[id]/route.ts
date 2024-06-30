@@ -9,15 +9,39 @@ export async function PUT(
   await dbConnect();
   try {
     const { id } = params;
-    const { name, price, images, category, stock, description } =
-      await request.json();
+    const {
+      name,
+      price,
+      images,
+      sizes,
+      colors,
+      category,
+      stock,
+      description,
+      fabric,
+      trouser,
+      inner,
+      dopatta,
+      embroidery,
+      weight,
+      reviews,
+    } = await request.json();
     const product = await Product.findByIdAndUpdate(id, {
       name,
       price,
       images,
+      sizes,
+      colors,
       category,
       stock,
       description,
+      fabric,
+      trouser,
+      inner,
+      dopatta,
+      embroidery,
+      weight,
+      reviews,
     });
     return NextResponse.json(
       {

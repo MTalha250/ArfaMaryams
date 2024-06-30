@@ -3,9 +3,18 @@ type Product = {
   name: string;
   price: number;
   images: string[];
+  sizes: string[];
+  colors: string[];
   category: string;
   stock: number;
   description: string;
+  fabric: string;
+  trouser: string;
+  inner: string;
+  dopatta: string;
+  embroidery: string;
+  weight: number;
+  reviews: [];
   createdAt: string;
   updatedAt: string;
 };

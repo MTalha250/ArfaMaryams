@@ -6,6 +6,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import toast from "react-hot-toast";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 interface Review {
   name: string;
@@ -13,7 +16,7 @@ interface Review {
   rating: number;
   title: string;
   review: string;
-  created_at: Date;
+  created_at: string;
 }
 
 interface ReviewsProps {
@@ -31,6 +34,9 @@ const Reviews: React.FC<ReviewsProps> = ({
   onDeleteReview,
   className = "",
 }) => {
+  const { data } = useSession();
+  const user = data?.user;
+  const router = useRouter();
   const [hover, setHover] = useState<number>(-1);
   const [review, setReview] = useState<Partial<Review>>({
     rating: 0,
@@ -58,6 +64,10 @@ const Reviews: React.FC<ReviewsProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (review.rating === 0 || review.title === "" || review.review === "") {
+      toast.error("Please fill all the fields");
+      return;
+    }
     onSubmitReview(review);
     setReview({ rating: 0, title: "", review: "" });
   };
@@ -102,9 +112,24 @@ const Reviews: React.FC<ReviewsProps> = ({
       >
         Reviews
       </h1>
+      {!user && (
+        <p className="text-sm text-center text-gray-500">
+          Please{" "}
+          <button
+            onClick={() => router.push("/login")}
+            className="text-primary underline"
+          >
+            login
+          </button>{" "}
+          to write a review
+        </p>
+      )}
       <Accordion type="multiple">
         <AccordionItem value="write-review">
-          <AccordionTrigger className="border-b border-gray-500 w-full flex flex-col sm:flex-row justify-between p-3">
+          <AccordionTrigger
+            disabled={!user}
+            className="border-b border-gray-500 w-full flex flex-col sm:flex-row justify-between p-3"
+          >
             <div className="mb-3 sm:mb-0 flex items-center w-full">
               <div className="flex">
                 {renderStars(
@@ -118,7 +143,7 @@ const Reviews: React.FC<ReviewsProps> = ({
               <span className="ml-2">({reviews.length})</span>
             </div>
             <button className="text-sm py-1.5 px-2.5 bg-gray-500 text-white flex items-center gap-2 shrink-0 mx-2">
-              <FaEdit /> WRITE A REVIEW
+              <FaEdit /> Write a Review
             </button>
           </AccordionTrigger>
           <AccordionContent>
@@ -173,40 +198,46 @@ const Reviews: React.FC<ReviewsProps> = ({
       </Accordion>
       <div className="sm:p-2 my-5">
         {reviews.length > 0 ? (
-          reviews.map((d, i) => (
-            <div
-              className="w-full border-b border-black py-3 group flex gap-2"
-              key={i}
-            >
-              <span className="shrink-0 text-center leading-10 font-bold text-white h-10 w-10 bg-primary rounded-full mt-1">
-                {d.name.slice(0, 1)}
-              </span>
-              <div className="w-full flex flex-col space-y-0.5">
-                <h2 className="flex justify-between font-bold text-primary">
-                  <span>{d.name}</span>
-                  <span className="text-gray-500 text-xs">
-                    {d.created_at.toLocaleDateString()}
-                  </span>
-                </h2>
-                <div className="items-center w-full flex justify-between">
-                  <div className="flex">{renderStars(d.rating, true)}</div>
-                  {d.email === userEmail && (
-                    <button
-                      className="text-gray-500 invisible group-hover:visible"
-                      onClick={() => onDeleteReview(i)}
-                    >
-                      <FaTrashAlt />
-                    </button>
-                  )}
+          reviews
+            .sort(
+              (a, b) =>
+                new Date(b.created_at).getTime() -
+                new Date(a.created_at).getTime()
+            )
+            .map((d, i) => (
+              <div
+                className="w-full border-b border-black py-3 group flex gap-2"
+                key={i}
+              >
+                <span className="shrink-0 text-center leading-10 font-bold text-white h-10 w-10 bg-primary rounded-full mt-1">
+                  {d.name.slice(0, 1)}
+                </span>
+                <div className="w-full flex flex-col space-y-0.5">
+                  <h2 className="flex justify-between font-bold text-primary">
+                    <span>{d.name}</span>
+                    <span className="text-gray-500 text-xs">
+                      {d.created_at.slice(0, 10).split("-").reverse().join("-")}
+                    </span>
+                  </h2>
+                  <div className="items-center w-full flex justify-between">
+                    <div className="flex">{renderStars(d.rating, true)}</div>
+                    {d.email === userEmail && (
+                      <button
+                        className="text-gray-500 invisible group-hover:visible"
+                        onClick={() => onDeleteReview(i)}
+                      >
+                        <FaTrashAlt />
+                      </button>
+                    )}
+                  </div>
+                  <h3 className="font-semibold">{d.title}</h3>
+                  <p className="font-light text-sm">{d.review}</p>
                 </div>
-                <h3 className="font-semibold">{d.title}</h3>
-                <p className="font-light text-sm">{d.review}</p>
               </div>
-            </div>
-          ))
+            ))
         ) : (
           <p className="text-sm text-center text-gray-500">
-            BE THE FIRST TO WRITE A REVIEW
+            No reviews yet. Be the first one to write a review!
           </p>
         )}
       </div>

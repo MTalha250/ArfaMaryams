@@ -77,6 +77,8 @@ const page = () => {
         orderItems: items.map((item) => ({
           quantity: item.quantity,
           product: item.id,
+          size: item.size,
+          color: item.color,
         })),
         shippingAddress: {
           address: values.address,

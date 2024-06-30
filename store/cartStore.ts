@@ -20,9 +20,13 @@ export const useCartStore = create<CartStore>((set, get) => ({
   },
   addItem: async (item, userId, update) => {
     let new_items = get().items;
+    console.log(new_items);
     let found = false;
     new_items.forEach((cart_item) => {
-      if (cart_item.id === item.id) {
+      if (
+        cart_item.id + cart_item.size + cart_item.color ===
+        item.id + item.size + item.color
+      ) {
         found = true;
         cart_item.quantity++;
       }
@@ -39,17 +43,21 @@ export const useCartStore = create<CartStore>((set, get) => ({
     let new_items = get().items;
     let found = false;
     new_items.forEach((cart_item) => {
-      if (cart_item.id === id) {
+      if (cart_item.id + cart_item.size + cart_item.color === id) {
         found = true;
         if (cart_item.quantity > 1) {
           cart_item.quantity--;
         } else {
-          new_items = new_items.filter((item) => item.id !== id);
+          new_items = new_items.filter(
+            (item) => item.id + item.size + item.color !== id
+          );
         }
       }
     });
     if (!found) {
-      new_items = new_items.filter((item) => item.id !== id);
+      new_items = new_items.filter(
+        (item) => item.id + item.size + item.color !== id
+      );
     }
     await axios.put(`/api/update/${userId}`, { cart: new_items });
     set({ items: new_items });
@@ -57,7 +65,9 @@ export const useCartStore = create<CartStore>((set, get) => ({
   },
   deleteItem: async (id, userId, update) => {
     let new_items = get().items;
-    new_items = new_items.filter((item) => item.id !== id);
+    new_items = new_items.filter(
+      (item) => item.id + item.size + item.color !== id
+    );
     set({ items: new_items });
     await axios.put(`/api/update/${userId}`, { cart: new_items });
     update(new_items);
@@ -65,7 +75,7 @@ export const useCartStore = create<CartStore>((set, get) => ({
   addQuantity: async (id, userId, update) => {
     set((state) => ({
       items: state.items.map((i) =>
-        i.id === id ? { ...i, quantity: i.quantity + 1 } : i
+        i.id + i.size + i.color === id ? { ...i, quantity: i.quantity + 1 } : i
       ),
     }));
     await axios.put(`/api/update/${userId}`, { cart: get().items });
@@ -74,7 +84,7 @@ export const useCartStore = create<CartStore>((set, get) => ({
   getItemQuantity: (id) => {
     let quantity = 0;
     get().items.forEach((item) => {
-      if (item.id === id) {
+      if (item.id + item.size + item.color === id) {
         quantity = item.quantity;
       }
     });

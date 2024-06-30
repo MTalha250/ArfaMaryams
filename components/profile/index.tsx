@@ -294,7 +294,7 @@ const Profile = () => {
                     <h2 className="font-bold">Items:</h2>
                     {order.orderItems.map((item: any) => (
                       <div key={item._id} className="flex justify-between">
-                        <p>{item.product.name}</p>
+                        <p>{item.product?.name}</p>
                         <p>
                           {item.quantity} x {item.product.price} = PKR{" "}
                           {item.quantity * item.product.price}.00
