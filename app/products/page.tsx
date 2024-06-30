@@ -23,12 +23,14 @@ const page = () => {
     getProducts();
   }, []);
   const getProducts = async () => {
+    setLoading(true);
     try {
-      const response = await axios.get("http://localhost:3000/api/product");
+      const response = await axios.get("/api/product");
       setProducts(response.data.products);
-      setLoading(false);
     } catch (error) {
       console.log(error);
+    } finally {
+      setLoading(false);
     }
   };
 

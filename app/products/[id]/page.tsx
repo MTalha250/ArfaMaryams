@@ -125,9 +125,7 @@ const page = () => {
 
   const getProduct = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:3000/api/product/${id}`
-      );
+      const response = await axios.get(`/api/product/${id}`);
       setProduct(response.data.product);
       setLoading(false);
     } catch (error) {
@@ -399,7 +397,7 @@ const page = () => {
         userEmail={user?.email || ""}
         onSubmitReview={async (review) => {
           try {
-            await axios.put(`http://localhost:3000/api/product/${id}`, {
+            await axios.put(`/api/product/${id}`, {
               reviews: [
                 ...product.reviews,
                 {
@@ -420,7 +418,7 @@ const page = () => {
           try {
             const reviews = product.reviews;
             reviews.splice(index, 1);
-            await axios.put(`http://localhost:3000/api/product/${id}`, {
+            await axios.put(`/api/product/${id}`, {
               reviews,
             });
             getProduct();
