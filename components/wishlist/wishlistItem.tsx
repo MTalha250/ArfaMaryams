@@ -35,7 +35,7 @@ const WishlistItem = ({ id, name, price, image }: Props) => {
       </div>
       <button
         onClick={() => removeFromWishlist(id, user?.id, handleUpdate)}
-        className="transition duration-300 flex justify-center items-center text-white bg-primary hover:bg-yellow-600 w-5 h-5 rounded-full focus:outline-none"
+        className="transition duration-300 flex justify-center items-center text-white bg-primary hover:bg-pink-500 w-5 h-5 rounded-full focus:outline-none"
       >
         <IoIosClose />
       </button>
