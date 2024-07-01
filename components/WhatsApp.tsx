@@ -4,7 +4,7 @@ import { IoLogoWhatsapp } from "react-icons/io";
 const WhatsApp = () => {
   return (
     <a
-      className="shadow-[0_0_25px_#7a7a7a] fixed bottom-5 md:bottom-4 left-2 md:left-8 bg-primary p-2.5 rounded-full"
+      className="border fixed bottom-5 md:bottom-4 left-2 md:left-8 bg-primary p-2.5 rounded-full"
       href="https://wa.me/923214087600"
       target="_blank"
       rel="noopener noreferrer"
@@ -12,7 +12,7 @@ const WhatsApp = () => {
         zIndex: 1000,
       }}
     >
-      <IoLogoWhatsapp className="text-5xl text-black" />
+      <IoLogoWhatsapp className="text-4xl text-black" />
     </a>
   );
 };
