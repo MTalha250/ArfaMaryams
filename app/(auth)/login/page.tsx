@@ -53,7 +53,7 @@ const Login = () => {
       toast.error(result.error);
     } else {
       toast.success("Logged in successfully!");
-      router.back();
+      router.push("/");
       if (user) {
         initCart(user.cart);
         initWishlist(user.wishlist);
