@@ -111,11 +111,7 @@ function Card({
         </div>
 
         <p className="my-1 font-semibold truncate">{name}</p>
-        <p className="text-neutral-500 text-sm">
-          {description.length > 50
-            ? description.slice(0, 50) + "..."
-            : description}
-        </p>
+        <p className="text-neutral-500 text-sm truncate">{description}</p>
         <p className="my-1 text-primary">
           <span className="font-bold">PKR </span>
           {price}.00
