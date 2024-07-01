@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Form,
   FormControl,
@@ -100,9 +100,12 @@ const page = () => {
     setIsSubmitting(false);
     form.reset();
   }
-  // if (!user?.email || items.length === 0) {
-  //   router.push("/");
-  // }
+
+  useEffect(() => {
+    if (!user?.email || items.length === 0) {
+      router.push("/");
+    }
+  }, [user, items]);
 
   return (
     <div className="px-8 md:px-16 pt-32 pb-10 min-h-screen">
