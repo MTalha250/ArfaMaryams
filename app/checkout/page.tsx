@@ -44,7 +44,7 @@ const formSchema = z.object({
 const page = () => {
   const { data, update } = useSession();
   const { items, getTotalPrice, clearCart } = useCartStore();
-  const [paymentMethod, setPaymentMethod] = useState("card");
+  const [paymentMethod, setPaymentMethod] = useState("cod");
   const router = useRouter();
   const user = data?.user;
   const form = useForm<z.infer<typeof formSchema>>({
@@ -214,12 +214,33 @@ const page = () => {
                   onValueChange={(e) => setPaymentMethod(e)}
                 >
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="card" id="card" />
-                    <Label htmlFor="card">Credit Card</Label>
+                    <RadioGroupItem value="bank" id="bank" />
+                    <Label htmlFor="bank">Bank Transfer</Label>
                   </div>
+                  {paymentMethod == "bank" && (
+                    <div className="my-1 p-2  border border-black">
+                      <p className="text-xs">
+                        Account Name: ZANIB ASHFAQ
+                        <br />
+                        Bank: Meezan Bank
+                        <br />
+                        Account: 02810109206117
+                        <br />
+                        IBAN: PK92MEZN0002810109206117
+                      </p>
+                      <p className="text-xs mt-2 font-semibold">
+                        Note: <br />
+                        After making the payment, please send the screenshot of
+                        the transaction to our WhatsApp number: <br />
+                        <a href="wa.me/923214087600" className="text-primary">
+                          +92 321 4087600
+                        </a>
+                      </p>
+                    </div>
+                  )}
                   <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="cash" id="cash" />
-                    <Label htmlFor="cash">Cash on Delivery (COD)</Label>
+                    <RadioGroupItem value="cod" id="cod" />
+                    <Label htmlFor="cod">Cash on Delivery (COD)</Label>
                   </div>
                 </RadioGroup>
               </div>
@@ -249,8 +270,11 @@ const page = () => {
                   className="w-20 h-20 object-cover rounded float-left mr-3.5"
                 />
                 <h1 className="font-semibold text-sm">{item.name}</h1>
-                <h1 className="text-sm">Size: sm</h1>
-                <h1 className="text-sm">Qty: {item.quantity}</h1>
+                <h1 className="text-xs">Size: {item.size.toUpperCase()}</h1>
+                <h1 className="text-xs">
+                  Color: {item.color[0].toUpperCase() + item.color.slice(1)}
+                </h1>
+                <h1 className="text-xs">Qty: {item.quantity}</h1>
               </div>
               <span className="text-sm font-bold">{item.price} PKR</span>
             </div>
@@ -266,7 +290,7 @@ const page = () => {
                 {getTotalPrice() > 5000 ? (
                   <span className="font-semibold text-green-600">Free</span>
                 ) : (
-                  "PKR 250.00"
+                  "250 PKR"
                 )}
               </p>
             </div>
