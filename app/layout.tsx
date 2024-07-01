@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 import { SessionProvider } from "next-auth/react";
+import WhatsApp from "@/components/WhatsApp";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
@@ -32,6 +33,7 @@ export default function RootLayout({
               },
             }}
           />
+          <WhatsApp />
         </SessionProvider>
       </body>
     </html>
