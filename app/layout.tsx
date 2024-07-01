@@ -26,10 +26,12 @@ export default function RootLayout({
           <div>{children}</div>
           <Footer />
           <Toaster
+            position="bottom-right"
             toastOptions={{
+              duration: 5000,
               style: {
-                bottom: "1rem",
-                right: "1rem",
+                background: "#212F38",
+                color: "#FDF8EC",
               },
             }}
           />

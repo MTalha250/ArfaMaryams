@@ -69,7 +69,7 @@ function Card({
     });
   };
   return (
-    <div className="relative group">
+    <div className="relative group w-full">
       <Link
         href={`/products/${id}`}
         className="block text-black border p-3 rounded-lg shadow-md"
@@ -77,34 +77,34 @@ function Card({
         <div className="relative">
           <div
             id="imgs"
-            className="w-full flex overflow-x-auto snap-x snap-mandatory scrollbar-none"
+            className="w-full h-[50vh] flex overflow-x-auto snap-x snap-mandatory scrollbar-none"
           >
             {img && (
               <img
                 src={img}
                 alt=""
-                className="w-full snap-start snap-always shrink-0"
+                className="w-full h-full snap-start snap-always shrink-0"
               />
             )}
             {img2 && (
               <img
                 src={img2}
                 alt=""
-                className="w-full snap-start snap-always shrink-0"
+                className="w-full h-full snap-start snap-always shrink-0"
               />
             )}
             {img3 && (
               <img
                 src={img3}
                 alt=""
-                className="w-full snap-start snap-always shrink-0"
+                className="w-full h-full snap-start snap-always shrink-0"
               />
             )}
             {img4 && (
               <img
                 src={img4}
                 alt=""
-                className="w-full snap-start snap-always shrink-0"
+                className="w-full h-full snap-start snap-always shrink-0"
               />
             )}
           </div>
