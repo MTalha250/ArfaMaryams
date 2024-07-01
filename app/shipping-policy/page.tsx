@@ -1,47 +1,98 @@
 import React from "react";
 
-const ShippingPolicy: React.FC = () => {
+const ShippingPolicy = () => {
   return (
-    <div className="bg-[#FCF9EE] pt-32 pb-10 px-8 md:px-16 min-h-screen">
-      <h1 className="text-4xl font-bold mb-8 text-center text-primary underline">
-        Shipping Policy
-      </h1>
-      <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-xl">
-        <p className="text-lg mb-6">
-          <span className="font-semibold">Pakistan:</span> Up to 3 - 5 working
-          days. <br />
-          <span className="font-semibold">International:</span> Up to 1 - 2
-          weeks.
+    <div className="bg-gray-50 pt-32 pb-10 px-8 md:px-16">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-extrabold text-gray-900">
+          Shipping Policy
+        </h1>
+        <p className="mt-4 text-lg text-gray-700">
+          Learn more about our shipping process and policies.
         </p>
-        <p className="text-md leading-relaxed">
-          At Arfa & Maryam's, we are committed to providing you with the best
-          shopping experience. We understand the excitement of receiving your
-          purchase and strive to process and ship your orders as quickly as
-          possible. Our dedicated team ensures that your items are carefully
-          packaged and dispatched promptly to reach you in perfect condition.
-        </p>
-        <p className="text-md leading-relaxed mt-4">
-          For our customers in Pakistan, we offer a delivery timeframe of up to
-          3 - 5 working days. For international orders, delivery can take up to
-          1 - 2 weeks, depending on your location and local customs procedures.
-        </p>
-        <p className="text-md leading-relaxed mt-4">
-          Please note that while we aim to meet the estimated delivery times, we
-          cannot guarantee them. Delays may occur due to unforeseen
-          circumstances with the delivery company or customs processes for
-          international orders. Arfa & Maryam's is not responsible for any such
-          delays.
-        </p>
-        <p className="text-md leading-relaxed mt-4">
-          If you experience any significant delays or issues with your delivery,
-          please contact our customer service team. We are here to assist you
-          and ensure that your shopping experience with Arfa & Maryam's is
-          smooth and satisfactory.
-        </p>
-        <p className="text-md leading-relaxed mt-4">
-          Thank you for choosing Arfa & Maryam's. We appreciate your business
-          and look forward to serving you again.
-        </p>
+      </div>
+
+      <div className="bg-white rounded-lg shadow-2xl p-5 sm:p-10">
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+            Processing Time
+          </h2>
+          <p className="text-gray-600">
+            All orders are processed within 1-2 business days. Orders are not
+            shipped or delivered on weekends or holidays.
+          </p>
+        </div>
+
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+            Shipping Rates & Delivery Estimates
+          </h2>
+          <p className="text-gray-600 mb-4">
+            Shipping charges for your order will be calculated and displayed at
+            checkout.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="min-w-full bg-white border border-gray-200 rounded-lg">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="py-3 px-4 border-b">Shipping</th>
+                  <th className="py-3 px-4 border-b">
+                    Estimated Delivery Time
+                  </th>
+                  <th className="py-3 px-4 border-b">Shipping Cost</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="py-3 px-4 border-b">Pakistan</td>
+                  <td className="py-3 px-4 border-b">3-5 business days</td>
+                  <td className="py-3 px-4 border-b">
+                    Based on product weight
+                  </td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-4 border-b">International</td>
+                  <td className="py-3 px-4 border-b">1-2 weeks</td>
+                  <td className="py-3 px-4 border-b">
+                    Based on product weight
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+            Shipment Confirmation & Order Tracking
+          </h2>
+          <p className="text-gray-600">
+            You will receive a Shipment Confirmation email once your order has
+            shipped containing your tracking number(s). The tracking number will
+            be active within 24 hours.
+          </p>
+        </div>
+
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+            Customs, Duties, and Taxes
+          </h2>
+          <p className="text-gray-600">
+            Arfa & Maryam's is not responsible for any customs and taxes applied
+            to your order. All fees imposed during or after shipping are the
+            responsibility of the customer (tariffs, taxes, etc.).
+          </p>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">Damages</h2>
+          <p className="text-gray-600">
+            Arfa & Maryam's is not liable for any products damaged or lost
+            during shipping. If you received your order damaged, please contact
+            the shipment carrier to file a claim. Please save all packaging
+            materials and damaged goods before filing a claim.
+          </p>
+        </div>
       </div>
     </div>
   );

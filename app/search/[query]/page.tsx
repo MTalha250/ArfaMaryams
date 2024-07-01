@@ -32,6 +32,12 @@ const page = () => {
 
   return (
     <div className="pt-32 px-8 md:px-16">
+      <div className="text-center mb-12 flex flex-col items-center">
+        <h1 className="text-4xl font-bold text-gray-800">Search</h1>
+        <p className="mt-4 text-lg text-gray-600 max-w-xl">
+          You can search for products by name, description, color, or size.
+        </p>
+      </div>
       <div className="flex gap-3 sm:gap-10 w-full items-end">
         <h2 className="font-semibold shrink-0 border p-2 text-xs sm:text-sm">
           {products.length} {products.length > 1 ? "Products" : "Product"}

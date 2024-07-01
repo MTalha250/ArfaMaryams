@@ -67,7 +67,14 @@ const page = () => {
 
   return (
     <div className="pt-32 px-8 md:px-16">
-      <h1 className="font-bold text-4xl text-center">All Products</h1>
+      <div className="text-center mb-12 flex flex-col items-center">
+        <h1 className="text-4xl font-bold text-gray-800">All products</h1>
+        <p className="mt-4 text-lg text-gray-600 max-w-xl">
+          Explore our diverse range, from formal wear to casual attire. Find the
+          perfect outfit for any occasion.
+        </p>
+      </div>
+
       <div className="flex my-10">
         <div className="hidden md:block md:w-1/4 lg:w-1/5 shrink-0 pr-5">
           <h1 className="font-bold text-2xl text-center mb-5">Filters</h1>
