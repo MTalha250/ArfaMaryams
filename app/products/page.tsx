@@ -285,6 +285,7 @@ const page = () => {
                     price={product.price}
                     sizes={product.sizes}
                     colors={product.colors}
+                    stock={product.stock}
                   />
                 ))}
               </div>

@@ -290,70 +290,80 @@ const page = () => {
                 <MdFavoriteBorder className="text-2xl group-hover:scale-125 transition duration-200" />
               )}
             </button>
-            <div className="flex items-center text-lg text-gray-800 border w-fit">
+            {product?.stock > 0 && (
+              <div className="flex items-center text-lg text-gray-800 border w-fit">
+                <button
+                  className="py-1 px-2"
+                  disabled={count <= 1}
+                  onClick={() => {
+                    if (count > 1) {
+                      setCount(count - 1);
+                    }
+                  }}
+                >
+                  -
+                </button>
+                <span className="font-bold border-x py-1 px-2 inline-block">
+                  {count}
+                </span>
+                <button
+                  className="py-1 px-2"
+                  disabled={count >= product?.stock}
+                  onClick={() => {
+                    setCount(count + 1);
+                  }}
+                >
+                  +
+                </button>
+              </div>
+            )}
+            {product?.stock > 0 ? (
               <button
-                className="py-1 px-2"
                 onClick={() => {
-                  if (count > 1) {
-                    setCount(count - 1);
+                  if (user) {
+                    if (!size || !color) {
+                      toast.error("Please select size and color");
+                      return;
+                    }
+                    if (!size) {
+                      toast.error("Please select size");
+                      return;
+                    }
+                    if (!color) {
+                      toast.error("Please select color");
+                      return;
+                    }
+                    for (let i = 0; i < count; i++) {
+                      addItem(
+                        {
+                          id,
+                          images: product?.images,
+                          name: product?.name,
+                          price: product?.price,
+                          size,
+                          color,
+                        },
+                        user.id,
+                        handleUpdate
+                      );
+                    }
+                    toast.success("Added to cart");
+                    setSize("");
+                    setColor("");
+                  } else {
+                    toast.error("Please login to add to cart");
+                    router.push("/login");
                   }
                 }}
+                className="group animate-shimmer items-center justify-center border border-primary bg-[linear-gradient(110deg,#E17489,40%,#E1E1E1,60%,#E17489)] bg-[length:200%_100%] px-6 py-2 font-medium text-black transition-colors"
               >
-                -
+                <MdOutlineShoppingBag className="text-2xl group-hover:scale-125 transition duration-200" />
               </button>
-              <span className="font-bold border-x py-1 px-2 inline-block">
-                {count}
-              </span>
-              <button
-                className="py-1 px-2"
-                onClick={() => {
-                  setCount(count + 1);
-                }}
-              >
-                +
-              </button>
-            </div>
-            <button
-              onClick={() => {
-                if (user) {
-                  if (!size || !color) {
-                    toast.error("Please select size and color");
-                    return;
-                  }
-                  if (!size) {
-                    toast.error("Please select size");
-                    return;
-                  }
-                  if (!color) {
-                    toast.error("Please select color");
-                    return;
-                  }
-                  for (let i = 0; i < count; i++) {
-                    addItem(
-                      {
-                        id,
-                        images: product?.images,
-                        name: product?.name,
-                        price: product?.price,
-                        size,
-                        color,
-                      },
-                      user.id,
-                      handleUpdate
-                    );
-                  }
-                  toast.success("Added to cart");
-                  setSize("");
-                  setColor("");
-                } else {
-                  toast.error("Please login to add to cart");
-                  router.push("/login");
-                }
-              }}
-              className="group animate-shimmer items-center justify-center border border-primary bg-[linear-gradient(110deg,#E17489,40%,#E1E1E1,60%,#E17489)] bg-[length:200%_100%] px-6 py-2 font-medium text-black transition-colors"
-            >
-              <MdOutlineShoppingBag className="text-2xl group-hover:scale-125 transition duration-200" />
-            </button>
+            ) : (
+              <p className="group items-center justify-center border border-black bg-neutral-300 px-6 py-2 font-medium text-black transition-colors">
+                Out of Stock
+              </p>
+            )}
           </div>
           <p className="text-sm text-gray-700 leading-relaxed text-justify">
             {product?.description}

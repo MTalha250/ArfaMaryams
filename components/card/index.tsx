@@ -27,6 +27,7 @@ interface Props {
   price: number;
   sizes: string[];
   colors: string[];
+  stock: number;
 }
 
 function Card({
@@ -40,6 +41,7 @@ function Card({
   price,
   sizes,
   colors,
+  stock,
 }: Props) {
   const { inWishlist, addToWishlist, removeFromWishlist } = useWishlistStore();
   const { data, update } = useSession();
@@ -114,112 +116,94 @@ function Card({
             ? description.slice(0, 50) + "..."
             : description}
         </p>
-        <p className="my-1 font-light">PKR {price}.00</p>
+        <p className="my-1 text-primary">
+          <span className="font-bold">PKR </span>
+          {price}.00
+        </p>
       </Link>
-      <DropdownMenu>
-        <DropdownMenuTrigger className="hover:bg-primary opacity-0 group-hover:opacity-100 z-10 absolute bg-primary/80 w-10 h-10 rounded-full bottom-28 left-[40%] transform -translate-x-1/2 flex justify-center items-center shadow-md transitioon duration-300">
-          <span className="text-white text-xl">+</span>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="p-5">
-          <div className="mb-5 flex gap-3 items-center">
-            <p className="text-gray-600">Size:</p>
-            <div className="flex gap-2">
-              {sizes.map((s: string) => (
-                <button
-                  key={s}
-                  className={`px-3 py-1 text-sm rounded-md border border-gray-300 ${
-                    s == size ? "bg-primary text-white" : ""
-                  }`}
-                  onClick={() => setSize(s)}
-                >
-                  {s.toUpperCase()}
-                </button>
-              ))}
+      {stock > 0 && (
+        <DropdownMenu>
+          <DropdownMenuTrigger className="hover:bg-primary opacity-0 group-hover:opacity-100 z-10 absolute bg-primary/80 w-10 h-10 rounded-full bottom-28 left-[40%] transform -translate-x-1/2 flex justify-center items-center shadow-md transitioon duration-300">
+            <span className="text-white text-xl">+</span>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="p-5">
+            <div className="mb-5 flex gap-3 items-center">
+              <p className="text-gray-600">Size:</p>
+              <div className="flex gap-2">
+                {sizes.map((s: string) => (
+                  <button
+                    key={s}
+                    className={`px-3 py-1 text-sm rounded-md border border-gray-300 ${
+                      s == size ? "bg-primary text-white" : ""
+                    }`}
+                    onClick={() => setSize(s)}
+                  >
+                    {s.toUpperCase()}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-          <div className="mb-5 flex gap-3 items-center">
-            <p className="text-gray-600">Color:</p>
-            <div className="flex gap-2">
-              {colors.map((c: string) => (
-                <button
-                  key={c}
-                  className={`px-3 py-1 text-sm rounded-md border border-gray-300 ${
-                    c == color ? "bg-primary text-white" : ""
-                  }`}
-                  onClick={() => setColor(c)}
-                >
-                  {c[0].toUpperCase() + c.slice(1)}
-                </button>
-              ))}
+            <div className="mb-5 flex gap-3 items-center">
+              <p className="text-gray-600">Color:</p>
+              <div className="flex gap-2">
+                {colors.map((c: string) => (
+                  <button
+                    key={c}
+                    className={`px-3 py-1 text-sm rounded-md border border-gray-300 ${
+                      c == color ? "bg-primary text-white" : ""
+                    }`}
+                    onClick={() => setColor(c)}
+                  >
+                    {c[0].toUpperCase() + c.slice(1)}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-          <DropdownMenuItem
-            onClick={() => {
-              if (user) {
-                if (!size || !color) {
-                  toast.error("Please select size and color");
-                  return;
+            <DropdownMenuItem
+              onClick={() => {
+                if (user) {
+                  if (!size || !color) {
+                    toast.error("Please select size and color");
+                    return;
+                  }
+                  if (!size) {
+                    toast.error("Please select size");
+                    return;
+                  }
+                  if (!color) {
+                    toast.error("Please select color");
+                    return;
+                  }
+                  addItem(
+                    {
+                      id,
+                      images: [img, img2, img3, img4],
+                      name,
+                      price,
+                      size,
+                      color,
+                    },
+                    user.id,
+                    handleUpdate
+                  );
+                  toast.success("Added to cart");
+                  setSize("");
+                  setColor("");
+                } else {
+                  toast.error("Please login to add to cart");
+                  router.push("/login");
                 }
-                if (!size) {
-                  toast.error("Please select size");
-                  return;
-                }
-                if (!color) {
-                  toast.error("Please select color");
-                  return;
-                }
-                addItem(
-                  {
-                    id,
-                    images: [img, img2, img3, img4],
-                    name,
-                    price,
-                    size,
-                    color,
-                  },
-                  user.id,
-                  handleUpdate
-                );
-                toast.success("Added to cart");
-                setSize("");
-                setColor("");
-              } else {
-                toast.error("Please login to add to cart");
-                router.push("/login");
-              }
-            }}
-            className="mt-5 ml-auto flex justify-center border py-1 border-black bg-transparent text-black  dark:border-white relative group transition duration-200"
-          >
-            <div className="absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
-            <span className="relative text-sm font-semibold py-1 px-2">
-              Add to Cart
-            </span>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-      {/* <button
-        onClick={() => {
-          if (user) {
-            addItem(
-              {
-                id,
-                images: [img, img2, img3, img4],
-                name,
-                price,
-              },
-              user.id,
-              handleUpdate
-            );
-            toast.success("Added to cart");
-          } else {
-            toast.error("Please login to add to cart");
-            router.push("/login");
-          }
-        }}
-        className="hover:bg-primary opacity-0 group-hover:opacity-100 z-10 absolute bg-primary/80 w-10 h-10 rounded-full bottom-28 left-[40%] transform -translate-x-1/2 flex justify-center items-center shadow-md transitioon duration-300"
-      >
-        <span className="text-white text-xl">+</span>
-      </button> */}
+              }}
+              className="mt-5 ml-auto flex justify-center border py-1 border-black bg-transparent text-black  dark:border-white relative group transition duration-200"
+            >
+              <div className="absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
+              <span className="relative text-sm font-semibold py-1 px-2">
+                Add to Cart
+              </span>
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      )}
       <button
         onClick={() => {
           if (user) {
@@ -244,7 +228,10 @@ function Card({
             router.push("/login");
           }
         }}
-        className="hover:bg-primary opacity-0 group-hover:opacity-100 z-10 absolute bg-primary/80 w-10 h-10 rounded-full bottom-28 left-[60%] transform -translate-x-1/2 flex justify-center items-center shadow-md transitioon duration-300"
+        className={
+          "hover:bg-primary opacity-0 group-hover:opacity-100 z-10 absolute bg-primary/80 w-10 h-10 rounded-full bottom-28 transform -translate-x-1/2 flex justify-center items-center shadow-md transition duration-300 " +
+          (stock > 0 ? "left-[60%]" : "left-1/2")
+        }
       >
         {inWishlist(id) ? (
           <MdFavorite className="text-white text-xl" />
