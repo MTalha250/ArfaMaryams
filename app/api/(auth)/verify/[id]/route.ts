@@ -55,6 +55,7 @@ export const GET = async (
           margin-bottom: 30px;
         }
         a {
+          color:black;
           text-decoration: none;
           background-color: #FA89A9;
           padding: 10px 20px;
