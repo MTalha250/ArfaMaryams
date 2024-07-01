@@ -55,15 +55,14 @@ export const GET = async (
           margin-bottom: 30px;
         }
         a {
-          color: #ffffff;
           text-decoration: none;
-          background-color: #F4AE39;
+          background-color: #FA89A9;
           padding: 10px 20px;
           border-radius: 5px;
           transition: background-color 0.3s ease;
         }
         a:hover {
-          background-color: #0056b3;
+          background-color: #F86094;
         }
       </style>
       </head>
