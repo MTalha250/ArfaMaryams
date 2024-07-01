@@ -73,7 +73,7 @@ const page = () => {
       ) : products.length > 0 ? (
         <div>
           <h1 className="font-semibold text-lg sm:text-xl mt-10">
-            Showing results for: "{query}"
+            Showing results for: "{decodeURIComponent(query.toString())}"
           </h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mt-5 mb-10">
             {products.map((product: any) => (
