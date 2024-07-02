@@ -42,8 +42,8 @@ const page = () => {
         semiFormals: false,
         casuals: false,
         price: {
-          min: 0,
-          max: 10000,
+          min: 100,
+          max: 100000,
         },
       });
     } catch (error) {
