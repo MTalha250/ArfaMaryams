@@ -131,7 +131,7 @@ export const Hero = ({
       {areImagesLoaded && children}
       {areImagesLoaded && overlay && (
         <div
-          className={cn("absolute inset-0 bg-black/60 z-10", overlayClassName)}
+          className={cn("absolute inset-0 bg-black/70 z-10", overlayClassName)}
         />
       )}
 
