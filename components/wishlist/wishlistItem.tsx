@@ -30,8 +30,10 @@ const WishlistItem = ({ id, name, price, image }: Props) => {
         className="w-20 h-20 mr-4 object-cover rounded-md"
       />
       <div className="flex-1">
-        <h3 className="font-semibold mb-1">{name}</h3>
-        <p className="text-gray-600 text-sm">PKR {price}.00</p>
+        <h3 className="font-bold mb-1">{name}</h3>
+        <p className="text-primary font-semibold text-sm">
+          PKR {price.toLocaleString()}
+        </p>
       </div>
       <button
         onClick={() => removeFromWishlist(id, user?.id, handleUpdate)}

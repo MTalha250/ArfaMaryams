@@ -296,15 +296,20 @@ const Profile = () => {
                       <div key={item._id} className="flex justify-between">
                         <p>{item.product?.name}</p>
                         <p>
-                          {item.quantity} x {item.product.price} = PKR{" "}
-                          {item.quantity * item.product.price}.00
+                          {item.quantity} x{" "}
+                          {item.product.price.toLocaleString()} = PKR{" "}
+                          {(
+                            item.quantity * item.product.price
+                          ).toLocaleString()}
                         </p>
                       </div>
                     ))}
                   </div>
                   <div className="flex justify-between">
                     <h2 className="font-bold">Total</h2>
-                    <h2 className="font-bold">PKR {order.totalPrice}.00</h2>
+                    <h2 className="font-bold">
+                      PKR {order.totalPrice.toLocaleString()}
+                    </h2>
                   </div>
                   <div className="flex justify-between">
                     <h2 className="font-bold">Status</h2>
@@ -339,15 +344,20 @@ const Profile = () => {
                       <div key={item._id} className="flex justify-between">
                         <p>{item.product.name}</p>
                         <p>
-                          {item.quantity} x {item.product.price} = PKR{" "}
-                          {item.quantity * item.product.price}.00
+                          {item.quantity} x{" "}
+                          {item.product.price.toLocaleString()} = PKR{" "}
+                          {(
+                            item.quantity * item.product.price
+                          ).toLocaleString()}
                         </p>
                       </div>
                     ))}
                   </div>
                   <div className="flex justify-between">
                     <h2 className="font-bold">Total</h2>
-                    <h2 className="font-bold">PKR {order.totalPrice}.00</h2>
+                    <h2 className="font-bold">
+                      PKR {order.totalPrice.toLocaleString()}
+                    </h2>
                   </div>
                   <div className="flex justify-between">
                     <h2 className="font-bold">Status</h2>

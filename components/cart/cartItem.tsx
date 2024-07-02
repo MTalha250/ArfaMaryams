@@ -35,8 +35,10 @@ const CartItem = ({ id, name, price, image, size, color, quantity }: Props) => {
         className="w-20 h-20 mr-4 object-cover rounded-md"
       />
       <div className="flex-1">
-        <h3 className="font-semibold">{name}</h3>
-        <p className="text-gray-600 text-sm">PKR {price}.00</p>
+        <h3 className="font-bold">{name}</h3>
+        <p className="text-primary font-semibold text-sm">
+          PKR {price.toLocaleString()}
+        </p>
         <span className="text-gray-600 text-xs">
           Size: {size.toUpperCase()} |
         </span>

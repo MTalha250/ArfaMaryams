@@ -109,7 +109,13 @@ const page = () => {
 
   return (
     <div className="px-8 md:px-16 pt-32 pb-10 min-h-screen">
-      <h1 className="text-4xl font-bold mb-5">Checkout</h1>
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-extrabold text-gray-900">Checkout</h1>
+        <p className="mt-4 text-lg text-gray-700">
+          Fill in your details to place your order. We will deliver it to you as
+          soon as possible.
+        </p>
+      </div>
       <div className="flex flex-col md:flex-row gap-10">
         <div className="w-full">
           <Form {...form}>
@@ -284,13 +290,15 @@ const page = () => {
                 </h1>
                 <h1 className="text-xs">Qty: {item.quantity}</h1>
               </div>
-              <span className="text-sm font-bold">{item.price} PKR</span>
+              <span className="text-sm font-bold">
+                {item.price.toLocaleString()} PKR
+              </span>
             </div>
           ))}
           <div className="mt-10">
             <div className="flex justify-between">
               <p>Subtotal</p>
-              <p>{getTotalPrice()} PKR</p>
+              <p>{getTotalPrice().toLocaleString()} PKR</p>
             </div>
             <div className="flex justify-between">
               <p>Delivery</p>
@@ -304,7 +312,12 @@ const page = () => {
             </div>
             <div className="flex justify-between">
               <p>Total</p>
-              <p>{getTotalPrice() + (getTotalPrice() > 5000 ? 0 : 250)} PKR</p>
+              <p>
+                {(
+                  getTotalPrice() + (getTotalPrice() > 5000 ? 0 : 250)
+                ).toLocaleString()}{" "}
+                PKR
+              </p>
             </div>
           </div>
         </div>

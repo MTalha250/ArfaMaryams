@@ -14,15 +14,6 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { MdFavorite } from "react-icons/md";
 import { MdOutlineShoppingBag } from "react-icons/md";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 
 const page = () => {
   const { id } = useParams();
@@ -164,7 +155,10 @@ const page = () => {
             {product?.name}
           </h1>
           <p className="text-lg mb-2 text-gray-600">
-            Price: PKR {product?.price}.00
+            Price:{" "}
+            <span className="font-bold text-primary">
+              PKR {product?.price.toLocaleString()}
+            </span>
           </p>
           <div className="flex gap-3 items-center">
             <p className="text-gray-600">Size:</p>
@@ -182,7 +176,7 @@ const page = () => {
               ))}
             </div>
           </div>
-          <Drawer>
+          {/* <Drawer>
             <DrawerTrigger className="text-primary text-sm font-semibold mb-3 mt-1 underline">
               Size Chart
             </DrawerTrigger>
@@ -236,6 +230,109 @@ const page = () => {
               <p className="text-gray-500 font-semibold mt-10 text-center">
                 These size charts are for reference only, actual measurements
                 may vary from person to person, fabric to fabric, and fit wise.
+              </p>
+            </DrawerContent>
+          </Drawer> */}
+          <Drawer>
+            <DrawerTrigger className="text-primary text-sm font-semibold mb-3 mt-1 underline hover:text-primary-dark transition duration-300">
+              Size Chart
+            </DrawerTrigger>
+            <DrawerContent className="py-10 px-8 md:px-16 bg-white shadow-xl rounded-lg">
+              <div className="h-[65vh] overflow-auto p-6 bg-gradient-to-b from-gray-50 to-white rounded-lg shadow-inner">
+                <div className="flex flex-col md:flex-row gap-20 text-sm">
+                  <div className="w-full">
+                    <h2 className="text-xl font-semibold text-center mb-4 text-gray-500 underline">
+                      Shirt Size Chart
+                    </h2>
+                    <table className="min-w-full divide-y divide-gray-300 bg-white rounded-lg shadow-lg">
+                      <thead className="bg-gradient-to-r from-primary to-pink-500 text-white">
+                        <tr>
+                          <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider">
+                            Type
+                          </th>
+                          <th className="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider">
+                            Small
+                          </th>
+                          <th className="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider">
+                            Medium
+                          </th>
+                          <th className="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider">
+                            Large
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="bg-white divide-y divide-gray-200">
+                        {shirtLength.map((item) => (
+                          <tr
+                            key={item.type}
+                            className="hover:bg-gray-100 transition duration-300"
+                          >
+                            <td className="px-6 py-4 whitespace-nowrap font-semibold bg-gray-100">
+                              {item.type}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-center">
+                              {item.small}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-center">
+                              {item.medium}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-center">
+                              {item.large}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <div className="w-full">
+                    <h2 className="text-xl font-semibold text-center mb-4 text-gray-500 underline">
+                      Trouser Size Chart
+                    </h2>
+                    <table className="min-w-full divide-y divide-gray-300 bg-white rounded-lg shadow-lg">
+                      <thead className="bg-gradient-to-r from-primary to-pink-500 text-white">
+                        <tr>
+                          <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider">
+                            Type
+                          </th>
+                          <th className="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider">
+                            Small
+                          </th>
+                          <th className="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider">
+                            Medium
+                          </th>
+                          <th className="px-6 py-4 text-center text-xs font-bold uppercase tracking-wider">
+                            Large
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="bg-white divide-y divide-gray-200">
+                        {trouserLength.map((item) => (
+                          <tr
+                            key={item.type}
+                            className="hover:bg-gray-100 transition duration-300"
+                          >
+                            <td className="px-6 py-4 whitespace-nowrap font-semibold bg-gray-100">
+                              {item.type}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-center">
+                              {item.small}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-center">
+                              {item.medium}
+                            </td>
+                            <td className="px-6 py-4 whitespace-nowrap text-center">
+                              {item.large}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-500 font-semibold mt-10 text-center italic">
+                These size charts are for reference only. Actual measurements
+                may vary from person to person, fabric to fabric, and fit-wise.
               </p>
             </DrawerContent>
           </Drawer>
@@ -321,7 +418,7 @@ const page = () => {
               <button
                 onClick={() => {
                   if (user) {
-                    if (!size || !color) {
+                    if (!size && !color) {
                       toast.error("Please select size and color");
                       return;
                     }

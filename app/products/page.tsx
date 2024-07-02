@@ -283,16 +283,14 @@ const page = () => {
                   <Card
                     key={product._id}
                     id={product._id}
-                    img={product.images[0]}
-                    img2={product.images[1]}
-                    img3={product.images[2]}
-                    img4={product.images[3]}
+                    images={product.images}
                     name={product.name}
                     description={product.description}
                     price={product.price}
                     sizes={product.sizes}
                     colors={product.colors}
                     stock={product.stock}
+                    reviews={product.reviews}
                   />
                 ))}
               </div>

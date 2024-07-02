@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 import { MdFavoriteBorder } from "react-icons/md";
 import { MdFavorite } from "react-icons/md";
 import { useWishlistStore } from "@/store/wishlistStore";
+import { FaStar, FaRegStar } from "react-icons/fa";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,30 +20,26 @@ import {
 
 interface Props {
   id: string;
-  img: string | undefined;
-  img2: string | undefined;
-  img3: string | undefined;
-  img4: string | undefined;
+  images: string[];
   name: string;
   description: string;
   price: number;
   sizes: string[];
   colors: string[];
   stock: number;
+  reviews: any[];
 }
 
 function Card({
   id,
-  img,
-  img2,
-  img3,
-  img4,
+  images,
   name,
   description,
   price,
   sizes,
   colors,
   stock,
+  reviews,
 }: Props) {
   const { inWishlist, addToWishlist, removeFromWishlist } = useWishlistStore();
   const { data, update } = useSession();
@@ -68,58 +66,68 @@ function Card({
       },
     });
   };
+
+  const renderStars = (rating: number) => {
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      if (i < rating) {
+        stars.push(<FaStar key={i} className="text-primary" />);
+      } else {
+        stars.push(<FaRegStar key={i} className="text-primary" />);
+      }
+    }
+    return stars;
+  };
   return (
     <div className="relative group w-full">
       <Link
         href={`/products/${id}`}
-        className="block text-black border p-3 rounded-lg shadow-md"
+        className="block text-black border p-5 rounded-lg shadow-md"
       >
         <div className="relative">
           <div
             id="imgs"
-            className="w-full h-[50vh] flex overflow-x-auto snap-x snap-mandatory scrollbar-none"
+            className="w-full h-[48vh] flex overflow-x-auto snap-x snap-mandatory scrollbar-none"
           >
-            {img && (
+            {images.map((img, i) => (
               <img
                 src={img}
                 alt=""
                 className="w-full h-full snap-start snap-always shrink-0"
               />
-            )}
-            {img2 && (
-              <img
-                src={img2}
-                alt=""
-                className="w-full h-full snap-start snap-always shrink-0"
-              />
-            )}
-            {img3 && (
-              <img
-                src={img3}
-                alt=""
-                className="w-full h-full snap-start snap-always shrink-0"
-              />
-            )}
-            {img4 && (
-              <img
-                src={img4}
-                alt=""
-                className="w-full h-full snap-start snap-always shrink-0"
-              />
-            )}
+            ))}
           </div>
+          {stock === 0 && (
+            <div className="absolute bg-black/40 w-full h-full top-0 left-0 flex items-center justify-center">
+              <div className="bg-white/90 p-3 rounded-lg shadow-xl">
+                <p className="text-2xl font-bold text-center text-gray-800">
+                  Out of Stock
+                </p>
+              </div>
+            </div>
+          )}
         </div>
 
-        <p className="my-1 font-semibold truncate">{name}</p>
+        <p className="my-1 font-bold text-lg truncate">{name}</p>
+        <div className="my-1 flex items-center w-full">
+          <div className="flex">
+            {renderStars(
+              reviews.length > 0
+                ? reviews.reduce((s, r) => (s = s + r.rating), 0) /
+                    reviews.length
+                : 0
+            )}
+          </div>
+          <span className="ml-2">({reviews.length})</span>
+        </div>
         <p className="text-neutral-500 text-sm truncate">{description}</p>
-        <p className="my-1 text-primary">
-          <span className="font-bold">PKR </span>
-          {price}.00
+        <p className="my-1 text-primary font-semibold">
+          PKR {price.toLocaleString()}
         </p>
       </Link>
       {stock > 0 && (
         <DropdownMenu>
-          <DropdownMenuTrigger className="hover:bg-primary opacity-0 group-hover:opacity-100 z-10 absolute bg-primary/80 w-10 h-10 rounded-full bottom-28 left-[40%] transform -translate-x-1/2 flex justify-center items-center shadow-md transitioon duration-300">
+          <DropdownMenuTrigger className="hover:bg-primary opacity-0 group-hover:opacity-100 z-10 absolute bg-primary/80 w-10 h-10 rounded-full bottom-36 left-[40%] transform -translate-x-1/2 flex justify-center items-center shadow-md transitioon duration-300">
             <span className="text-white text-xl">+</span>
           </DropdownMenuTrigger>
           <DropdownMenuContent className="p-5">
@@ -158,7 +166,7 @@ function Card({
             <DropdownMenuItem
               onClick={() => {
                 if (user) {
-                  if (!size || !color) {
+                  if (!size && !color) {
                     toast.error("Please select size and color");
                     return;
                   }
@@ -173,7 +181,7 @@ function Card({
                   addItem(
                     {
                       id,
-                      images: [img, img2, img3, img4],
+                      images,
                       name,
                       price,
                       size,
@@ -210,7 +218,7 @@ function Card({
               addToWishlist(
                 {
                   id,
-                  images: [img, img2, img3, img4],
+                  images,
                   name,
                   price,
                 },
@@ -225,7 +233,7 @@ function Card({
           }
         }}
         className={
-          "hover:bg-primary opacity-0 group-hover:opacity-100 z-10 absolute bg-primary/80 w-10 h-10 rounded-full bottom-28 transform -translate-x-1/2 flex justify-center items-center shadow-md transition duration-300 " +
+          "hover:bg-primary opacity-0 group-hover:opacity-100 z-10 absolute bg-primary/80 w-10 h-10 rounded-full bottom-36 transform -translate-x-1/2 flex justify-center items-center shadow-md transition duration-300 " +
           (stock > 0 ? "left-[60%]" : "left-1/2")
         }
       >

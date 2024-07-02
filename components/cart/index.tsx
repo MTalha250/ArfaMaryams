@@ -72,7 +72,7 @@ const Cart = () => {
                   <div className="text-sm">
                     <div className="flex justify-between">
                       <p>Subtotal</p>
-                      <p>PKR {getTotalPrice()}.00</p>
+                      <p>PKR {getTotalPrice().toLocaleString()}</p>
                     </div>
                     <div className="flex justify-between">
                       <p>Delivery</p>
@@ -82,7 +82,7 @@ const Cart = () => {
                             Free
                           </span>
                         ) : (
-                          "PKR 250.00"
+                          "PKR 250"
                         )}
                       </p>
                     </div>
@@ -90,8 +90,9 @@ const Cart = () => {
                       <p>Total</p>
                       <p>
                         PKR{" "}
-                        {getTotalPrice() + (getTotalPrice() > 5000 ? 0 : 250)}{" "}
-                        .00
+                        {(
+                          getTotalPrice() + (getTotalPrice() > 5000 ? 0 : 250)
+                        ).toLocaleString()}
                       </p>
                     </div>
                     <Link href="/checkout" className="rounded-full block mt-5">
