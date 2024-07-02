@@ -25,8 +25,8 @@ const page = () => {
     semiFormals: false,
     casuals: false,
     price: {
-      min: 0,
-      max: 10000,
+      min: 100,
+      max: 100000,
     },
   });
   useEffect(() => {
@@ -108,9 +108,9 @@ const page = () => {
 
           <p className="mt-5 font-semibold text-sm">Price Range (PKR):</p>
           <MultiRangeSlider
-            min={0}
+            min={100}
             minValue={filters.price.min}
-            max={10000}
+            max={100000}
             maxValue={filters.price.max}
             onChange={(e) =>
               setFilters({
@@ -121,7 +121,7 @@ const page = () => {
                 },
               })
             }
-            step={50}
+            step={100}
             stepOnly
             ruler={false}
             style={{ border: "none", boxShadow: "none", padding: "15px 10px" }}
@@ -223,9 +223,9 @@ const page = () => {
 
               <p className="mt-5 font-semibold text-sm">Price Range (PKR):</p>
               <MultiRangeSlider
-                min={0}
+                min={100}
                 minValue={filters.price.min}
-                max={10000}
+                max={100000}
                 maxValue={filters.price.max}
                 onChange={(e) =>
                   setFilters({
@@ -236,7 +236,7 @@ const page = () => {
                     },
                   })
                 }
-                step={50}
+                step={100}
                 stepOnly
                 ruler={false}
                 style={{
