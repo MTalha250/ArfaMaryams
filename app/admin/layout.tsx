@@ -1,7 +1,7 @@
 "use client";
 import Sidebar from "@/components/admin/sidebar";
 import Link from "next/link";
-import img from "@/assets/notauth.png";
+import img from "@/assets/notauth.webp";
 import { useSession } from "next-auth/react";
 
 export default function AdminLayout({

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import img from "@/assets/notfound.png";
+import img from "@/assets/notfound.webp";
 const page = () => {
   return (
     <div className="w-full h-screen flex items-center justify-center px-8">

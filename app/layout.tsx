@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en" className="scrollbar scrollbar-none sm:scrollbar-thin">
       <head>
         <title>Arfa & Maryam's</title>
-        <link rel="icon" href="/logo.png" />
+        <link rel="icon" href="/logo.webp" />
       </head>
 
       <body className={inter.className}>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Sidebar from "./Sidebar";
 import { signOut, useSession } from "next-auth/react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 import { useCartStore } from "@/store/cartStore";
 import { useWishlistStore } from "@/store/wishlistStore";
 

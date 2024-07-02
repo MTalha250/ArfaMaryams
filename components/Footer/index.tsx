@@ -10,7 +10,7 @@ import {
 } from "react-icons/fa";
 import Link from "next/link";
 import { navLinks } from "@/constants";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 const Footer = () => {
   return (
     <footer className="bg-secondary text-white">

@@ -4,9 +4,9 @@ import Content from "@/components/home/hero/content";
 import Link from "next/link";
 import React from "react";
 import Marquee from "react-fast-marquee";
-import img1 from "@/assets/home1.jpeg";
-import img2 from "@/assets/home2.jpeg";
-import img3 from "@/assets/home3.jpeg";
+import img1 from "@/assets/home1.webp";
+import img2 from "@/assets/home2.webp";
+import img3 from "@/assets/home3.webp";
 const words = [
   { text: "Discover", className: "text-white text-4xl xl:text-5xl" },
   { text: "Your", className: "text-white text-4xl xl:text-5xl" },
