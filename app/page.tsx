@@ -8,12 +8,16 @@ import img1 from "@/assets/home1.jpeg";
 import img2 from "@/assets/home2.jpeg";
 import img3 from "@/assets/home3.jpeg";
 const words = [
-  { text: "Sync", className: "text-white text-5xl" },
-  { text: "Your", className: "text-white text-5xl" },
-  { text: "Fashion,", className: "text-primary text-5xl" },
-  { text: "Define", className: "text-white text-5xl" },
-  { text: "Your", className: "text-white text-5xl" },
-  { text: "Style.", className: "text-primary text-5xl" },
+  { text: "Discover", className: "text-white text-4xl xl:text-5xl" },
+  { text: "Your", className: "text-white text-4xl xl:text-5xl" },
+  { text: "Elegance,", className: "text-primary text-4xl xl:text-5xl" },
+  { text: "With", className: "text-white text-4xl xl:text-5xl" },
+  { text: "Arfa", className: "text-white text-4xl xl:text-5xl" },
+  { text: "&", className: "text-[#9CA3AF] text-4xl xl:text-5xl" },
+  {
+    text: "Maryam's.",
+    className: "text-primary text-5xl xl:text-6xl italic font-bask",
+  },
 ];
 
 const page = () => {
@@ -24,10 +28,13 @@ const page = () => {
           images={[img1.src, img2.src, img3.src]}
           children={
             <div className="text-white z-20 flex flex-col md:items-center px-8">
-              <h1 className="mb-5 font-bold text-4xl sm:text-5xl md:text-center md:hidden">
-                Sync Your
-                <span className="text-primary"> Fashion</span>, Define Your
-                <span className="text-primary">Style.</span>
+              <h1 className="mb-5 font-bold text-4xl sm:text-5xl md:text-center md:hidden leading-relaxed">
+                Discover Your
+                <span className="text-primary"> Elegance,</span> With Arfa
+                <span className="text-[#9CA3AF]">&</span>
+                <span className="text-primary text-5xl sm:text-6xl font-bask italic">
+                  Maryam's.
+                </span>
               </h1>
               <Content
                 words={words}
@@ -38,7 +45,7 @@ const page = () => {
                 Explore carefully curated collections and receive personalized
                 recommendations, effortlessly crafting your unique style. Dive
                 into the latest trends, synchronize your preferences, and
-                express your individuality with StyleSync.
+                express your individuality with Arfa & Maryam's.
               </p>
               <Link
                 href="/products"
