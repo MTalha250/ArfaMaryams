@@ -95,7 +95,8 @@ const page = () => {
       ) : (
         <div className="flex justify-center items-center h-[75vh] text-center text-lg text-gray-600 tracking-wide mt-10">
           <span>
-            No products found for "{query}". Try searching for something else.
+            No products found for "{decodeURIComponent(query.toString())}". Try
+            searching for something else.
           </span>
         </div>
       )}
