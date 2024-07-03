@@ -2,6 +2,7 @@ import React from "react";
 import { useWishlistStore } from "@/store/wishlistStore";
 import { useSession } from "next-auth/react";
 import { IoIosClose } from "react-icons/io";
+import Link from "next/link";
 interface Props {
   id: string;
   name: string;
@@ -23,7 +24,10 @@ const WishlistItem = ({ id, name, price, image }: Props) => {
     });
   };
   return (
-    <div className="mt-2 flex items-center border-b border-gray-300 drop-shadow-sm py-2">
+    <Link
+      href={`/products/${id}`}
+      className="mt-2 flex items-center border-b border-gray-300 drop-shadow-sm py-2"
+    >
       <img
         src={image}
         alt={name}
@@ -41,7 +45,7 @@ const WishlistItem = ({ id, name, price, image }: Props) => {
       >
         <IoIosClose />
       </button>
-    </div>
+    </Link>
   );
 };
 

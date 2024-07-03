@@ -13,8 +13,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
@@ -24,6 +22,7 @@ interface Props {
   name: string;
   description: string;
   price: number;
+  discount: number;
   sizes: string[];
   colors: string[];
   stock: number;
@@ -36,6 +35,7 @@ function Card({
   name,
   description,
   price,
+  discount,
   sizes,
   colors,
   stock,
@@ -91,6 +91,7 @@ function Card({
           >
             {images.map((img, i) => (
               <img
+                key={i}
                 src={img}
                 alt=""
                 className="w-full h-full snap-start snap-always shrink-0"
@@ -104,6 +105,11 @@ function Card({
                   Out of Stock
                 </p>
               </div>
+            </div>
+          )}
+          {discount > 0 && (
+            <div className="absolute top-0 left-0 bg-primary text-white p-1 rounded-br-lg">
+              {discount}% OFF
             </div>
           )}
         </div>
@@ -122,7 +128,12 @@ function Card({
         </div>
         <p className="text-neutral-500 text-sm truncate">{description}</p>
         <p className="my-1 text-primary font-semibold">
-          PKR {price.toLocaleString()}
+          PKR {(price - (price * discount) / 100).toLocaleString()}
+          {discount > 0 && (
+            <span className="ml-2 line-through text-neutral-500 text-sm">
+              PKR {price.toLocaleString()}
+            </span>
+          )}
         </p>
       </Link>
       {stock > 0 && (
@@ -183,7 +194,7 @@ function Card({
                       id,
                       images,
                       name,
-                      price,
+                      price: price - (price * discount) / 100,
                       size,
                       color,
                     },

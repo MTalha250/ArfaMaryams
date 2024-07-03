@@ -157,7 +157,21 @@ const page = () => {
           <p className="text-lg mb-2 text-gray-600">
             Price:{" "}
             <span className="font-bold text-primary">
-              PKR {product?.price.toLocaleString()}
+              PKR{" "}
+              {(
+                product?.price -
+                (product?.price * product?.discount) / 100
+              ).toLocaleString()}
+              {product?.discount > 0 && (
+                <span className="line-through text-gray-500 text-sm ml-2">
+                  PKR {product?.price.toLocaleString()}
+                </span>
+              )}
+              {product?.discount > 0 && (
+                <span className="text-green-500 text-sm ml-2">
+                  {product?.discount}% off
+                </span>
+              )}
             </span>
           </p>
           <div className="flex gap-3 items-center">
@@ -176,63 +190,6 @@ const page = () => {
               ))}
             </div>
           </div>
-          {/* <Drawer>
-            <DrawerTrigger className="text-primary text-sm font-semibold mb-3 mt-1 underline">
-              Size Chart
-            </DrawerTrigger>
-            <DrawerContent className="py-10 px-8 md:px-16">
-              <div className="h-[60vh] overflow-scroll">
-                <div className="flex flex-col md:flex-row gap-20 text-sm">
-                  <Table>
-                    <TableCaption>Shirt Size Chart</TableCaption>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead></TableHead>
-                        <TableHead>Small</TableHead>
-                        <TableHead>Medium</TableHead>
-                        <TableHead>Large</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {shirtLength.map((item) => (
-                        <TableRow key={item.type}>
-                          <TableCell>{item.type}</TableCell>
-                          <TableCell>{item.small}</TableCell>
-                          <TableCell>{item.medium}</TableCell>
-                          <TableCell>{item.large}</TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                  <Table>
-                    <TableCaption>Trouser Size Chart</TableCaption>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead></TableHead>
-                        <TableHead>Small</TableHead>
-                        <TableHead>Medium</TableHead>
-                        <TableHead>Large</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {trouserLength.map((item) => (
-                        <TableRow key={item.type}>
-                          <TableCell>{item.type}</TableCell>
-                          <TableCell>{item.small}</TableCell>
-                          <TableCell>{item.medium}</TableCell>
-                          <TableCell>{item.large}</TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </div>
-              </div>
-              <p className="text-gray-500 font-semibold mt-10 text-center">
-                These size charts are for reference only, actual measurements
-                may vary from person to person, fabric to fabric, and fit wise.
-              </p>
-            </DrawerContent>
-          </Drawer> */}
           <Drawer>
             <DrawerTrigger className="text-primary text-sm font-semibold mb-3 mt-1 underline hover:text-primary-dark transition duration-300">
               Size Chart
@@ -436,7 +393,9 @@ const page = () => {
                           id,
                           images: product?.images,
                           name: product?.name,
-                          price: product?.price,
+                          price:
+                            product?.price -
+                            (product?.price * product?.discount) / 100,
                           size,
                           color,
                         },
@@ -500,7 +459,7 @@ const page = () => {
           {product?.weight > 0 && (
             <p className="text-gray-700 leading-relaxed my-0.5">
               <span className="font-bold">Weight: </span>
-              {product?.weight}
+              {product?.weight} kg
             </p>
           )}
 
