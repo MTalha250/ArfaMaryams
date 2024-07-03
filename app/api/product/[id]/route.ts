@@ -12,6 +12,7 @@ export async function PUT(
     const {
       name,
       price,
+      discount,
       images,
       sizes,
       colors,
@@ -29,6 +30,7 @@ export async function PUT(
     const product = await Product.findByIdAndUpdate(id, {
       name,
       price,
+      discount,
       images,
       sizes,
       colors,

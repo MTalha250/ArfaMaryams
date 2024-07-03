@@ -35,6 +35,7 @@ export async function POST(request: NextRequest) {
     const {
       name,
       price,
+      discount,
       images,
       sizes,
       colors,
@@ -52,6 +53,7 @@ export async function POST(request: NextRequest) {
     const product = await Product.create({
       name,
       price,
+      discount,
       images,
       sizes,
       colors,

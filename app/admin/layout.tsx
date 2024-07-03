@@ -3,6 +3,7 @@ import Sidebar from "@/components/admin/sidebar";
 import Link from "next/link";
 import img from "@/assets/notauth.webp";
 import { useSession } from "next-auth/react";
+import SidebarMobile from "@/components/admin/SidebarMobile";
 
 export default function AdminLayout({
   children,
@@ -33,6 +34,7 @@ export default function AdminLayout({
   return (
     <div className="pt-20 flex min-h-screen">
       <Sidebar />
+      <SidebarMobile />
       <div className="w-full overflow-hidden p-8">{children}</div>
     </div>
   );
