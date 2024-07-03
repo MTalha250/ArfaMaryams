@@ -179,6 +179,7 @@ export default function PhotosUploader({
               multiple
               disabled={isUploading}
               className="hidden"
+              accept="image/*"
               onChange={handleImageUpload}
             />
             {!isUploading && (
