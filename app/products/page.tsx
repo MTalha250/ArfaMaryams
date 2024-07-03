@@ -87,7 +87,7 @@ const page = () => {
             />
             <h2 className="font-semibold">Premium</h2>
           </label>
-          <label className="flex items-center gap-2">
+          <label className="flex items-center gap-2 my-2">
             <Checkbox
               checked={filters.formals}
               onCheckedChange={() =>
@@ -96,7 +96,7 @@ const page = () => {
             />
             <h2 className="font-semibold">Formals</h2>
           </label>
-          <label className="flex items-center gap-2 my-2">
+          <label className="flex items-center gap-2">
             <Checkbox
               checked={filters.semiFormals}
               onCheckedChange={() =>
@@ -199,7 +199,7 @@ const page = () => {
                 />
                 <h2 className="font-semibold">Premium</h2>
               </label>
-              <label className="flex items-center gap-2">
+              <label className="flex items-center gap-2 my-2">
                 <Checkbox
                   checked={filters.formals}
                   onCheckedChange={() =>
@@ -208,7 +208,7 @@ const page = () => {
                 />
                 <h2 className="font-semibold">Formals</h2>
               </label>
-              <label className="flex items-center gap-2 my-2">
+              <label className="flex items-center gap-2">
                 <Checkbox
                   checked={filters.semiFormals}
                   onCheckedChange={() =>
