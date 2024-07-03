@@ -23,7 +23,7 @@ const page = () => {
   const [filters, setFilters] = useState({
     formals: false,
     semiFormals: false,
-    casuals: false,
+    premium: false,
     price: {
       min: 100,
       max: 100000,
@@ -40,7 +40,7 @@ const page = () => {
       setFilters({
         formals: false,
         semiFormals: false,
-        casuals: false,
+        premium: false,
         price: {
           min: 100,
           max: 100000,
@@ -80,6 +80,15 @@ const page = () => {
           <h1 className="font-bold text-2xl text-center mb-5">Filters</h1>
           <label className="flex items-center gap-2">
             <Checkbox
+              checked={filters.premium}
+              onCheckedChange={() =>
+                setFilters({ ...filters, premium: !filters.premium })
+              }
+            />
+            <h2 className="font-semibold">Premium</h2>
+          </label>
+          <label className="flex items-center gap-2">
+            <Checkbox
               checked={filters.formals}
               onCheckedChange={() =>
                 setFilters({ ...filters, formals: !filters.formals })
@@ -95,15 +104,6 @@ const page = () => {
               }
             />
             <h2 className="font-semibold">Semi-Formals</h2>
-          </label>
-          <label className="flex items-center gap-2">
-            <Checkbox
-              checked={filters.casuals}
-              onCheckedChange={() =>
-                setFilters({ ...filters, casuals: !filters.casuals })
-              }
-            />
-            <h2 className="font-semibold">Casuals</h2>
           </label>
 
           <p className="mt-5 font-semibold text-sm">Price Range (PKR):</p>
@@ -192,6 +192,15 @@ const page = () => {
               <h1 className="font-bold text-2xl text-center mb-5">Filters</h1>
               <label className="flex items-center gap-2">
                 <Checkbox
+                  checked={filters.premium}
+                  onCheckedChange={() =>
+                    setFilters({ ...filters, premium: !filters.premium })
+                  }
+                />
+                <h2 className="font-semibold">Premium</h2>
+              </label>
+              <label className="flex items-center gap-2">
+                <Checkbox
                   checked={filters.formals}
                   onCheckedChange={() =>
                     setFilters({ ...filters, formals: !filters.formals })
@@ -210,15 +219,6 @@ const page = () => {
                   }
                 />
                 <h2 className="font-semibold">Semi-Formals</h2>
-              </label>
-              <label className="flex items-center gap-2">
-                <Checkbox
-                  checked={filters.casuals}
-                  onCheckedChange={() =>
-                    setFilters({ ...filters, casuals: !filters.casuals })
-                  }
-                />
-                <h2 className="font-semibold">Casuals</h2>
               </label>
 
               <p className="mt-5 font-semibold text-sm">Price Range (PKR):</p>

@@ -8,7 +8,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
     const {
       formals,
       semiFormals,
-      casuals,
+      premium,
       price: { min, max },
     } = await req.json();
     const products = <any>[];
@@ -29,14 +29,14 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
       });
       products.push(...semiFormalProducts);
     }
-    if (casuals) {
-      const casualProducts = await Product.find({
-        category: "casual",
+    if (premium) {
+      const premiumProducts = await Product.find({
+        category: "premium",
         price: { $gte: min, $lte: max },
       });
-      products.push(...casualProducts);
+      products.push(...premiumProducts);
     }
-    if (!formals && !semiFormals && !casuals) {
+    if (!formals && !semiFormals && !premium) {
       products.push(...allProducts);
     }
     return NextResponse.json(
