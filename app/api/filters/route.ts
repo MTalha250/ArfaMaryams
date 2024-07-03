@@ -14,13 +14,11 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
     const products = <any>[];
     const allProducts = await Product.find({
       price: { $gte: min, $lte: max },
-      createdAt: -1,
     });
     if (formals) {
       const formalProducts = await Product.find({
         category: "formals",
         price: { $gte: min, $lte: max },
-        createdAt: -1,
       });
       products.push(...formalProducts);
     }
@@ -28,7 +26,6 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
       const semiFormalProducts = await Product.find({
         category: "semi-formals",
         price: { $gte: min, $lte: max },
-        createdAt: -1,
       });
       products.push(...semiFormalProducts);
     }
@@ -36,7 +33,6 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
       const premiumProducts = await Product.find({
         category: "premium",
         price: { $gte: min, $lte: max },
-        createdAt: -1,
       });
       products.push(...premiumProducts);
     }
