@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { FaPlus } from "react-icons/fa";
 import PhotosUploader from "@/components/admin/uploader";
 import axios from "axios";
+import { set } from "mongoose";
 
 const page = () => {
   const [images, setImages] = useState<string[]>([]);
@@ -11,6 +12,7 @@ const page = () => {
   const [colorInput, setColorInput] = useState("");
   const [sizes, setSizes] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -34,6 +36,7 @@ const page = () => {
       !name ||
       !price ||
       !category ||
+      !description ||
       sizes.length === 0 ||
       colors.length === 0 ||
       images.length === 0
@@ -63,6 +66,11 @@ const page = () => {
         weight: weight ? parseFloat(weight as string) : 0,
       });
       toast.success("Product added successfully");
+      setImages([]);
+      setColors([]);
+      setColorInput("");
+      setSizes([]);
+      formRef.current?.reset();
     } catch (error) {
       console.log(error);
       toast.error("Failed to add product");
@@ -92,7 +100,7 @@ const page = () => {
       <h1 className="text-4xl font-extrabold text-gray-700 tracking-wider mb-10 text-center">
         Add Product
       </h1>
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
         <div>
           <label
             htmlFor="images"
@@ -264,7 +272,7 @@ const page = () => {
             htmlFor="description"
             className="block text-sm font-medium text-gray-700"
           >
-            Description
+            Description <span className="text-red-500">*</span>
           </label>
           <textarea
             id="description"

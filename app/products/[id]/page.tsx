@@ -466,31 +466,43 @@ const page = () => {
             {product?.description}
           </p>
           <hr className="my-4 border-gray-200" />
-          <p className="text-gray-700 leading-relaxed my-0.5">
-            <span className="font-bold">Fabric: </span>
-            {product?.fabric[0].toUpperCase() + product?.fabric.slice(1)}
-          </p>
-          <p className="text-gray-700 leading-relaxed my-0.5">
-            <span className="font-bold">Trouser: </span>
-            {product?.trouser[0].toUpperCase() + product?.trouser.slice(1)}
-          </p>
-          <p className="text-gray-700 leading-relaxed my-0.5">
-            <span className="font-bold">Inner: </span>
-            {product?.inner[0].toUpperCase() + product?.inner.slice(1)}
-          </p>
-          <p className="text-gray-700 leading-relaxed my-0.5">
-            <span className="font-bold">Dopatta: </span>
-            {product?.dopatta[0].toUpperCase() + product?.dopatta.slice(1)}
-          </p>
-          <p className="text-gray-700 leading-relaxed my-0.5">
-            <span className="font-bold">Embroidery: </span>
-            {product?.embroidery[0].toUpperCase() +
-              product?.embroidery.slice(1)}
-          </p>
-          <p className="text-gray-700 leading-relaxed my-0.5">
-            <span className="font-bold">Weight: </span>
-            {product?.weight}
-          </p>
+          {product?.fabric && (
+            <p className="text-gray-700 leading-relaxed my-0.5">
+              <span className="font-bold">Fabric: </span>
+              {product?.fabric[0].toUpperCase() + product?.fabric.slice(1)}
+            </p>
+          )}
+          {product?.trouser && (
+            <p className="text-gray-700 leading-relaxed my-0.5">
+              <span className="font-bold">Trouser: </span>
+              {product?.trouser[0].toUpperCase() + product?.trouser.slice(1)}
+            </p>
+          )}
+          {product?.inner && (
+            <p className="text-gray-700 leading-relaxed my-0.5">
+              <span className="font-bold">Inner: </span>
+              {product?.inner[0].toUpperCase() + product?.inner.slice(1)}
+            </p>
+          )}
+          {product?.dopatta && (
+            <p className="text-gray-700 leading-relaxed my-0.5">
+              <span className="font-bold">Dopatta: </span>
+              {product?.dopatta[0].toUpperCase() + product?.dopatta.slice(1)}
+            </p>
+          )}
+          {product?.embroidery && (
+            <p className="text-gray-700 leading-relaxed my-0.5">
+              <span className="font-bold">Embroidery: </span>
+              {product?.embroidery[0].toUpperCase() +
+                product?.embroidery.slice(1)}
+            </p>
+          )}
+          {product?.weight && (
+            <p className="text-gray-700 leading-relaxed my-0.5">
+              <span className="font-bold">Weight: </span>
+              {product?.weight}
+            </p>
+          )}
 
           <hr className="my-4 border-gray-200" />
           <p>
