@@ -497,7 +497,7 @@ const page = () => {
                 product?.embroidery.slice(1)}
             </p>
           )}
-          {product?.weight && (
+          {product?.weight > 0 && (
             <p className="text-gray-700 leading-relaxed my-0.5">
               <span className="font-bold">Weight: </span>
               {product?.weight}
