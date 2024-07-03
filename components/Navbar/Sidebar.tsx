@@ -88,7 +88,9 @@ const Sidebar = () => {
               )}
               {user?.role == "admin" && (
                 <DropdownMenuItem className="mt-1 cursor-pointer text-center block bg-primary focus:bg-primary/90">
-                  <Link href="/admin">Admin</Link>
+                  <Link href="/admin" onClick={() => setOpen(false)}>
+                    Admin
+                  </Link>
                 </DropdownMenuItem>
               )}
             </DropdownMenuContent>
