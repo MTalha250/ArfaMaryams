@@ -45,7 +45,7 @@ const Login = () => {
     setIsSubmitting(true);
     const { email, password } = values;
     const result = await signIn("credentials", {
-      email,
+      email: email.toLowerCase(),
       password,
       redirect: false,
     });

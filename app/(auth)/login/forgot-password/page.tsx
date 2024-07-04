@@ -98,7 +98,7 @@ const page = () => {
     }
     try {
       const response = await axios.put("/api/reset", {
-        email: values.email,
+        email: values.email.toLowerCase(),
         password: values.password,
       });
       toast.success(response.data.message);

@@ -61,7 +61,10 @@ const Register = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     try {
-      const response = await axios.post("/api/register", values);
+      const response = await axios.post("/api/register", {
+        ...values,
+        email: values.email.toLowerCase(),
+      });
       toast.success(response.data.message);
       router.push("/login");
     } catch (error: any) {
