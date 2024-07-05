@@ -260,9 +260,9 @@ const page = () => {
               </div>
               <Button
                 type="submit"
-                className="rounded-full font-bold w-full bg-transparent hover:bg-transparent py-3 border border-black text-black dark:border-white relative group transition duration-200"
+                className="rounded-none  font-bold w-full bg-transparent hover:bg-transparent py-3 border border-black text-white dark:border-white relative group transition duration-200"
               >
-                <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />
+                <div className="absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />
                 <span className="relative">
                   {isSubmitting ? "Submitting..." : "Place Order"}
                 </span>
@@ -281,7 +281,7 @@ const page = () => {
                 <img
                   src={item.images[0]}
                   alt=""
-                  className="w-20 h-20 object-cover rounded float-left mr-3.5"
+                  className="w-20 h-20 object-cover float-left mr-3.5"
                 />
                 <h1 className="font-semibold text-sm">{item.name}</h1>
                 <h1 className="text-xs">Size: {item.size.toUpperCase()}</h1>

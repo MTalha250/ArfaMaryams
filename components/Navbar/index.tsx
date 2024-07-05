@@ -69,7 +69,7 @@ const Navbar = () => {
           <li key={index}>
             <Link
               href={link.href}
-              className="flex items-center hover:text-primary border-b-2 border-transparent pb-1 hover:border-primary transition duration-300"
+              className="flex items-center border-b-2 border-transparent pb-1 hover:border-primary transition duration-300"
             >
               {link.label}
             </Link>
@@ -85,12 +85,12 @@ const Navbar = () => {
               <div
                 className={
                   scroll || pathname !== "/"
-                    ? "rounded-full p-3 border border-black bg-transparent text-black  dark:border-white relative group transition duration-200"
-                    : "rounded-full p-3 border border-white bg-transparent text-black  dark:border-white relative group transition duration-200"
+                    ? "p-3 border border-black bg-transparent  dark:border-white relative group transition duration-200"
+                    : "p-3 border border-white bg-transparent   dark:border-white relative group transition duration-200"
                 }
               >
-                <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
-                <span className="relative">Hi, {user?.name}</span>
+                <div className="absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
+                <span className="relative text-white">Hi, {user?.name}</span>
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
@@ -112,10 +112,12 @@ const Navbar = () => {
               {user?.role == "admin" && (
                 <Link
                   href="/admin"
-                  className="flex justify-center rounded-lg border py-1 border-black bg-transparent text-black  dark:border-white relative group transition duration-200"
+                  className="flex justify-center border py-1 border-black bg-transparent  dark:border-white relative group transition duration-200"
                 >
-                  <div className="rounded-lg absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
-                  <span className="relative text-sm font-semibold">Admin</span>
+                  <div className="absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
+                  <span className="relative text-sm font-semibold text-white">
+                    Admin
+                  </span>
                 </Link>
               )}
             </DropdownMenuContent>
@@ -125,12 +127,12 @@ const Navbar = () => {
             href="/login"
             className={
               scroll || pathname !== "/"
-                ? "rounded-full mt-10 p-3 border border-black bg-transparent text-black  dark:border-white relative group transition duration-200 hidden md:inline"
-                : "rounded-full mt-10 p-3 border border-white bg-transparent text-black  dark:border-white relative group transition duration-200 hidden md:inline"
+                ? "mt-10 p-3 border border-black bg-transparent dark:border-white relative group transition duration-200 hidden md:inline"
+                : "mt-10 p-3 border border-white bg-transparent  dark:border-white relative group transition duration-200 hidden md:inline"
             }
           >
-            <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
-            <span className="relative">Login/Signup</span>
+            <div className="absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
+            <span className="relative text-white">Login/Signup</span>
           </Link>
         )}
         <div className="w-24" />

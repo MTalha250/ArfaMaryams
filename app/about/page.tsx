@@ -51,7 +51,7 @@ const AboutUs = () => {
 
       <div className="mt-12 flex flex-wrap -mx-4">
         <div className="w-full md:w-1/3 px-4 mb-8 md:mb-0">
-          <div className="bg-white rounded-lg shadow-lg p-6">
+          <div className="bg-white shadow-lg p-6">
             <h3 className="text-xl font-bold text-gray-800 mb-2">
               Quality Products
             </h3>
@@ -64,7 +64,7 @@ const AboutUs = () => {
         </div>
 
         <div className="w-full md:w-1/3 px-4 mb-8 md:mb-0">
-          <div className="bg-white rounded-lg shadow-lg p-6">
+          <div className="bg-white shadow-lg p-6">
             <h3 className="text-xl font-bold text-gray-800 mb-2">
               Customer Service
             </h3>
@@ -77,7 +77,7 @@ const AboutUs = () => {
         </div>
 
         <div className="w-full md:w-1/3 px-4">
-          <div className="bg-white rounded-lg shadow-lg p-6">
+          <div className="bg-white shadow-lg p-6">
             <h3 className="text-xl font-bold text-gray-800 mb-2">
               Sustainable Practices
             </h3>

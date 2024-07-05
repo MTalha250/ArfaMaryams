@@ -112,7 +112,8 @@ const page = () => {
   return (
     <div className="flex items-center justify-center flex-col min-h-screen px-8 md:px-16">
       <h1 className="text-3xl font-semibold mb-3">
-        Reset your <span className="bg-primary px-2 italic">Password!</span>{" "}
+        Reset your{" "}
+        <span className="bg-primary text-white px-2 italic">Password!</span>{" "}
       </h1>{" "}
       <p className="text-center text-sm text-gray-400 mb-5">
         Please enter the code that will be sent to your email and your new
@@ -141,9 +142,9 @@ const page = () => {
                 disabled={
                   timer !== 0 || form.getValues("email") === "" || isSending
                 }
-                className="flex justify-center rounded border p-2 border-black bg-transparent text-black  dark:border-white relative group transition duration-200"
+                className="flex justify-center border p-2 border-black bg-transparent text-white  dark:border-white relative group transition duration-200"
               >
-                <div className="rounded absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
+                <div className="absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
                 <span className="relative text-sm font-semibold whitespace-nowrap">
                   {isSending
                     ? "Sending..."
@@ -208,10 +209,10 @@ const page = () => {
             </Link>
             <Button
               type="submit"
-              className="rounded-full font-bold w-full bg-transparent hover:bg-transparent py-3 border border-black dark:border-white relative group transition duration-200"
+              className="rounded-none font-bold w-full bg-transparent hover:bg-transparent py-3 border border-black dark:border-white relative group transition duration-200"
             >
-              <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />
-              <span className="relative text-black">
+              <div className="absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />
+              <span className="relative text-white">
                 {isSubmitting ? "Submitting..." : "Change Password"}
               </span>
             </Button>

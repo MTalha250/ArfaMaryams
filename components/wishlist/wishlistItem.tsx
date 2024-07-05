@@ -28,11 +28,7 @@ const WishlistItem = ({ id, name, price, image }: Props) => {
       href={`/products/${id}`}
       className="mt-2 flex items-center border-b border-gray-300 drop-shadow-sm py-2"
     >
-      <img
-        src={image}
-        alt={name}
-        className="w-20 h-20 mr-4 object-cover rounded-md"
-      />
+      <img src={image} alt={name} className="w-20 h-20 mr-4 object-cover" />
       <div className="flex-1">
         <h3 className="font-bold mb-1">{name}</h3>
         <p className="text-primary font-semibold text-sm">
@@ -41,7 +37,7 @@ const WishlistItem = ({ id, name, price, image }: Props) => {
       </div>
       <button
         onClick={() => removeFromWishlist(id, user?.id, handleUpdate)}
-        className="transition duration-300 flex justify-center items-center text-white bg-primary hover:bg-pink-500 w-5 h-5 rounded-full focus:outline-none"
+        className="transition duration-300 flex justify-center items-center text-white bg-primary hover:bg-black w-5 h-5 rounded-full focus:outline-none"
       >
         <IoIosClose />
       </button>

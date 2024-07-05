@@ -105,11 +105,7 @@ export default function PhotosUploader({
         {addedPhotos.length > 0 &&
           addedPhotos.map((link) => (
             <div className="relative" key={link}>
-              <img
-                className="rounded-lg w-32 h-32 object-cover"
-                src={link}
-                alt=""
-              />
+              <img className="w-32 h-32 object-cover" src={link} alt="" />
               <button
                 type="button"
                 onClick={(ev) => removePhoto(ev, link)}
@@ -170,7 +166,7 @@ export default function PhotosUploader({
           ))}
         {addedPhotos.length < maxPhotos && (
           <label
-            className={`h-32 cursor-pointer flex items-center justify-center border bg-transparent rounded-lg p-2 text-lg text-gray-600 ${
+            className={`h-32 cursor-pointer flex items-center justify-center border bg-transparent p-2 text-lg text-gray-600 ${
               isUploading ? "animate-pulse" : ""
             }`}
           >

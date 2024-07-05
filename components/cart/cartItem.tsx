@@ -29,11 +29,7 @@ const CartItem = ({ id, name, price, image, size, color, quantity }: Props) => {
   };
   return (
     <div className="mt-2 flex items-center border-b border-gray-300 drop-shadow-sm py-2">
-      <img
-        src={image}
-        alt={name}
-        className="w-20 h-20 mr-4 object-cover rounded-md"
-      />
+      <img src={image} alt={name} className="w-20 h-20 mr-4 object-cover" />
       <div className="flex-1">
         <h3 className="font-bold">{name}</h3>
         <p className="text-primary font-semibold text-sm">
@@ -51,7 +47,7 @@ const CartItem = ({ id, name, price, image, size, color, quantity }: Props) => {
             onClick={() =>
               removeItem(id + size + color, user?.id, handleUpdate)
             }
-            className="transition duration-300 flex justify-center items-center bg-primary hover:bg-pink-500 text-white rounded-full mr-2 focus:outline-none text-sm w-5 h-5"
+            className="transition duration-300 flex justify-center items-center bg-primary hover:bg-black text-white rounded-full mr-2 focus:outline-none text-sm w-5 h-5"
           >
             -
           </button>
@@ -60,7 +56,7 @@ const CartItem = ({ id, name, price, image, size, color, quantity }: Props) => {
             onClick={() =>
               addQuantity(id + size + color, user?.id, handleUpdate)
             }
-            className="transition duration-300 flex justify-center items-center bg-primary hover:bg-pink-500 text-white rounded-full ml-2 focus:outline-none text-sm w-5 h-5"
+            className="transition duration-300 flex justify-center items-center bg-primary hover:bg-black text-white rounded-full ml-2 focus:outline-none text-sm w-5 h-5"
           >
             +
           </button>
@@ -68,7 +64,7 @@ const CartItem = ({ id, name, price, image, size, color, quantity }: Props) => {
       </div>
       <button
         onClick={() => deleteItem(id + size + color, user?.id, handleUpdate)}
-        className="transition duration-300 flex justify-center items-center text-white bg-primary hover:bg-pink-500 w-5 h-5 rounded-full focus:outline-none"
+        className="transition duration-300 flex justify-center items-center text-white bg-primary hover:bg-black w-5 h-5 rounded-full focus:outline-none"
       >
         <IoIosClose />
       </button>

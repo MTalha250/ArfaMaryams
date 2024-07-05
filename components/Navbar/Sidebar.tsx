@@ -62,8 +62,8 @@ const Sidebar = () => {
         {user?.name ? (
           <DropdownMenu>
             <DropdownMenuTrigger className="outline-none ring-0 fixed bottom-5 right-5 pb-2 px-5">
-              <div className="rounded-full pb-2 px-5 border border-black bg-transparent text-black  dark:border-white relative group transition duration-200">
-                <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
+              <div className="pb-2 px-5 border border-black bg-transparent text-white  dark:border-white relative group transition duration-200">
+                <div className="absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
                 <span className="relative text-sm">Hi, {user?.name}</span>
               </div>
             </DropdownMenuTrigger>
@@ -87,7 +87,7 @@ const Sidebar = () => {
                 <DropdownMenuSeparator className="bg-neutral-200" />
               )}
               {user?.role == "admin" && (
-                <DropdownMenuItem className="mt-1 cursor-pointer text-center block bg-primary focus:bg-primary/90">
+                <DropdownMenuItem className="mt-1 cursor-pointer text-center block bg-primary text-white focus:bg-primary/90">
                   <Link href="/admin" onClick={() => setOpen(false)}>
                     Admin
                   </Link>
@@ -102,9 +102,9 @@ const Sidebar = () => {
           >
             <Link
               href="/login"
-              className="rounded-full pb-2 px-5 border border-black bg-transparent text-black  dark:border-white relative group transition duration-200"
+              className="pb-2 px-5 border border-black bg-transparent text-white  dark:border-white relative group transition duration-200"
             >
-              <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
+              <div className="absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
               <span className="relative text-sm">Login/Signup</span>
             </Link>
           </div>
@@ -121,7 +121,7 @@ const Sidebar = () => {
         <svg width="25" height="25" viewBox="0 0 23 23">
           <motion.path
             strokeWidth="3"
-            stroke="#E17489"
+            stroke="#9BA3AF"
             strokeLinecap="round"
             variants={{
               closed: { d: "M 2 2.5 L 20 2.5" },
@@ -130,7 +130,7 @@ const Sidebar = () => {
           />
           <motion.path
             strokeWidth="3"
-            stroke="#E17489"
+            stroke="#9BA3AF"
             strokeLinecap="round"
             d="M 2 9.423 L 20 9.423"
             variants={{
@@ -140,7 +140,7 @@ const Sidebar = () => {
           />
           <motion.path
             strokeWidth="3"
-            stroke="#E17489"
+            stroke="#9BA3AF"
             strokeLinecap="round"
             variants={{
               closed: { d: "M 2 16.346 L 20 16.346" },

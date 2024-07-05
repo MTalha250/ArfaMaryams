@@ -126,7 +126,7 @@ const page = () => {
             ruler={false}
             style={{ border: "none", boxShadow: "none", padding: "15px 10px" }}
             barLeftColor="#E1E1E1"
-            barInnerColor="#fcb6c4"
+            barInnerColor="#000000"
             barRightColor="#E1E1E1"
             thumbLeftColor="white"
             thumbRightColor="white"
@@ -143,7 +143,7 @@ const page = () => {
             </button>
             <button
               onClick={handleFilter}
-              className=" flex justify-center border py-1 border-black bg-transparent text-black  dark:border-white relative group transition duration-200"
+              className=" flex justify-center border py-1 border-black bg-transparent text-white dark:border-white relative group transition duration-200"
             >
               <div className="absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
               <span className="relative text-sm font-semibold py-1 px-2">
@@ -173,7 +173,7 @@ const page = () => {
               <button
                 disabled={!search}
                 onClick={() => router.push(`/search/${search}`)}
-                className="flex justify-center border py-1 border-black bg-transparent text-black  dark:border-white relative group transition duration-200"
+                className="flex justify-center border py-1 border-black bg-transparent text-white  dark:border-white relative group transition duration-200"
               >
                 <div className="absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
                 <span className="flex items-center gap-1 relative text-sm font-semibold py-1 px-5">
@@ -245,7 +245,7 @@ const page = () => {
                   padding: "15px 10px",
                 }}
                 barLeftColor="#E1E1E1"
-                barInnerColor="#fcb6c4"
+                barInnerColor="#1c1c1c"
                 barRightColor="#E1E1E1"
                 thumbLeftColor="white"
                 thumbRightColor="white"
@@ -262,7 +262,7 @@ const page = () => {
                 </SheetClose>
                 <SheetClose
                   onClick={handleFilter}
-                  className=" flex justify-center border py-1 border-black bg-transparent text-black  dark:border-white relative group transition duration-200"
+                  className="flex justify-center border py-1 border-black bg-transparent text-white  dark:border-white relative group transition duration-200"
                 >
                   <div className="absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
                   <span className="relative text-sm font-semibold py-1 px-2">

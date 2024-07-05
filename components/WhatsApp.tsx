@@ -12,7 +12,7 @@ const WhatsApp = () => {
         zIndex: 1000,
       }}
     >
-      <IoLogoWhatsapp className="text-4xl text-black" />
+      <IoLogoWhatsapp className="text-4xl text-white" />
     </a>
   );
 };

@@ -12,7 +12,7 @@ const ReturnPolicy = () => {
         </p>
       </div>
 
-      <div className="bg-white rounded-lg shadow-2xl p-5 sm:p-10">
+      <div className="bg-white shadow-2xl p-5 sm:p-10">
         <div className="mb-8">
           <p className="text-lg mb-6">
             <span className="font-semibold">Customer First:</span> At Arfa &

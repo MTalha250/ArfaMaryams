@@ -125,7 +125,7 @@ const Profile = () => {
   };
   return (
     <Dialog>
-      <DialogTrigger className="rounded-sm px-2 py-1.5 text-sm transition duration-200 hover:bg-neutral-100 w-full">
+      <DialogTrigger className="px-2 py-1.5 text-sm transition duration-200 hover:bg-neutral-100 w-full">
         Profile
       </DialogTrigger>
       <DialogContent className="scrollbar scrollbar-none overflow-scroll w-full max-w-[1000px] h-full md:max-h-[520px] flex-col md:flex-row flex gap-10">
@@ -197,9 +197,9 @@ const Profile = () => {
                   {edit ? (
                     <button
                       type="submit"
-                      className="rounded-lg text-base font-bold w-full bg-transparent hover:bg-transparent py-2 border border-black text-black dark:border-white relative group transition duration-200"
+                      className="text-base w-full bg-transparent hover:bg-transparent py-2 border border-black text-white dark:border-white relative group transition duration-200"
                     >
-                      <div className="rounded-lg absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />
+                      <div className="absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />
                       <span className="relative">
                         {isSubmitting ? "Saving..." : "Save Changes"}
                       </span>
@@ -207,10 +207,10 @@ const Profile = () => {
                   ) : (
                     <div
                       onClick={() => setEdit(true)}
-                      className="rounded-lg font-bold w-full bg-transparent hover:bg-transparent py-2 text-center border border-black  dark:border-white relative group transition duration-200"
+                      className="w-full bg-transparent hover:bg-transparent py-2 text-center border border-black  dark:border-white relative group transition duration-200"
                     >
-                      <div className="rounded-lg absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />
-                      <span className="relative">Edit</span>
+                      <div className="absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />
+                      <span className="relative text-white">Edit</span>
                     </div>
                   )}
                 </form>
@@ -263,9 +263,9 @@ const Profile = () => {
                   />
                   <button
                     type="submit"
-                    className="rounded-lg text-base font-bold w-full bg-transparent hover:bg-transparent py-2 border border-black text-black dark:border-white relative group transition duration-200"
+                    className="text-base w-full bg-transparent hover:bg-transparent py-2 border border-black text-white dark:border-white relative group transition duration-200"
                   >
-                    <div className="rounded-lg absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />
+                    <div className="absolute bottom-0 right-0 bg-primary h-full w-full -z-10 group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />
                     <span className="relative">
                       {isSubmittingPassword ? "Saving..." : "Save Changes"}
                     </span>
@@ -283,7 +283,7 @@ const Profile = () => {
             {orders
               .filter((order: any) => order.status == "pending")
               .map((order: any) => (
-                <div key={order._id} className="border p-3 rounded-md">
+                <div key={order._id} className="border p-3">
                   <div className="flex justify-between">
                     <h2 className="font-bold">Order Date</h2>
                     <h2 className="font-bold">

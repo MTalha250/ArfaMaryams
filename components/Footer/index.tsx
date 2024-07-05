@@ -23,7 +23,7 @@ const Footer = () => {
           />
           <div className="max-w-[450px]">
             <h3 className="text-xl font-bold mb-2 tracking-wider uppercase">
-              <span className="bg-primary px-2 text-black"> Sign Up!</span>
+              <span className="bg-primary px-2 text-white"> Sign Up!</span>
             </h3>
             <p className="font-light md:block hidden text-xs mt-2">
               Sign up to our newsletter and be the first to know about the
@@ -32,7 +32,7 @@ const Footer = () => {
             <form className="flex mt-4 flex-col sm:flex-row sm:items-end">
               <button
                 type="submit"
-                className="py-2 px-6 border whitespace-nowrap border-transparent text-sm font-medium rounded-full text-black bg-white"
+                className="py-2 px-6 border whitespace-nowrap border-transparent text-sm font-medium text-black bg-white"
               >
                 Sign up for our E-Newsletter
               </button>
@@ -52,7 +52,7 @@ const Footer = () => {
 
           <div className="max-w-[280px]">
             <h3 className="text-xl font-bold tracking-wider uppercase">
-              <span className="bg-primary px-2 text-black">Contact</span> Us
+              <span className="bg-primary px-2 text-white">Contact</span> Us
             </h3>
             <ul className="mt-4 text-sm space-y-2">
               <li>
@@ -75,7 +75,7 @@ const Footer = () => {
 
           <div>
             <h3 className="text-xl font-bold tracking-wider uppercase">
-              <span className=" bg-primary px-2 text-black">Quick</span> Links
+              <span className=" bg-primary px-2 text-white">Quick</span> Links
             </h3>
             <ul className="mt-4 text-sm space-y-2 flex flex-col">
               {navLinks.map((link) => (
@@ -90,7 +90,7 @@ const Footer = () => {
         </div>
       </div>
       <div>
-        <div className="border-y-2 bg-primary text-black text-center py-2">
+        <div className="border-y-2 bg-primary text-white text-center py-2">
           <p className="text-sm">© 2024 StyleSync. All rights reserved.</p>
         </div>
       </div>

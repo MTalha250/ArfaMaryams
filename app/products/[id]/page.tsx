@@ -144,7 +144,7 @@ const page = () => {
 
   return loading ? (
     <div className="flex justify-center items-center h-screen">
-      <ReactLoading type="bars" color="#E17489" width={100} />
+      <ReactLoading type="bars" color="#000000" width={100} />
     </div>
   ) : (
     <div className="pt-32 px-8 md:px-16 mb-10">
@@ -180,7 +180,7 @@ const page = () => {
               {product?.sizes.map((s: string) => (
                 <button
                   key={s}
-                  className={`px-3 py-1 text-sm rounded-md border border-gray-300 ${
+                  className={`px-3 py-1 text-sm border border-gray-300 ${
                     s == size ? "bg-primary text-white" : ""
                   }`}
                   onClick={() => setSize(s)}
@@ -194,15 +194,15 @@ const page = () => {
             <DrawerTrigger className="text-primary text-sm font-semibold mb-3 mt-1 underline hover:text-primary-dark transition duration-300">
               Size Chart
             </DrawerTrigger>
-            <DrawerContent className="py-10 px-8 md:px-16 bg-white shadow-xl rounded-lg">
-              <div className="h-[65vh] overflow-auto p-6 bg-gradient-to-b from-gray-50 to-white rounded-lg shadow-inner">
+            <DrawerContent className="py-10 px-8 md:px-16 bg-white shadow-xl">
+              <div className="h-[65vh] overflow-auto p-6 bg-gradient-to-b from-gray-50 to-white shadow-inner">
                 <div className="flex flex-col md:flex-row gap-20 text-sm">
                   <div className="w-full">
                     <h2 className="text-xl font-semibold text-center mb-4 text-gray-500 underline">
                       Shirt Size Chart
                     </h2>
-                    <table className="min-w-full divide-y divide-gray-300 bg-white rounded-lg shadow-lg">
-                      <thead className="bg-gradient-to-r from-primary to-pink-500 text-white">
+                    <table className="min-w-full divide-y divide-gray-300 bg-white shadow-lg">
+                      <thead className="bg-primary text-white">
                         <tr>
                           <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider">
                             Type
@@ -245,8 +245,8 @@ const page = () => {
                     <h2 className="text-xl font-semibold text-center mb-4 text-gray-500 underline">
                       Trouser Size Chart
                     </h2>
-                    <table className="min-w-full divide-y divide-gray-300 bg-white rounded-lg shadow-lg">
-                      <thead className="bg-gradient-to-r from-primary to-pink-500 text-white">
+                    <table className="min-w-full divide-y divide-gray-300 bg-white shadow-lg">
+                      <thead className="bg-primary text-white">
                         <tr>
                           <th className="px-6 py-4 text-left text-xs font-bold uppercase tracking-wider">
                             Type
@@ -300,7 +300,7 @@ const page = () => {
               {product?.colors.map((c: string) => (
                 <button
                   key={c}
-                  className={`px-3 py-1 text-sm rounded-md border border-gray-300 ${
+                  className={`px-3 py-1 text-sm border border-gray-300 ${
                     c == color ? "bg-primary text-white" : ""
                   }`}
                   onClick={() => setColor(c)}
@@ -336,10 +336,10 @@ const page = () => {
                   router.push("/login");
                 }
               }}
-              className="group px-6 py-2 bg-white text-black font-bold transition duration-200 hover:bg-primary  border-2 border-black hover:border-primary w-fit"
+              className="group px-6 py-2 bg-white text-black font-bold transition duration-200 hover:bg-primary hover:text-white border-2 border-black hover:border-primary w-fit"
             >
               {inWishlist(id) ? (
-                <MdFavorite className="text-2xl group-hover:scale-125 transition duration-200" />
+                <MdFavorite className="group-hover:text-white text-2xl group-hover:scale-125 transition duration-200" />
               ) : (
                 <MdFavoriteBorder className="text-2xl group-hover:scale-125 transition duration-200" />
               )}
@@ -411,9 +411,9 @@ const page = () => {
                     router.push("/login");
                   }
                 }}
-                className="group animate-shimmer items-center justify-center border border-primary bg-[linear-gradient(110deg,#E17489,40%,#E1E1E1,60%,#E17489)] bg-[length:200%_100%] px-6 py-2 font-medium text-black transition-colors"
+                className="group bg-black items-center justify-center border border-primary px-6 py-2 font-medium text-black transition-colors"
               >
-                <MdOutlineShoppingBag className="text-2xl group-hover:scale-125 transition duration-200" />
+                <MdOutlineShoppingBag className="text-2xl text-white group-hover:scale-125 transition duration-200" />
               </button>
             ) : (
               <p className="group items-center justify-center border border-black bg-neutral-300 px-6 py-2 font-medium text-black transition-colors">

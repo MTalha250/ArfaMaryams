@@ -126,7 +126,7 @@ const page = () => {
               type="text"
               id="name"
               name="name"
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+              className="mt-1 block w-full border border-gray-300  shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
             />
           </div>
           <div>
@@ -140,7 +140,7 @@ const page = () => {
               type="number"
               id="price"
               name="price"
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+              className="mt-1 block w-full border border-gray-300  shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
             />
           </div>
         </div>
@@ -156,7 +156,7 @@ const page = () => {
               type="number"
               id="discount"
               name="discount"
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+              className="mt-1 block w-full border border-gray-300  shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
             />
           </div>
           <div>
@@ -169,7 +169,7 @@ const page = () => {
             <select
               id="stock"
               name="stock"
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+              className="mt-1 block w-full border border-gray-300  shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
             >
               <option value="yes">Yes</option>
               <option value="no">No</option>
@@ -227,12 +227,12 @@ const page = () => {
                 id="colorInput"
                 value={colorInput}
                 onChange={(e) => setColorInput(e.target.value)}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                className="mt-1 block w-full border border-gray-300  shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
               />
               <button
                 type="button"
                 onClick={addColor}
-                className="bg-primary text-white p-2 rounded"
+                className="bg-primary text-white p-2"
               >
                 <FaPlus />
               </button>
@@ -241,7 +241,7 @@ const page = () => {
               {colors.map((color, index) => (
                 <span
                   key={index}
-                  className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-pink-100 text-primary"
+                  className="inline-flex items-center px-3 py-0.5 text-sm font-medium bg-black/10 text-primary"
                 >
                   {color}
                 </span>
@@ -259,7 +259,7 @@ const page = () => {
           <select
             id="category"
             name="category"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+            className="mt-1 block w-full border border-gray-300  shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
           >
             <option value="">Select category</option>
             <option value="premium">Premium</option>
@@ -277,7 +277,7 @@ const page = () => {
           <textarea
             id="description"
             name="description"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+            className="mt-1 block w-full border border-gray-300  shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
           />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -292,7 +292,7 @@ const page = () => {
               type="text"
               id="fabric"
               name="fabric"
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+              className="mt-1 block w-full border border-gray-300  shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
             />
           </div>
           <div>
@@ -306,7 +306,7 @@ const page = () => {
               type="text"
               id="trouser"
               name="trouser"
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+              className="mt-1 block w-full border border-gray-300  shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
             />
           </div>
         </div>
@@ -322,7 +322,7 @@ const page = () => {
               type="text"
               id="inner"
               name="inner"
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+              className="mt-1 block w-full border border-gray-300  shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
             />
           </div>
           <div>
@@ -336,7 +336,7 @@ const page = () => {
               type="text"
               id="dopatta"
               name="dopatta"
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+              className="mt-1 block w-full border border-gray-300  shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
             />
           </div>
         </div>
@@ -352,7 +352,7 @@ const page = () => {
               type="text"
               id="embroidery"
               name="embroidery"
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+              className="mt-1 block w-full border border-gray-300  shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
             />
           </div>
           <div>
@@ -366,13 +366,13 @@ const page = () => {
               type="number"
               id="weight"
               name="weight"
-              className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+              className="mt-1 block w-full border border-gray-300  shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
             />
           </div>
         </div>
         <button
           type="submit"
-          className="font-bold w-full bg-transparent hover:bg-transparent py-3 border border-black text-black dark:border-white relative group transition duration-200"
+          className="font-bold w-full bg-transparent hover:bg-transparent py-3 border border-black text-white dark:border-white relative group transition duration-200"
           disabled={isSubmitting}
         >
           <div className="absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />

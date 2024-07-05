@@ -21,7 +21,7 @@ const Slider = ({ photos }: { photos: string[] }) => {
           clickable: true,
         }}
         modules={[FreeMode, Thumbs, Pagination]}
-        className="mySwiper2 h-[65vh] md:h-[75vh] bg-secondary rounded-xl"
+        className="mySwiper2 h-[65vh] md:h-[75vh] bg-secondary"
       >
         {photos?.map((photo, index) => {
           return (
@@ -56,7 +56,7 @@ const Slider = ({ photos }: { photos: string[] }) => {
             <SwiperSlide key={index}>
               <img
                 src={photo}
-                className="h-full w-full object-cover rounded-lg cursor-pointer"
+                className="h-full w-full object-cover cursor-pointer"
                 loading="lazy"
               />
             </SwiperSlide>

@@ -28,7 +28,7 @@ const Cart = () => {
       <DropdownMenuTrigger className="relative outline-none">
         <MdOutlineShoppingBag className="inline-block text-2xl hover:scale-125 transition duration-200" />
         {user && (
-          <span className="text-black -top-2 -right-1 h-4 w-4 absolute bg-primary rounded-full p-0.5 text-[10px] flex justify-center items-center">
+          <span className="text-white -top-2 -right-1 h-4 w-4 absolute bg-primary rounded-full p-0.5 text-[10px] flex justify-center items-center">
             {items.length}
           </span>
         )}
@@ -42,7 +42,7 @@ const Cart = () => {
                   <h2 className="text-xl font-semibold">Cart</h2>
                   <button
                     onClick={() => clearCart(user?.id, handleUpdate)}
-                    className="py-1 px-3 border border-black bg-transparent text-black dark:border-white relative group transition duration-200"
+                    className="py-1 px-3 border border-black bg-transparent text-white dark:border-white relative group transition duration-200"
                   >
                     <div className="absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
                     <span className="relative text-sm font-semibold">
@@ -95,10 +95,12 @@ const Cart = () => {
                         ).toLocaleString()}
                       </p>
                     </div>
-                    <Link href="/checkout" className="rounded-full block mt-5">
-                      <DropdownMenuItem className="cursor-pointer flex justify-center items-center w-full rounded-full py-2 px-3 border border-black bg-transparent text-black dark:border-white relative group transition duration-200">
-                        <div className="rounded-full absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />
-                        <span className="relative font-semibold">Checkout</span>
+                    <Link href="/checkout" className="block mt-5">
+                      <DropdownMenuItem className="cursor-pointer flex justify-center items-center w-full py-2 px-3 border border-black bg-transparent text-white dark:border-white relative group transition duration-200">
+                        <div className="absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-95 group-hover:scale-y-75 transition-all duration-200" />
+                        <span className="relative font-semibold text-white">
+                          Checkout
+                        </span>
                       </DropdownMenuItem>
                     </Link>
                   </div>

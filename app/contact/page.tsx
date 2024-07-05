@@ -12,7 +12,7 @@ const ContactUs = () => {
         </p>
       </div>
 
-      <div className="max-w-5xl mx-auto bg-white p-6 sm:p-12 rounded-lg shadow-2xl">
+      <div className="max-w-5xl mx-auto bg-white p-6 sm:p-12 shadow-2xl">
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-gray-800 mb-6">
             Get in Touch
@@ -24,7 +24,7 @@ const ContactUs = () => {
           </p>
           <div className="flex flex-wrap -mx-4">
             <div className="w-full md:w-1/2 px-4 mb-8 md:mb-0">
-              <div className="bg-gray-100 p-8 rounded-lg text-center shadow-md">
+              <div className="bg-gray-100 p-8 text-center shadow-md">
                 <FiMail className="text-primary text-4xl mb-4 mx-auto" />
                 <h3 className="text-2xl font-bold text-gray-800 mb-2">
                   Email Us
@@ -35,7 +35,7 @@ const ContactUs = () => {
               </div>
             </div>
             <div className="w-full md:w-1/2 px-4">
-              <div className="bg-gray-100 p-8 rounded-lg text-center shadow-md">
+              <div className="bg-gray-100 p-8 text-center shadow-md">
                 <FiPhone className="text-primary text-4xl mb-4 mx-auto" />
                 <h3 className="text-2xl font-bold text-gray-800 mb-2">
                   Call Us
@@ -55,7 +55,7 @@ const ContactUs = () => {
               <label className="block text-gray-700 text-lg">Name</label>
               <input
                 type="text"
-                className="w-full mt-2 p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="w-full mt-2 p-4 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="Your Name"
                 required
               />
@@ -64,7 +64,7 @@ const ContactUs = () => {
               <label className="block text-gray-700 text-lg">Email</label>
               <input
                 type="email"
-                className="w-full mt-2 p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="w-full mt-2 p-4 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="Your Email"
                 required
               />
@@ -72,7 +72,7 @@ const ContactUs = () => {
             <div>
               <label className="block text-gray-700 text-lg">Message</label>
               <textarea
-                className="w-full mt-2 p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="w-full mt-2 p-4 border border-gray-300  focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="Your Message"
                 required
               ></textarea>
@@ -80,7 +80,7 @@ const ContactUs = () => {
             <div className="text-center">
               <button
                 type="submit"
-                className="bg-primary text-white py-3 px-8 rounded-lg shadow-lg hover:bg-primary-dark transition duration-300"
+                className="bg-primary text-white py-3 px-8 shadow-lg transition duration-300"
               >
                 Send Message
               </button>
@@ -100,7 +100,7 @@ const ContactUs = () => {
             width="100%"
             height="100%"
           ></iframe>
-          <div className="absolute inset-0 bg-gray-800 opacity-25 rounded-lg"></div>
+          <div className="absolute inset-0 bg-gray-800 opacity-25 "></div>
         </div>
       </div>
     </div>

@@ -12,7 +12,7 @@ const ShippingPolicy = () => {
         </p>
       </div>
 
-      <div className="bg-white rounded-lg shadow-2xl p-5 sm:p-10">
+      <div className="bg-white shadow-2xl p-5 sm:p-10">
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">
             Processing Time
@@ -32,7 +32,7 @@ const ShippingPolicy = () => {
             checkout.
           </p>
           <div className="overflow-x-auto">
-            <table className="min-w-full bg-white border border-gray-200 rounded-lg">
+            <table className="min-w-full bg-white border border-gray-200">
               <thead>
                 <tr className="bg-gray-100">
                   <th className="py-3 px-4 border-b">Shipping</th>

@@ -27,7 +27,7 @@ const Wishlist = () => {
       <DropdownMenuTrigger className="relative outline-none">
         <MdFavoriteBorder className="inline-block text-2xl hover:scale-125 transition duration-20" />
         {user && (
-          <span className="text-black -top-2 -right-1 h-4 w-4 absolute bg-primary rounded-full p-0.5 text-[10px] flex justify-center items-center">
+          <span className="text-white -top-2 -right-1 h-4 w-4 absolute bg-primary rounded-full p-0.5 text-[10px] flex justify-center items-center">
             {wishlist.length}
           </span>
         )}
@@ -41,9 +41,9 @@ const Wishlist = () => {
                   <h2 className="text-xl font-semibold">Wishlist</h2>
                   <button
                     onClick={() => clearWishlist(user?.id, handleUpdate)}
-                    className="rounded-lg py-1 px-3 border border-black bg-transparent text-black dark:border-white relative group transition duration-200"
+                    className="py-1 px-3 border border-black bg-transparent text-white dark:border-white relative group transition duration-200"
                   >
-                    <div className="rounded-lg absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
+                    <div className="absolute bottom-0 right-0 bg-primary h-full w-full group-hover:scale-x-90 group-hover:scale-y-75 transition-all duration-200" />
                     <span className="relative text-sm font-semibold">
                       Clear
                     </span>
