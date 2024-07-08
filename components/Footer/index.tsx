@@ -37,10 +37,16 @@ const Footer = () => {
               </button>
             </form>
             <div className="flex space-x-3 mt-6 w-1/2">
-              <a href="">
+              <a
+                href="https://www.facebook.com/profile.php?id=61561012355841&mibextid=ZbWKwL"
+                target="_blank"
+              >
                 <FaFacebookF className="text-black bg-white rounded-full p-2 text-4xl cursor-pointer" />
               </a>
-              <a href="">
+              <a
+                href="https://www.instagram.com/arfa.maryams?igsh=MXA3cXVxb25ud3V0eg=="
+                target="_blank"
+              >
                 <FaInstagram className="text-black bg-white rounded-full p-2 text-4xl cursor-pointer" />
               </a>
             </div>
