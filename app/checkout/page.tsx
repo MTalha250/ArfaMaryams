@@ -50,10 +50,10 @@ const page = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: user?.name,
-      email: user?.email,
-      phone: user?.phone,
-      address: user?.address,
+      name: user?.name || "",
+      email: user?.email || "",
+      phone: user?.phone || "",
+      address: user?.address || "",
       city: "",
       country: "",
       postalCode: "",
@@ -73,12 +73,15 @@ const page = () => {
     setIsSubmitting(true);
     try {
       const response = await axios.post("/api/order", {
-        user: user?.id,
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
         orderItems: items.map((item) => ({
           quantity: item.quantity,
           product: item.id,
           size: item.size,
           color: item.color,
+          customization: item.customization || "",
         })),
         shippingAddress: {
           address: values.address,
@@ -92,7 +95,7 @@ const page = () => {
         totalPrice: getTotalPrice() + (getTotalPrice() > 5000 ? 0 : 250),
       });
       toast.success(response.data.message);
-      clearCart(user?.id, handleUpdate);
+      clearCart(user?.id, user ? true : false, handleUpdate);
       router.push("/");
     } catch (error: any) {
       toast.error(error.response.data.message);
@@ -102,10 +105,10 @@ const page = () => {
   }
 
   useEffect(() => {
-    if (!user?.email || items.length === 0) {
+    if (items.length === 0) {
       router.push("/");
     }
-  }, [user, items]);
+  }, [items]);
 
   return (
     <div className="px-8 md:px-16 pt-32 pb-10 min-h-screen">
@@ -129,7 +132,11 @@ const page = () => {
                     <FormItem>
                       <FormLabel>Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="" {...field} disabled />
+                        <Input
+                          placeholder=""
+                          {...field}
+                          disabled={user ? true : false}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -142,7 +149,11 @@ const page = () => {
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input placeholder="" {...field} disabled />
+                        <Input
+                          placeholder=""
+                          {...field}
+                          disabled={user ? true : false}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -155,7 +166,11 @@ const page = () => {
                     <FormItem>
                       <FormLabel>Phone</FormLabel>
                       <FormControl>
-                        <Input placeholder="" {...field} disabled />
+                        <Input
+                          placeholder=""
+                          {...field}
+                          disabled={user ? true : false}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -168,7 +183,11 @@ const page = () => {
                     <FormItem>
                       <FormLabel>Address</FormLabel>
                       <FormControl>
-                        <Input placeholder="" {...field} />
+                        <Input
+                          placeholder=""
+                          {...field}
+                          disabled={user ? true : false}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>

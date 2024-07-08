@@ -3,14 +3,14 @@ import axios from "axios";
 type CartStore = {
   items: any[];
   initCart: (items: any) => void;
-  addItem: (item: any, userId: any, update: any) => void;
-  removeItem: (id: any, userId: any, update: any) => void;
-  deleteItem: (id: any, userId: any, update: any) => void;
-  addQuantity: (id: any, userId: any, update: any) => void;
+  addItem: (item: any, userId: any, user: boolean, update: any) => void;
+  removeItem: (id: any, userId: any, user: boolean, update: any) => void;
+  deleteItem: (id: any, userId: any, user: boolean, update: any) => void;
+  addQuantity: (id: any, userId: any, user: boolean, update: any) => void;
   getItemQuantity: (id: any) => number;
   getTotalPrice: () => number;
   getTotalItems: () => number;
-  clearCart: (userId: any, update: any) => void;
+  clearCart: (userId: any, user: boolean, update: any) => void;
 };
 
 export const useCartStore = create<CartStore>((set, get) => ({
@@ -18,9 +18,8 @@ export const useCartStore = create<CartStore>((set, get) => ({
   initCart: (items) => {
     set({ items: items });
   },
-  addItem: async (item, userId, update) => {
+  addItem: async (item, userId, user, update) => {
     let new_items = get().items;
-    console.log(new_items);
     let found = false;
     new_items.forEach((cart_item) => {
       if (
@@ -35,11 +34,13 @@ export const useCartStore = create<CartStore>((set, get) => ({
     if (!found) {
       new_items.push({ ...item, quantity: 1 });
     }
-    await axios.put(`/api/update/${userId}`, { cart: new_items });
     set({ items: new_items });
-    update(new_items);
+    if (user) {
+      await axios.put(`/api/update/${userId}`, { cart: new_items });
+      update(new_items);
+    }
   },
-  removeItem: async (id, userId, update) => {
+  removeItem: async (id, userId, user, update) => {
     let new_items = get().items;
     let found = false;
     new_items.forEach((cart_item) => {
@@ -59,27 +60,33 @@ export const useCartStore = create<CartStore>((set, get) => ({
         (item) => item.id + item.size + item.color !== id
       );
     }
-    await axios.put(`/api/update/${userId}`, { cart: new_items });
     set({ items: new_items });
-    update(new_items);
+    if (user) {
+      await axios.put(`/api/update/${userId}`, { cart: new_items });
+      update(new_items);
+    }
   },
-  deleteItem: async (id, userId, update) => {
+  deleteItem: async (id, userId, user, update) => {
     let new_items = get().items;
     new_items = new_items.filter(
       (item) => item.id + item.size + item.color !== id
     );
     set({ items: new_items });
-    await axios.put(`/api/update/${userId}`, { cart: new_items });
-    update(new_items);
+    if (user) {
+      await axios.put(`/api/update/${userId}`, { cart: new_items });
+      update(new_items);
+    }
   },
-  addQuantity: async (id, userId, update) => {
+  addQuantity: async (id, userId, user, update) => {
     set((state) => ({
       items: state.items.map((i) =>
         i.id + i.size + i.color === id ? { ...i, quantity: i.quantity + 1 } : i
       ),
     }));
-    await axios.put(`/api/update/${userId}`, { cart: get().items });
-    update(get().items);
+    if (user) {
+      await axios.put(`/api/update/${userId}`, { cart: get().items });
+      update(get().items);
+    }
   },
   getItemQuantity: (id) => {
     let quantity = 0;
@@ -104,9 +111,11 @@ export const useCartStore = create<CartStore>((set, get) => ({
     });
     return total_items;
   },
-  clearCart: async (userId, update) => {
+  clearCart: async (userId, user, update) => {
     set({ items: [] });
-    await axios.put(`/api/update/${userId}`, { cart: [] });
-    update([]);
+    if (user) {
+      await axios.put(`/api/update/${userId}`, { cart: [] });
+      update([]);
+    }
   },
 }));

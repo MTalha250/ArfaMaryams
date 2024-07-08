@@ -117,7 +117,7 @@ const Profile = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get(`/api/order/${user?.id}`);
+      const response = await axios.get(`/api/order/${user?.email}`);
       setOrders(response.data.orders);
     } catch (error: any) {
       console.log(error);
@@ -294,7 +294,10 @@ const Profile = () => {
                     <h2 className="font-bold">Items:</h2>
                     {order.orderItems.map((item: any) => (
                       <div key={item._id} className="flex justify-between">
-                        <p>{item.product?.name}</p>
+                        <p>
+                          {item.product?.name} ( {item.size.toUpperCase()} |{" "}
+                          {item.color[0].toUpperCase() + item.color.slice(1)} )
+                        </p>
                         <p>
                           {item.quantity} x{" "}
                           {item.product.price.toLocaleString()} = PKR{" "}

@@ -274,7 +274,7 @@ const page = () => {
           </Sheet>
           {loading ? (
             <div className="flex justify-center items-center h-[70vh]">
-              <ReactLoading type="bars" color="#E17489" />
+              <ReactLoading type="bars" color="#1c1c1c" />
             </div>
           ) : products.length > 0 ? (
             <div>

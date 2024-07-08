@@ -27,6 +27,7 @@ const page = () => {
   const router = useRouter();
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
+  const [customization, setCustomization] = useState("");
 
   const trouserLength = [
     {
@@ -316,7 +317,9 @@ const page = () => {
             className="mt-1 w-full border border-gray-300 p-2"
             placeholder="e.g. Alteration"
             rows={3}
-          ></textarea>
+            value={customization}
+            onChange={(e) => setCustomization(e.target.value)}
+          />
           <div className="w-full flex gap-4 my-4">
             <button
               onClick={() => {
@@ -380,42 +383,40 @@ const page = () => {
             {product?.stock > 0 ? (
               <button
                 onClick={() => {
-                  if (user) {
-                    if (!size && !color) {
-                      toast.error("Please select size and color");
-                      return;
-                    }
-                    if (!size) {
-                      toast.error("Please select size");
-                      return;
-                    }
-                    if (!color) {
-                      toast.error("Please select color");
-                      return;
-                    }
-                    for (let i = 0; i < count; i++) {
-                      addItem(
-                        {
-                          id,
-                          images: product?.images,
-                          name: product?.name,
-                          price:
-                            product?.price -
-                            (product?.price * product?.discount) / 100,
-                          size,
-                          color,
-                        },
-                        user.id,
-                        handleUpdate
-                      );
-                    }
-                    toast.success("Added to cart");
-                    setSize("");
-                    setColor("");
-                  } else {
-                    toast.error("Please login to add to cart");
-                    router.push("/login");
+                  if (!size && !color) {
+                    toast.error("Please select size and color");
+                    return;
                   }
+                  if (!size) {
+                    toast.error("Please select size");
+                    return;
+                  }
+                  if (!color) {
+                    toast.error("Please select color");
+                    return;
+                  }
+                  for (let i = 0; i < count; i++) {
+                    addItem(
+                      {
+                        id,
+                        images: product?.images,
+                        name: product?.name,
+                        price:
+                          product?.price -
+                          (product?.price * product?.discount) / 100,
+                        size,
+                        color,
+                        customization,
+                      },
+                      user?.id,
+                      user ? true : false,
+                      handleUpdate
+                    );
+                  }
+                  toast.success("Added to cart");
+                  setSize("");
+                  setColor("");
+                  setCustomization("");
                 }}
                 className="group bg-black items-center justify-center border border-primary px-6 py-2 font-medium text-black transition-colors"
               >

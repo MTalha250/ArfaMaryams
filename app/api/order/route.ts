@@ -5,15 +5,13 @@ import Order from "@/models/order";
 export async function GET(request: NextRequest) {
   await dbConnect();
   try {
-    const orders = await Order.find()
-      .populate("user", "name email phone")
-      .populate({
-        path: "orderItems",
-        populate: {
-          path: "product",
-          model: "Product",
-        },
-      });
+    const orders = await Order.find().populate({
+      path: "orderItems",
+      populate: {
+        path: "product",
+        model: "Product",
+      },
+    });
     return NextResponse.json(
       {
         success: true,
@@ -41,7 +39,9 @@ export async function POST(request: NextRequest) {
   await dbConnect();
   try {
     const {
-      user,
+      name,
+      email,
+      phone,
       orderItems,
       status,
       shippingAddress,
@@ -51,7 +51,9 @@ export async function POST(request: NextRequest) {
       totalPrice,
     } = await request.json();
     const order = await Order.create({
-      user,
+      name,
+      email,
+      phone,
       orderItems,
       status,
       shippingAddress,

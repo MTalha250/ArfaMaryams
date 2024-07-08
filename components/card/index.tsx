@@ -176,38 +176,34 @@ function Card({
             </div>
             <DropdownMenuItem
               onClick={() => {
-                if (user) {
-                  if (!size && !color) {
-                    toast.error("Please select size and color");
-                    return;
-                  }
-                  if (!size) {
-                    toast.error("Please select size");
-                    return;
-                  }
-                  if (!color) {
-                    toast.error("Please select color");
-                    return;
-                  }
-                  addItem(
-                    {
-                      id,
-                      images,
-                      name,
-                      price: price - (price * discount) / 100,
-                      size,
-                      color,
-                    },
-                    user.id,
-                    handleUpdate
-                  );
-                  toast.success("Added to cart");
-                  setSize("");
-                  setColor("");
-                } else {
-                  toast.error("Please login to add to cart");
-                  router.push("/login");
+                if (!size && !color) {
+                  toast.error("Please select size and color");
+                  return;
                 }
+                if (!size) {
+                  toast.error("Please select size");
+                  return;
+                }
+                if (!color) {
+                  toast.error("Please select color");
+                  return;
+                }
+                addItem(
+                  {
+                    id,
+                    images,
+                    name,
+                    price: price - (price * discount) / 100,
+                    size,
+                    color,
+                  },
+                  user?.id,
+                  user ? true : false,
+                  handleUpdate
+                );
+                toast.success("Added to cart");
+                setSize("");
+                setColor("");
               }}
               className="mt-5 ml-auto flex justify-center border py-1 border-black bg-transparent text-white dark:border-white relative group transition duration-200"
             >

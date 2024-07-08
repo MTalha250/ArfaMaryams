@@ -55,7 +55,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="p-8 shadow-lg bg-white border-t-4 border-green-600">
+          <div className="p-8 shadow-lg bg-white border-t-4 border-primary">
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-2xl font-semibold text-gray-700 mb-4">
@@ -65,7 +65,7 @@ const Dashboard = () => {
                   {totalProducts.length}
                 </h1>
               </div>
-              <div className="text-green-600">
+              <div className="text-primary">
                 <svg
                   className="w-12 h-12"
                   fill="none"

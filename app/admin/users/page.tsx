@@ -51,7 +51,7 @@ const page = () => {
         <input
           type="text"
           className="w-full border-b bg-transparent focus:outline-none"
-          placeholder="Search users by name, email, phone, address..."
+          placeholder="Search by name, email, phone, address..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />

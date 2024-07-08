@@ -5,13 +5,12 @@ import Product from "@/models/product";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: { email: string } }
 ) {
-  const { id } = params;
+  const { email } = params;
   await dbConnect();
   try {
-    const orders = await Order.find({ user: id })
-      .populate("user", "name email phone")
+    const orders = await Order.find({ email: email })
       .populate({
         path: "orderItems",
         populate: {

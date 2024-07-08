@@ -45,7 +45,12 @@ const CartItem = ({ id, name, price, image, size, color, quantity }: Props) => {
         <div className="flex items-center">
           <button
             onClick={() =>
-              removeItem(id + size + color, user?.id, handleUpdate)
+              removeItem(
+                id + size + color,
+                user?.id,
+                user ? true : false,
+                handleUpdate
+              )
             }
             className="transition duration-300 flex justify-center items-center bg-primary hover:bg-black text-white rounded-full mr-2 focus:outline-none text-sm w-5 h-5"
           >
@@ -54,7 +59,12 @@ const CartItem = ({ id, name, price, image, size, color, quantity }: Props) => {
           <span className="font-semibold">{quantity}</span>
           <button
             onClick={() =>
-              addQuantity(id + size + color, user?.id, handleUpdate)
+              addQuantity(
+                id + size + color,
+                user?.id,
+                user ? true : false,
+                handleUpdate
+              )
             }
             className="transition duration-300 flex justify-center items-center bg-primary hover:bg-black text-white rounded-full ml-2 focus:outline-none text-sm w-5 h-5"
           >
@@ -63,7 +73,14 @@ const CartItem = ({ id, name, price, image, size, color, quantity }: Props) => {
         </div>
       </div>
       <button
-        onClick={() => deleteItem(id + size + color, user?.id, handleUpdate)}
+        onClick={() =>
+          deleteItem(
+            id + size + color,
+            user?.id,
+            user ? true : false,
+            handleUpdate
+          )
+        }
         className="transition duration-300 flex justify-center items-center text-white bg-primary hover:bg-black w-5 h-5 rounded-full focus:outline-none"
       >
         <IoIosClose />

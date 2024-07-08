@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { FaPlus } from "react-icons/fa";
 import PhotosUploader from "@/components/admin/uploader";
 import axios from "axios";
-import { set } from "mongoose";
+import { CiCircleMinus } from "react-icons/ci";
 
 const page = () => {
   const [images, setImages] = useState<string[]>([]);
@@ -53,7 +53,7 @@ const page = () => {
         price: parseFloat(price as string),
         discount: discount ? parseFloat(discount as string) : 0,
         images,
-        sizes,
+        sizes: sizes.sort((a, b) => b.localeCompare(a)),
         colors,
         category,
         stock,
@@ -243,7 +243,11 @@ const page = () => {
                   key={index}
                   className="inline-flex items-center px-3 py-0.5 text-sm font-medium bg-black/10 text-primary"
                 >
-                  {color}
+                  {color}{" "}
+                  <CiCircleMinus
+                    className="ml-1 cursor-pointer"
+                    onClick={() => setColors(colors.filter((c) => c !== color))}
+                  />
                 </span>
               ))}
             </div>
