@@ -20,7 +20,6 @@ interface Props {
   id: string;
   images: string[];
   name: string;
-  description: string;
   price: number;
   discount: number;
   sizes: string[];
@@ -33,7 +32,6 @@ function Card({
   id,
   images,
   name,
-  description,
   price,
   discount,
   sizes,
@@ -126,7 +124,6 @@ function Card({
           </div>
           <span className="ml-2">({reviews.length})</span>
         </div>
-        <p className="text-neutral-500 text-sm truncate">{description}</p>
         <p className="my-1 text-primary font-semibold">
           PKR {(price - (price * discount) / 100).toLocaleString()}
           {discount > 0 && (

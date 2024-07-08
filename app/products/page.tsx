@@ -285,7 +285,6 @@ const page = () => {
                     id={product._id}
                     images={product.images}
                     name={product.name}
-                    description={product.description}
                     price={product.price}
                     discount={product.discount}
                     sizes={product.sizes}

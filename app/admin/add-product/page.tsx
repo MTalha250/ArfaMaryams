@@ -36,7 +36,6 @@ const page = () => {
       !name ||
       !price ||
       !category ||
-      !description ||
       sizes.length === 0 ||
       colors.length === 0 ||
       images.length === 0
@@ -276,7 +275,7 @@ const page = () => {
             htmlFor="description"
             className="block text-sm font-medium text-gray-700"
           >
-            Description <span className="text-red-500">*</span>
+            Description
           </label>
           <textarea
             id="description"

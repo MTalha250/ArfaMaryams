@@ -314,7 +314,7 @@ const page = () => {
           <label htmlFor="customization">Customization:</label>
           <textarea
             id="customization"
-            className="mt-1 w-full border border-gray-300 p-2"
+            className="mt-1 w-full border border-gray-300 focus:outline-none focus:border-gray-500 p-2"
             placeholder="e.g. Alteration"
             rows={3}
             value={customization}
@@ -428,9 +428,11 @@ const page = () => {
               </p>
             )}
           </div>
-          <p className="text-sm text-gray-700 leading-relaxed text-justify">
-            {product?.description}
-          </p>
+          {product?.description && (
+            <p className="text-sm text-gray-700 leading-relaxed text-justify">
+              {product?.description}
+            </p>
+          )}
           <hr className="my-4 border-gray-200" />
           {product?.fabric && (
             <p className="text-gray-700 leading-relaxed my-0.5">
