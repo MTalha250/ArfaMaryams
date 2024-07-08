@@ -30,7 +30,7 @@ const ContactUs = () => {
                   Email Us
                 </h3>
                 <p className="text-xs sm:text-base text-gray-600">
-                  support@arfaandmaryams.com
+                  arfaandmaryams@gmail.com
                 </p>
               </div>
             </div>
@@ -40,7 +40,7 @@ const ContactUs = () => {
                 <h3 className="text-2xl font-bold text-gray-800 mb-2">
                   Call Us
                 </h3>
-                <p className="text-gray-600">+92 321 4087600</p>
+                <p className="text-gray-600">+92 333 4170555</p>
               </div>
             </div>
           </div>
@@ -96,11 +96,10 @@ const ContactUs = () => {
         </p>
         <div className="relative w-full h-96">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.8913331118615!2d74.31076452572832!3d31.472175299521435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919040068171bff%3A0xfb2db42733a440fb!2sBlock%20P%20Model%20Town%2C%20Lahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1719860016306!5m2!1sen!2s"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27219.505179071937!2d74.32392324999999!3d31.48463845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904106691c4c7%3A0xfb24ddaf1e7bc6c2!2sModel%20Town%2C%20Lahore%2C%20Punjab!5e0!3m2!1sen!2s!4v1720400026235!5m2!1sen!2s"
             width="100%"
             height="100%"
           ></iframe>
-          <div className="absolute inset-0 bg-gray-800 opacity-25 "></div>
         </div>
       </div>
     </div>

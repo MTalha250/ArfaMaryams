@@ -2,7 +2,6 @@ import React from "react";
 import {
   FaFacebookF,
   FaInstagram,
-  FaLinkedin,
   FaPhone,
   FaEnvelope,
   FaWhatsapp,
@@ -37,15 +36,12 @@ const Footer = () => {
                 Sign up for our E-Newsletter
               </button>
             </form>
-            <div className="flex justify-center space-x-3 mt-6 w-1/2">
+            <div className="flex space-x-3 mt-6 w-1/2">
               <a href="">
                 <FaFacebookF className="text-black bg-white rounded-full p-2 text-4xl cursor-pointer" />
               </a>
               <a href="">
                 <FaInstagram className="text-black bg-white rounded-full p-2 text-4xl cursor-pointer" />
-              </a>
-              <a href="">
-                <FaLinkedin className="text-black bg-white rounded-full p-2 text-4xl cursor-pointer" />
               </a>
             </div>
           </div>
@@ -56,19 +52,22 @@ const Footer = () => {
             </h3>
             <ul className="mt-4 text-sm space-y-2">
               <li>
-                <FaPhone className="rotate-90  inline mr-2" /> +92 324 4264800
+                <FaPhone className="rotate-90  inline mr-2" /> +92 333 4170555
               </li>
               <li>
                 <FaEnvelope className="inline   mr-2" />
-                <a href="mailto:info@ezifx.com"> info@StyleSync.com</a>
+                <a href="mailto:arfanmaryams@gmail.com">
+                  {" "}
+                  arfanmaryams@gmail.com
+                </a>
               </li>
               <li>
                 <FaWhatsapp className="inline text-lg mr-2 " />
-                <a href="https://wa.me/1234s567890"> +92 324 4264800</a>
+                <a href="https://wa.me/923334170555"> +92 333 4170555</a>
               </li>
               <li className="flex mt-2">
                 <FaMapMarkerAlt className="inline mr-2  text-lg" />
-                <a href="">Address: Model Town, Lahore, Pakistan</a>
+                <a href="">Address: Lahore, Pakistan</a>
               </li>
             </ul>
           </div>
@@ -91,7 +90,9 @@ const Footer = () => {
       </div>
       <div>
         <div className="border-y-2 bg-primary text-white text-center py-2">
-          <p className="text-sm">© 2024 StyleSync. All rights reserved.</p>
+          <p className="text-sm">
+            © 2024 Arfa & Maryam's. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

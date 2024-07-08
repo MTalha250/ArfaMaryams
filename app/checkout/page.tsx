@@ -242,12 +242,12 @@ const page = () => {
                         After making the payment, please send the screenshot of
                         the transaction to our WhatsApp number: <br />
                         <a
-                          href="https://wa.me/923214087600"
+                          href="https://wa.me/923334170555"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-primary"
                         >
-                          +92 321 4087600
+                          +92 333 4170555
                         </a>
                       </p>
                     </div>

@@ -58,10 +58,8 @@ const Navbar = () => {
         <img src={logo.src} alt="logo" className="w-10" />
         <h1 className="ml-2 font-semibold sm:text-xl">
           Arfa
-          <span className="text-gray-400 font-bask italic font-bold">&</span>
-          <span className="text-lg sm:text-2xl text-primary font-bask italic font-bold">
-            Maryam's
-          </span>
+          <span className="text-[#B5C1C7] font-bask italic font-bold">&</span>
+          Maryam's
         </h1>
       </Link>
       <ul className="font-bold items-center justify-center space-x-5 lg:space-x-10 md:flex hidden">
@@ -69,7 +67,11 @@ const Navbar = () => {
           <li key={index}>
             <Link
               href={link.href}
-              className="flex items-center border-b-2 border-transparent pb-1 hover:border-primary transition duration-300"
+              className={
+                scroll || pathname !== "/"
+                  ? "flex items-center border-b-2 border-transparent pb-1 hover:border-primary transition duration-300"
+                  : "flex items-center border-b-2 border-transparent pb-1 hover:border-white transition duration-300"
+              }
             >
               {link.label}
             </Link>

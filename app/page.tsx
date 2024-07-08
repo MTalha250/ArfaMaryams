@@ -8,16 +8,12 @@ import img1 from "@/assets/home1.webp";
 import img2 from "@/assets/home2.webp";
 import img3 from "@/assets/home3.webp";
 const words = [
-  { text: "Discover", className: "text-white text-4xl xl:text-5xl" },
-  { text: "Your", className: "text-white text-4xl xl:text-5xl" },
-  { text: "Elegance,", className: "text-[#9CA3AF] text-4xl xl:text-5xl" },
-  { text: "With", className: "text-white text-4xl xl:text-5xl" },
-  { text: "Arfa", className: "text-white text-4xl xl:text-5xl" },
-  { text: "&", className: "text-[#9CA3AF] text-4xl xl:text-5xl" },
-  {
-    text: "Maryam's.",
-    className: "text-[#9CA3AF] text-5xl xl:text-6xl italic font-bask",
-  },
+  { text: "Where", className: "text-white text-4xl xl:text-5xl" },
+  { text: "Purchasing", className: "text-white text-4xl xl:text-5xl" },
+  { text: "Meets,", className: "text-white text-4xl xl:text-5xl" },
+  { text: "Happiness", className: "text-white text-4xl xl:text-5xl" },
+  { text: "&", className: "text-white text-4xl xl:text-5xl" },
+  { text: "Satisfaction", className: "text-white text-4xl xl:text-5xl" },
 ];
 
 const page = () => {
@@ -28,13 +24,8 @@ const page = () => {
           images={[img1.src, img2.src, img3.src]}
           children={
             <div className="text-white z-20 flex flex-col md:items-center px-8">
-              <h1 className="mb-5 font-bold text-4xl sm:text-5xl md:text-center md:hidden leading-relaxed">
-                Discover Your
-                <span className="text-[#9CA3AF]"> Elegance,</span> With Arfa
-                <span className="text-[#9CA3AF]">&</span>
-                <span className="text-[#9CA3AF] text-text-5xl sm:text-6xl font-bask italic">
-                  Maryam's.
-                </span>
+              <h1 className="mb-5 font-bold text-4xl sm:text-5xl md:text-center md:hidden">
+                Where Purchasing Meets Happiness & Satisfaction
               </h1>
               <Content
                 words={words}

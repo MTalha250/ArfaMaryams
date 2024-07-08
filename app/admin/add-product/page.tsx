@@ -346,7 +346,7 @@ const page = () => {
               htmlFor="embroidery"
               className="block text-sm font-medium text-gray-700"
             >
-              Embroidery
+              Embellishment
             </label>
             <input
               type="text"

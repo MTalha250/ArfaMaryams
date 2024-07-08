@@ -7,7 +7,8 @@ const AboutUs = () => {
       <div className="text-center mb-12 flex flex-col items-center">
         <h1 className="text-4xl font-bold text-gray-800">About Us</h1>
         <p className="mt-4 text-lg text-gray-600 max-w-xl">
-          Welcome to Arfa & Maryam's, where quality meets elegance.
+          Welcome to Arfa & Maryam's, where purchasing meets happiness &
+          satisfaction
         </p>
       </div>
 
@@ -25,9 +26,9 @@ const AboutUs = () => {
           <p className="text-gray-600 mb-4">
             Arfa & Maryam's began with a vision: to bring the finest women's
             fashion directly to your doorstep. Our journey started in 2023, and
-            ever since, we have dedicated ourselves to providing unparalleled
-            quality and customer service. Our team works diligently to curate a
-            selection of products that meet the highest standards.
+            ever since, we have dedicated ourselves to providing quality and
+            customer service. Our team works diligently to curate a selection of
+            products that meet the highest standards.
           </p>
           <p className="text-gray-600">
             We believe in the strength of community and the importance of

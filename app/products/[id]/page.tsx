@@ -310,7 +310,13 @@ const page = () => {
               ))}
             </div>
           </div>
-          <hr className="mb-4 border-gray-200" />
+          <label htmlFor="customization">Customization:</label>
+          <textarea
+            id="customization"
+            className="mt-1 w-full border border-gray-300 p-2"
+            placeholder="e.g. Alteration"
+            rows={3}
+          ></textarea>
           <div className="w-full flex gap-4 my-4">
             <button
               onClick={() => {
@@ -451,7 +457,7 @@ const page = () => {
           )}
           {product?.embroidery && (
             <p className="text-gray-700 leading-relaxed my-0.5">
-              <span className="font-bold">Embroidery: </span>
+              <span className="font-bold">Embellishment: </span>
               {product?.embroidery[0].toUpperCase() +
                 product?.embroidery.slice(1)}
             </p>
