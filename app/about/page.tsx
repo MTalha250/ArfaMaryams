@@ -80,12 +80,12 @@ const AboutUs = () => {
         <div className="w-full md:w-1/3 px-4">
           <div className="bg-white shadow-lg p-6">
             <h3 className="text-xl font-bold text-gray-800 mb-2">
-              Sustainable Practices
+              Fast Shipping
             </h3>
             <p className="text-gray-600">
-              We aim to reduce our environmental footprint by embracing
-              sustainable practices in our operations and offering eco-friendly
-              products.
+              We know you're excited to receive your order, which is why we
+              offer fast shipping to get your items to you as quickly as
+              possible.
             </p>
           </div>
         </div>

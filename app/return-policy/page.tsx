@@ -89,9 +89,9 @@ const ReturnPolicy = () => {
             contact us at:
           </p>
           <p className="text-gray-600 mt-4">
-            support@example.com
+            arfaandmaryams@gmail.com
             <br />
-            123-456-7890
+            +92 333 4170555
           </p>
         </div>
       </div>
