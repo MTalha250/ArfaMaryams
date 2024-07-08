@@ -26,17 +26,39 @@ import {
 } from "@/components/ui/select";
 
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const page = () => {
   const [orders, setOrders] = useState([]);
   const [search, setSearch] = useState("");
-  const [status, setStatus] = useState("");
-  const [paymentStatus, setPaymentStatus] = useState("");
 
   const fetchTotalOrders = async () => {
     const response = await axios.get("/api/order");
     setOrders(response.data.orders);
   };
+
+  const handleStatusChange = async (id: any, status: any) => {
+    try {
+      const response = await axios.put(`/api/orderStatus/${id}`, { status });
+      toast.success(response.data.message);
+      fetchTotalOrders();
+    } catch (error: any) {
+      toast.error(error.response.data.message);
+    }
+  };
+
+  const handlePaymentStatusChange = async (id: any, paymentStatus: any) => {
+    try {
+      const response = await axios.put(`/api/orderStatus/${id}`, {
+        paymentStatus,
+      });
+      toast.success(response.data.message);
+      fetchTotalOrders();
+    } catch (error: any) {
+      toast.error(error.response.data.message);
+    }
+  };
+
   useEffect(() => {
     fetchTotalOrders();
   }, []);
@@ -199,7 +221,7 @@ const page = () => {
                             </h1>
                             <Select
                               onValueChange={(value: any) => {
-                                setPaymentStatus(value);
+                                handlePaymentStatusChange(order._id, value);
                               }}
                             >
                               <SelectTrigger className="w-fit mt-1">
@@ -229,7 +251,7 @@ const page = () => {
                             </h1>
                             <Select
                               onValueChange={(value: any) => {
-                                setPaymentStatus(value);
+                                handleStatusChange(order._id, value);
                               }}
                             >
                               <SelectTrigger className="w-fit mt-1">
