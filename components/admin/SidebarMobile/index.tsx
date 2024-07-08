@@ -51,7 +51,7 @@ const SidebarMobile = () => {
           </li>
           <li className="flex items-center space-x-3 border-b border-white py-2">
             <BsFillCartCheckFill />{" "}
-            <Link href="/admin/add-product">
+            <Link href="/admin/orders">
               <SheetClose>Orders</SheetClose>
             </Link>
           </li>
