@@ -52,7 +52,8 @@ const ShippingPolicy = () => {
                   <td className="py-3 px-4 border-b">International</td>
                   <td className="py-3 px-4 border-b">1-2 weeks</td>
                   <td className="py-3 px-4 border-b">
-                    Will be confirmed on Whatsapp
+                    Will be confirmed on Whatsapp after calculating the weight
+                    of the order
                   </td>
                 </tr>
               </tbody>
