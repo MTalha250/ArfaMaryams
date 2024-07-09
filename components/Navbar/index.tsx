@@ -56,7 +56,7 @@ const Navbar = () => {
         className="flex items-center justify-center  d transition-colors duration-300"
       >
         <img src={logo.src} alt="logo" className="w-10" />
-        <h1 className="ml-2 font-semibold sm:text-xl">
+        <h1 className="ml-1 sm:ml-2 font-bold text-lg sm:text-xl">
           Arfa
           <span className="text-[#B5C1C7] font-bask italic font-bold">&</span>
           Maryam's
