@@ -44,7 +44,7 @@ const Footer = () => {
                 <FaFacebookF className="text-black bg-white rounded-full p-2 text-4xl cursor-pointer" />
               </a>
               <a
-                href="https://www.instagram.com/arfa.maryams?igsh=MXA3cXVxb25ud3V0eg=="
+                href="https://www.instagram.com/arfa.maryams?igsh=aWtubnplZWk2ZzJ6"
                 target="_blank"
               >
                 <FaInstagram className="text-black bg-white rounded-full p-2 text-4xl cursor-pointer" />
