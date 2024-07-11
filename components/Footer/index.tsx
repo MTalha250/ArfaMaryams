@@ -62,7 +62,7 @@ const Footer = () => {
               </li>
               <li>
                 <FaEnvelope className="inline   mr-2" />
-                <a href="mailto:arfanmaryams@gmail.com">
+                <a href="mailto:arfaandmaryams@gmail.com">
                   {" "}
                   arfaandmaryams@gmail.com
                 </a>
