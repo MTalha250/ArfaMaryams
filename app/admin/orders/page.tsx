@@ -35,6 +35,7 @@ const page = () => {
   const fetchTotalOrders = async () => {
     const response = await axios.get("/api/order");
     setOrders(response.data.orders);
+    console.log("Orders", response.data.orders);
   };
 
   const handleStatusChange = async (id: any, status: any) => {
@@ -70,7 +71,7 @@ const page = () => {
       <input
         type="text"
         className="w-full border-b bg-transparent focus:outline-none"
-        placeholder="Search by name, email, phone, address..."
+        placeholder="Search by order id, customer name, email, phone..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
@@ -106,6 +107,7 @@ const page = () => {
               (order: any) =>
                 order.name.toLowerCase().includes(search.toLowerCase()) ||
                 order.email.toLowerCase().includes(search.toLowerCase()) ||
+                order.phone.toLowerCase().includes(search.toLowerCase()) ||
                 order._id.toLowerCase().includes(search.toLowerCase())
             )
             .map((order: any) => (

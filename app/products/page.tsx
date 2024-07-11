@@ -70,8 +70,8 @@ const page = () => {
       <div className="text-center mb-12 flex flex-col items-center">
         <h1 className="text-4xl font-bold text-gray-800">All products</h1>
         <p className="mt-4 text-lg text-gray-600 max-w-xl">
-          Explore our diverse range in a very affordable price range. Find the
-          perfect outfit for any occasion.
+          Explore our luxury and ready-to-wear collections. Find the perfect
+          outfit for any occasion.
         </p>
       </div>
 
