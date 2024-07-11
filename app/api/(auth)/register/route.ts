@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
     });
     const mailOptions = {
       from: {
-        name: "Arfaan & Maryam's",
+        name: "Arfa & Maryam's",
         address: "arfaandmaryams@gmail.com",
       },
       to: email,
