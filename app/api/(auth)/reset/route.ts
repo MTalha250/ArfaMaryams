@@ -30,7 +30,10 @@ export const POST = async (request: NextRequest) => {
       },
     });
     const mailOptions = {
-      from: "arfaandmaryams@gmail.com",
+      from: {
+        name: "Arfa & Maryam's",
+        address: "arfaandmaryams@gmail.com",
+      },
       to: email,
       subject: "Password Reset Code",
       html: `<h3>Your password reset code is: <span style="display:block; font-weight: bold; font-size: 30px;">${code}</span></h3>`,

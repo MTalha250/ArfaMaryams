@@ -81,7 +81,10 @@ export async function POST(request: NextRequest) {
       },
     });
     const mailOptions = {
-      from: "arfaandmaryams@gmail.com",
+      from: {
+        name: "Arfa & Maryam's",
+        address: "arfaandmaryams@gmail.com",
+      },
       to: email,
       subject: "Order Confirmation",
       html: `<!DOCTYPE html>
