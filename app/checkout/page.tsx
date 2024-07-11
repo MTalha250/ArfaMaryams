@@ -258,8 +258,10 @@ const page = () => {
                       </p>
                       <p className="text-xs mt-2 font-semibold">
                         Note: <br />
-                        After making the payment, please send the screenshot of
-                        the transaction to our WhatsApp number: <br />
+                        After transferring the amount, please send the
+                        screenshot of the transaction with your order id that
+                        you will receive on your email (after placing the order)
+                        to our WhatsApp number: <br />
                         <a
                           href="https://wa.me/923334170555"
                           target="_blank"
