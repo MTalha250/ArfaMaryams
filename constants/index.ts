@@ -6,6 +6,20 @@ export const navLinks = [
   {
     label: "Products",
     href: "/products",
+    children: [
+      {
+        label: "Premium",
+        href: "/categories/premium",
+      },
+      {
+        label: "Formals",
+        href: "/categories/formals",
+      },
+      {
+        label: "Semi-Formals",
+        href: "/categories/semi-formals",
+      },
+    ],
   },
   {
     label: "Contact",
