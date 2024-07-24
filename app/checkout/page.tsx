@@ -245,7 +245,7 @@ const page = () => {
                     <RadioGroupItem value="bank" id="bank" />
                     <Label htmlFor="bank">Bank Transfer</Label>
                   </div>
-                  {paymentMethod == "bank" && (
+                  {/* {paymentMethod == "bank" && (
                     <div className="my-1 p-2  border border-black">
                       <p className="text-xs">
                         Account Name: ZANIB ASHFAQ
@@ -272,7 +272,7 @@ const page = () => {
                         </a>
                       </p>
                     </div>
-                  )}
+                  )} */}
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="cod" id="cod" />
                     <Label htmlFor="cod">Cash on Delivery (COD)</Label>
