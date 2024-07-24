@@ -91,8 +91,8 @@ const page = () => {
         },
         paymentMethod,
         itemsPrice: getTotalPrice(),
-        delivery: getTotalPrice() > 5000 ? 0 : 250,
-        totalPrice: getTotalPrice() + (getTotalPrice() > 5000 ? 0 : 250),
+        delivery: getTotalPrice() > 10000 ? 0 : 300,
+        totalPrice: getTotalPrice() + (getTotalPrice() > 10000 ? 0 : 300),
       });
       toast.success(response.data.message);
       clearCart(user?.id, user ? true : false, handleUpdate);
@@ -324,10 +324,10 @@ const page = () => {
             <div className="flex justify-between">
               <p>Delivery</p>
               <p>
-                {getTotalPrice() > 5000 ? (
+                {getTotalPrice() > 10000 ? (
                   <span className="font-semibold text-green-600">Free</span>
                 ) : (
-                  "250 PKR"
+                  "300 PKR"
                 )}
               </p>
             </div>
@@ -335,7 +335,7 @@ const page = () => {
               <p>Total</p>
               <p>
                 {(
-                  getTotalPrice() + (getTotalPrice() > 5000 ? 0 : 250)
+                  getTotalPrice() + (getTotalPrice() > 10000 ? 0 : 300)
                 ).toLocaleString()}{" "}
                 PKR
               </p>

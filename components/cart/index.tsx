@@ -74,12 +74,12 @@ const Cart = () => {
                   <div className="flex justify-between">
                     <p>Delivery</p>
                     <p>
-                      {getTotalPrice() > 5000 ? (
+                      {getTotalPrice() > 10000 ? (
                         <span className="font-semibold text-green-600">
                           Free
                         </span>
                       ) : (
-                        "PKR 250"
+                        "PKR 300"
                       )}
                     </p>
                   </div>
@@ -88,7 +88,7 @@ const Cart = () => {
                     <p>
                       PKR{" "}
                       {(
-                        getTotalPrice() + (getTotalPrice() > 5000 ? 0 : 250)
+                        getTotalPrice() + (getTotalPrice() > 10000 ? 0 : 300)
                       ).toLocaleString()}
                     </p>
                   </div>
