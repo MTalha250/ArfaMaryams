@@ -245,9 +245,9 @@ const page = () => {
                     <RadioGroupItem value="bank" id="bank" />
                     <Label htmlFor="bank">Bank Transfer</Label>
                   </div>
-                  {/* {paymentMethod == "bank" && (
-                    <div className="my-1 p-2  border border-black">
-                      <p className="text-xs">
+                  {paymentMethod == "bank" && (
+                    <div className="my-1 p-2  border border-black w-fit">
+                      {/* <p className="text-xs">
                         Account Name: ZANIB ASHFAQ
                         <br />
                         Bank: Meezan Bank
@@ -261,7 +261,9 @@ const page = () => {
                         After transferring the amount, please send the
                         screenshot of the transaction with your order id that
                         you will receive on your email (after placing the order)
-                        to our WhatsApp number: <br />
+                        to our WhatsApp number: <br /> */}
+                      <p className="text-xs">
+                        Contact us on WhatsApp for further details: <br />
                         <a
                           href="https://wa.me/923334170555"
                           target="_blank"
@@ -271,8 +273,9 @@ const page = () => {
                           +92 333 4170555
                         </a>
                       </p>
+                      {/* </p> */}
                     </div>
-                  )} */}
+                  )}
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="cod" id="cod" />
                     <Label htmlFor="cod">Cash on Delivery (COD)</Label>

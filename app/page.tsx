@@ -59,8 +59,9 @@ const page = () => {
             className="w-full"
           >
             <p className="tracking-wider text-sm sm:text-base">
-              <span className="font-bold">Free Shipping</span> on all orders.
-              Price Match Guarantee. Safe & Secure Shopping. 100% Safe Payment.
+              <span className="font-bold">Free Shipping</span> on all orders
+              over PKR 10,000. Price Match Guarantee. Safe & Secure Shopping.
+              100% Safe Payment.
               <span className="font-bold"> Free Returns</span>.
             </p>
           </Marquee>
