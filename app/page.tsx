@@ -18,7 +18,7 @@ const words = [
 
 const page = () => {
   return (
-    <div className="min-h-[200vh]">
+    <div>
       <div className="h-dvh relative">
         <Hero
           images={[img1.src, img2.src, img3.src]}
