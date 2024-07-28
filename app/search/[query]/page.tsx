@@ -68,7 +68,7 @@ const page = () => {
       </div>
       {loading ? (
         <div className="flex justify-center items-center h-[70vh]">
-          <ReactLoading type="bars" color="#E17489" />
+          <ReactLoading type="bars" color="#000000" />
         </div>
       ) : products.length > 0 ? (
         <div>

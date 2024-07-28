@@ -295,7 +295,7 @@ const page = () => {
             </DrawerContent>
           </Drawer>
 
-          <div className="mb-5 flex gap-3 items-center">
+          <div className=" mb-2 flex gap-3 items-center">
             <p className="text-gray-600">Color:</p>
             <div className="flex gap-2">
               {product?.colors.map((c: string) => (
@@ -311,6 +311,13 @@ const page = () => {
               ))}
             </div>
           </div>
+          <p
+            className="mb-5 text-sm text-gray-700 leading-relaxed text-justify"
+            style={{ whiteSpace: "pre-line" }}
+          >
+            Please note that the product's color may vary slightly due to
+            lighting and screen settings.
+          </p>
           <label htmlFor="customization">Customization:</label>
           <textarea
             id="customization"

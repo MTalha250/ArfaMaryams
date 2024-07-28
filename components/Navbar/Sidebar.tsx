@@ -14,6 +14,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import toast from "react-hot-toast";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 const variants = {
   initial: {
     scaleX: 0,
@@ -43,22 +50,75 @@ const Sidebar = () => {
   return (
     <motion.div className="md:hidden" animate={open ? "open" : "closed"}>
       <motion.div
-        className="text-3xl font-bold z-50 fixed top-0 flex items-center p-10 right-0 bottom-0 bg-white w-full text-secondary origin-right h-screen"
+        className="text-3xl font-bold z-50 fixed top-0 flex items-center px-5 py-10 right-0 bottom-0 bg-white w-full text-secondary origin-right h-screen"
         variants={variants}
       >
-        <ul className="space-y-5">
+        <ul className="space-y-4 w-full max-h-[75vh] overflow-scroll px-5">
           {navLinks.map((link, index) => (
             <li key={index}>
-              <Link
-                onClick={() => setOpen(false)}
-                href={link.href}
-                className="border-b-4 border-transparent hover:text-primary hover:border-primary transition duration-300"
-              >
-                {link.label}
-              </Link>
+              {link.children ? (
+                <Accordion type="single" collapsible>
+                  <AccordionItem value={`item-${index}`}>
+                    <AccordionTrigger className="flex items-center justify-between px-4 py-3 text-lg font-semibold text-gray-900 bg-gray-100 rounded-md shadow-md hover:bg-gray-200 transition duration-300">
+                      {link.label}
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <ul className="pl-4 pt-2 mt-2 space-y-1 text-lg text-gray-800 bg-white rounded-md shadow-inner">
+                        <li>
+                          <Link
+                            onClick={() => setOpen(false)}
+                            href={link.href}
+                            className="block px-4 py-2 rounded-md hover:bg-gray-100 transition duration-300"
+                          >
+                            All {link.label}
+                          </Link>
+                        </li>
+                        {link.children.map((child, childIndex) => (
+                          <li key={childIndex}>
+                            <Link
+                              onClick={() => setOpen(false)}
+                              href={child.href}
+                              className="block px-4 py-2 rounded-md hover:bg-gray-100 transition duration-300"
+                            >
+                              {child.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              ) : (
+                <Link
+                  onClick={() => setOpen(false)}
+                  href={link.href}
+                  className="block px-4 py-3 text-lg font-semibold text-gray-900 bg-gray-100 rounded-md shadow-md hover:bg-gray-200 transition duration-300"
+                >
+                  {link.label}
+                </Link>
+              )}
             </li>
           ))}
+          <li>
+            <Link
+              onClick={() => setOpen(false)}
+              href="/shipping-policy"
+              className="block px-4 py-3 text-lg font-semibold text-gray-900 bg-gray-100 rounded-md shadow-md hover:bg-gray-200 transition duration-300"
+            >
+              Shipping Policy
+            </Link>
+          </li>
+          <li>
+            <Link
+              onClick={() => setOpen(false)}
+              href="/return-policy"
+              className="block px-4 py-3 text-lg font-semibold text-gray-900 bg-gray-100 rounded-md shadow-md hover:bg-gray-200 transition duration-300"
+            >
+              Return Policy
+            </Link>
+          </li>
         </ul>
+
         {user?.name ? (
           <DropdownMenu>
             <DropdownMenuTrigger className="outline-none ring-0 fixed bottom-5 right-5 pb-2 px-5">

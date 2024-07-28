@@ -9,11 +9,11 @@ export async function GET(
   await dbConnect();
   try {
     const { category } = params;
-    const product = await Product.find({ category }).sort({ createdAt: -1 });
+    const products = await Product.find({ category }).sort({ createdAt: -1 });
     return NextResponse.json(
       {
         success: true,
-        product,
+        products,
       },
       {
         status: 200,
