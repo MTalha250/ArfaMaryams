@@ -38,7 +38,7 @@ const Footer = () => {
             </form>
             <div className="flex space-x-3 mt-6 w-1/2">
               <a
-                href="https://www.facebook.com/profile.php?id=61561012355841&mibextid=ZbWKwL"
+                href="https://www.facebook.com/profile.php?id=61563970466460&mibextid=ZbWKwL"
                 target="_blank"
               >
                 <FaFacebookF className="text-black bg-white rounded-full p-2 text-4xl cursor-pointer" />
