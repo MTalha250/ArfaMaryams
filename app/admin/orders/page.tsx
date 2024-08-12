@@ -121,7 +121,7 @@ const page = () => {
                 <TableCell className="text-center">
                   {order.orderItems.map((item: any) => (
                     <div key={item._id}>
-                      {item.product.name} - {item.quantity}
+                      {item?.product.name} - {item.quantity}
                     </div>
                   ))}
                 </TableCell>
@@ -192,7 +192,7 @@ const page = () => {
                             <ul className="list-disc list-inside text-gray-600">
                               {order.orderItems.map((item: any) => (
                                 <li key={item._id} className="ml-4">
-                                  {item.product.name} x {item.quantity} ({" "}
+                                  {item?.product.name} x {item.quantity} ({" "}
                                   {item.size.toUpperCase()} |{" "}
                                   {item.color[0].toUpperCase() +
                                     item.color.slice(1)}{" "}
