@@ -57,13 +57,10 @@ export const GET = async (
         a {
           color:black;
           text-decoration: none;
-          background-color: #FA89A9;
+          background-color: #000000;
           padding: 10px 20px;
           border-radius: 5px;
           transition: background-color 0.3s ease;
-        }
-        a:hover {
-          background-color: #F86094;
         }
       </style>
       </head>
